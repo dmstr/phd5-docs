@@ -27,3 +27,10 @@ Deploy
 - dmstr/docker-roj
  - dmstr/docker-toolbox
 
+
+User
+====
+
+### Settings
+
+added extra.menuItems Twig widget

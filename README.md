@@ -15,6 +15,8 @@ Develop
 Build
 -----
 
+- Asset bundling (extra)
+
 Test
 ----
 

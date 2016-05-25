@@ -1,3 +1,13 @@
+## Frontend
+
+# Twig Layouts
+
+    {{ use ('hrzg/widget/widgets') }}
+    {{ widget_container_widget({id: 'header'}) }}
+    <div class="container">
+        {{ widget_container_widget({id: 'container'}) }}
+    </div>
+
 ## Backend
 
 ### Context menu items

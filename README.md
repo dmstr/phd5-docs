@@ -1,54 +1,42 @@
-Documentation
-=============
+phd5
+====
 
+User & developer documentation
 
-About
------
+## About
 
 - dmstr/php-yii2
 
-### Toolchain
+## Requirements
 
-#### Docker
 
-- Run anywhere!
+## Setup
 
-#### GitLab (CI)
-
-- Dockerized build with `docker-compose` support
-
-#### oneba.se
-
-- Cloud Computing Platform
-- Domain Routing (1ba.se)
-- Reverse Proxy Wildcard DNS (oneba.se)
-- Load Balancer
-- ELK logging
-- SSL Termination
-
+- Local development
+- Build/CI
+- Staging/Production Docker-hosts
 
 Develop
 -------
 
+- Download
 - Install
 - Setup
 
 Build
 -----
 
+- `.gitab-ci.yml`
 - Asset bundling (extra)
 
 Test
 ----
 
-- GitLab CI
- - dmstr/docker-gitlab-runner
+- Codeception
 
 Deploy
 ------
 
-- dmstr/docker-roj
- - dmstr/docker-toolbox
 
 
 User

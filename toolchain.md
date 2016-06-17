@@ -24,9 +24,10 @@
 - Load Balancer
 - ELK logging
 - SSL Termination
-
-
-
+- Application domain
+ - app-transporter.com
+- Open Source Demo domain
+ - osciv.com
 
 
 ### Infrastructure

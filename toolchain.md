@@ -47,6 +47,7 @@
 - toran
 - registry
 - registry-mirror
+- https://github.com/Yelp/docker-custodian (cleanup)
 
 ### Docker images
 

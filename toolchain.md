@@ -49,6 +49,7 @@
 - registry-mirror
 - https://github.com/Yelp/docker-custodian (cleanup)
 - https://github.com/ZZROTDesign/docker-clean
+- :orange_book: https://git.hrzg.de/herzog/gitlab-ci-cleanup
 
 ### Docker images
 

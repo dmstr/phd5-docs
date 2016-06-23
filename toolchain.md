@@ -48,6 +48,7 @@
 - registry
 - registry-mirror
 - https://github.com/Yelp/docker-custodian (cleanup)
+- https://github.com/ZZROTDesign/docker-clean
 
 ### Docker images
 

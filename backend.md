@@ -1,5 +1,4 @@
 
-
 User
 ====
 
@@ -35,7 +34,7 @@ beziehungsweise Kunden.
 - Übersetzungen
 - Widgets, Editor
   - Tipps & Tricks
-
+  - https://git.hrzg.de/hrzg/yii2-widgets2-module
 
 
 ### Settings

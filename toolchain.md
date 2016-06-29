@@ -24,9 +24,10 @@
 - Load Balancer
 - ELK logging
 - SSL Termination
-
-
-
+- Application domain
+ - app-transporter.com
+- Open Source Demo domain
+ - osciv.com
 
 
 ### Infrastructure
@@ -46,6 +47,9 @@
 - toran
 - registry
 - registry-mirror
+- https://github.com/Yelp/docker-custodian (cleanup)
+- https://github.com/ZZROTDesign/docker-clean
+- :orange_book: https://git.hrzg.de/herzog/gitlab-ci-cleanup
 
 ### Docker images
 
@@ -66,10 +70,12 @@
 - https://github.com/jwilder/nginx-proxy
 - https://github.com/schmunk42/nginx-proxy
 - https://github.com/neam/docker-stack
+- https://github.com/schmunk42/docker-nginx-redirect
 
 ### Monitoring
 
 - elk
+ - https://github.com/neam/docker-stack/tree/master/stacks/schmunk42/elk-v2
 - phpservermon
 
 ### Applications
@@ -83,6 +89,8 @@
 - https://semver.mwl.be
 - http://www.arachni-scanner.com
 - https://github.com/gaia-adm/pumba
+- https://github.com/dmstr/docker-acception
+- https://github.com/schmunk42/docker-ngxpagespeed
 
 ### Lint
 
@@ -95,7 +103,8 @@
 
 ### Docs
 
-- - https://github.com/AkihiroSuda/docker-issues
+- https://github.com/AkihiroSuda/docker-issues
+- http://glyphsearch.com
 
 ### Storage
 

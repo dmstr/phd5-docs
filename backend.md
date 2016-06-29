@@ -46,9 +46,15 @@ edit docker-compose.yml
 - Übersetzungen
 - Widgets, Editor
   - Tipps & Tricks
-
+  - https://git.hrzg.de/hrzg/yii2-widgets2-module
 
 
 ### Settings
 
 added extra.menuItems Twig widget
+
+
+
+### Staging Content
+
+- Create "hidden node" in pages

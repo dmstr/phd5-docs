@@ -11,6 +11,12 @@ User & developer documentation
 
 - Docker
 
+## Setup
+
+- Local [development](development.md)
+- Build/CI
+- Staging/Production Docker-hosts
+
 Develop
 -------
 
@@ -34,5 +40,9 @@ Deploy
 ------
 
 - Staging/Production Docker-hosts
+
+### Staging/Production Einrichtung (Developer)
+
+- `www.domain.com` nutzen; `domain.com` weiterleiten
 
 

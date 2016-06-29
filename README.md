@@ -15,44 +15,36 @@ User & developer documentation
 
 ## Setup
 
+- Download
+- Install
 - [Configuration](configuration.md)
-- Local [development](development.md)
 - Build/CI
 - Staging/Production Docker-hosts
 
-Develop
--------
+## Develop
 
-- Download
-- Install
-- Setup
- - Local development
+- Local [development](development.md)
 - [Core modules](modules.md)
 - [Extensions](extensions.md)
 - [Troubleshooting](troubleshooting.md)
 
-Test
-----
+## Test
 
 - [Testing](testing.md)
 - Build
 - Codeception
 
-CI
---
+## Build/CI
+
 - `.gitab-ci.yml`
 - Asset bundling (extra)
 
-Deploy
-------
+## Deploy
 
 - [Deployment](deployment.md)
-- Staging/Production Docker-hosts
+ - Staging/Production Docker-hosts
 - [Web frontend](frontend.md)
 - [Admin backend](backend.md)
 
-### Staging/Production Einrichtung (Developer)
-
-- `www.domain.com` nutzen; `domain.com` weiterleiten
 
 

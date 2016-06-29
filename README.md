@@ -5,6 +5,8 @@ User & developer documentation
 
 ## About
 
+- [About](about.md)
+- [Toolchain](toolchain.md)
 - dmstr/php-yii2
 
 ## Requirements
@@ -13,6 +15,7 @@ User & developer documentation
 
 ## Setup
 
+- [Configuration](configuration.md)
 - Local [development](development.md)
 - Build/CI
 - Staging/Production Docker-hosts
@@ -24,10 +27,14 @@ Develop
 - Install
 - Setup
  - Local development
+- [Core modules](modules.md)
+- [Extensions](extensions.md)
+- [Troubleshooting](troubleshooting.md)
 
 Test
 ----
 
+- [Testing](testing.md)
 - Build
 - Codeception
 
@@ -39,7 +46,10 @@ CI
 Deploy
 ------
 
+- [Deployment](deployment.md)
 - Staging/Production Docker-hosts
+- [Web frontend](frontend.md)
+- [Admin backend](backend.md)
 
 ### Staging/Production Einrichtung (Developer)
 

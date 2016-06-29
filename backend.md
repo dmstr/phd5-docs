@@ -1,43 +1,29 @@
-User
+Backend
 ====
 
-CMS Benutzerhandbuch
-====================
+You can access the web-application backend via `/backend`
 
-- Adam
-- Bernd
-- Carl
+Login with `admin` / `admin1` and change the admin password.
 
-Handbuch für die Webapplikation auf Deutsch, zur Weitergabe an den Endnutzer, 
-beziehungsweise Kunden.
+Adjust basic settings, eg. `app.assets.registerPrototypeAssetKey`
 
-### Development
-
-```
-mkdir myproject
-cd myproject
-```
-
-```
-edit docker-compose.yml
-```
-
-### Staging/Production Einrichtung (Developer)
-
-- `www.domain.com` nutzen; `domain.com` weiterleiten
-
-### User einrichten
+### Create editor user
 
 - p.review0
 - e.ditor1
 - d.eveloper3
 
-### Berechtigungen
+### Assign permissions
 
-### Seiten (Pages)
+Create an user and assign `Editor` role
 
-### Prototyp
+### Create sitemap
 
+- `/pages`
+
+### Prototype
+
+- Twig templates
 - Semantic HTML
 - Variables LESS
 

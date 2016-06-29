@@ -1,3 +1,16 @@
+## 
+
+`/`
+
+
+Edit `.env-dist`, `app.env-dist`, `tests/.env-dist`, sane defaults
+
+
+## Code conventions
+
+PSR-2
+
+
 ### Source code repositories
 
 - check and backup your changes

@@ -84,6 +84,10 @@
 - http://www.arachni-scanner.com
 - https://github.com/gaia-adm/pumba
 
+### Lint
+
+- php-cs-fixer
+
 ## Deploy
 
 - dmstr/docker-roj

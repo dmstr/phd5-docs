@@ -3,6 +3,11 @@ phd5
 
 User & developer documentation
 
+## UI
+
+- [Web frontend](frontend.md)
+- [Admin backend](backend.md)
+
 ## About
 
 - [About](about.md)
@@ -43,8 +48,6 @@ User & developer documentation
 
 - [Deployment](deployment.md)
  - Staging/Production Docker-hosts
-- [Web frontend](frontend.md)
-- [Admin backend](backend.md)
 
 
 

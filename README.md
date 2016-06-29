@@ -12,7 +12,7 @@ User & developer documentation
 
 ## Setup
 
-- Local development
+- Local [development](development.md)
 - Build/CI
 - Staging/Production Docker-hosts
 

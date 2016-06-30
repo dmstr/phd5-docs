@@ -1,29 +1,24 @@
+# Configuration
+
+## Local development
+
+docker-compose
+
+.env
+
+docker-compose.yml
+docker-compose.dev.yml
+
+See also [ENV dmstr/docker-php-yii2](https://github.com/dmstr/docker-php-yii2)
+
 ## Application
+
+src/app.env
 
 YII_ENV
 YII_DEBUG
 
-## Frontend
-
-# Twig Layouts
-
-    {{ use ('hrzg/widget/widgets') }}
-    {{ widget_container_widget({id: 'header'}) }}
-    <div class="container">
-        {{ widget_container_widget({id: 'container'}) }}
-    </div>
-
-## Backend
-
-### Context menu items
-
-### Extra menu items
-
-Twig with key `extra.menuItems`
-
-    {{ use ('hrzg/moxiecode/moxiemanager/widgets') }}
-    {{ browse_button_widget( {"tagName": "a"} ) }}
-    
+src/config    
 
 ### Commands
 

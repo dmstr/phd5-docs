@@ -7,6 +7,12 @@ Login with `admin` / `admin1` and change the admin password.
 
 Adjust basic settings, eg. `app.assets.registerPrototypeAssetKey`
 
+## Settings
+
+added extra.menuItems Twig widget
+
+## User
+
 ### Create editor user
 
 - p.review0
@@ -17,28 +23,24 @@ Adjust basic settings, eg. `app.assets.registerPrototypeAssetKey`
 
 Create an user and assign `Editor` role
 
+## Pages
+
 ### Create sitemap
 
 - `/pages`
 
-### Prototype
+## Prototype
 
 - Twig templates
 - Semantic HTML
 - Variables LESS
 
-### Advanced
+## Widgets :credit_card:
 
 - Übersetzungen
 - Widgets, Editor
   - Tipps & Tricks
   - https://git.hrzg.de/hrzg/yii2-widgets2-module
-
-
-### Settings
-
-added extra.menuItems Twig widget
-
 
 
 ### Staging Content

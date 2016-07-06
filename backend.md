@@ -35,6 +35,10 @@ Create an user and assign `Editor` role
 - Semantic HTML
 - Variables LESS
 
+# LESS
+
+- https://github.com/twbs/bootstrap/blob/master/less/variables.less
+
 ## Widgets :credit_card:
 
 - Übersetzungen

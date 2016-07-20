@@ -35,3 +35,13 @@ Data-migration for running test should be placed into `tests/codection/_migratio
 tests/codeception
 
 As a basic convention we use two test groups `mandatory` and `optional`. While the former have to pass in the CI the latter ones are allowed to fail.
+
+#### Unit
+
+#### CLI
+
+#### Functional
+
+#### E2E (acceptance)
+
+> Note: In Codeception acceptance tests checks are performed *as seen* in the browser, for example you have to check for `MYLINK` if there's a `text-transform: uppercase` or a link `mylink`.

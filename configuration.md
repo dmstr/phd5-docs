@@ -6,8 +6,10 @@ docker-compose
 
 .env
 
-docker-compose.yml
-docker-compose.dev.yml
+> Windows users, use a semicolon as path separator `COMPOSE_FILE=./docker-compose.yml;./docker-compose.dev.yml`
+
+- docker-compose.yml
+- docker-compose.dev.yml
 
 See also [ENV dmstr/docker-php-yii2](https://github.com/dmstr/docker-php-yii2)
 

@@ -12,9 +12,49 @@
 
 - Run anywhere!
 
+
+### Docker images
+
+- PHP
+
+
+## Build
+
 #### GitLab (CI)
 
 - Dockerized build with `docker-compose` support
+- GitLab CI
+ - https://about.gitlab.com
+ - http://docs.gitlab.com/ce/ci/yaml/README.html
+ - dmstr/docker-gitlab-runner
+- https://github.com/sameersbn
+- toran
+- registry
+- registry-mirror
+- https://github.com/Yelp/docker-custodian (cleanup)
+- https://github.com/ZZROTDesign/docker-clean
+- :orange_book: https://git.hrzg.de/herzog/gitlab-ci-cleanup
+
+
+### CLI
+
+    git docker-compose make
+
+- lessc
+- linkchecker
+- yii
+- codecept
+
+## Deploy
+
+- dmstr/docker-roj
+ - dmstr/docker-toolbox
+
+### Infrastructure
+
+- swarm
+- machine
+- vagrant
 
 #### oneba.se
 
@@ -29,42 +69,7 @@
 - Open Source Demo domain
  - osciv.com
 
-
-### Infrastructure
-
-- swarm
-- machine
-- vagrant
-
-## Build
-
-- https://about.gitlab.com
-
-
-- GitLab CI
- - dmstr/docker-gitlab-runner
-- https://github.com/sameersbn
-- toran
-- registry
-- registry-mirror
-- https://github.com/Yelp/docker-custodian (cleanup)
-- https://github.com/ZZROTDesign/docker-clean
-- :orange_book: https://git.hrzg.de/herzog/gitlab-ci-cleanup
-
-### Docker images
-
-- PHP
-
-### CLI
-
-    git docker-compose make
-
-- lessc
-- linkchecker
-- yii
-- codecept
-
-### Service discovery
+#### Service discovery
 
 - consul
 - https://github.com/jwilder/nginx-proxy
@@ -72,15 +77,19 @@
 - https://github.com/neam/docker-stack
 - https://github.com/schmunk42/docker-nginx-redirect
 
-### Monitoring
+#### Storage
+
+- AWS
+ - ELB
+ - EC2
+ - S3
+- FTP/STP
+
+#### Monitoring
 
 - elk
  - https://github.com/neam/docker-stack/tree/master/stacks/schmunk42/elk-v2
 - phpservermon
-
-### Applications
-
-- https://github.com/dmstr/docker-yii2-app
 
 ### QA
 
@@ -92,24 +101,18 @@
 - https://github.com/dmstr/docker-acception
 - https://github.com/schmunk42/docker-ngxpagespeed
 
-### Lint
+#### Lint
 
 - php-cs-fixer
 
-## Deploy
-
-- dmstr/docker-roj
- - dmstr/docker-toolbox
 
 ### Docs
 
 - https://github.com/AkihiroSuda/docker-issues
 - http://glyphsearch.com
 
-### Storage
+### Applications
 
-- AWS
- - ELB
- - EC2
- - S3
-- FTP/STP
+- https://github.com/dmstr/docker-yii2-app
+
+

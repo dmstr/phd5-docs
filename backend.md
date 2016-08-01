@@ -16,8 +16,12 @@ added extra.menuItems Twig widget
 ### Create editor user
 
 - p.review0
-- e.ditor1
-- d.eveloper3
+- dev / !dev.1
+- editor / editor-1234
+- preview / preview1
+
+> Note: The user `admin` is very similar to a root-user, by default it has every permission, or speaking in Yii terms `can()` always returns `true`.
+
 
 ### Assign permissions
 

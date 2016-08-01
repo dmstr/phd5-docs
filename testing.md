@@ -36,6 +36,10 @@ tests/codeception
 
 As a basic convention we use two test groups `mandatory` and `optional`. While the former have to pass in the CI the latter ones are allowed to fail.
 
+Re-run failed tests
+
+	codecept run -g failed
+
 #### Unit
 
 #### CLI
@@ -45,3 +49,11 @@ As a basic convention we use two test groups `mandatory` and `optional`. While t
 #### E2E (acceptance)
 
 > Note: In Codeception acceptance tests checks are performed *as seen* in the browser, for example you have to check for `MYLINK` if there's a `text-transform: uppercase` or a link `mylink`.
+
+### Code-coverage
+
+```
+$ docker-php-ext-enable xdebug
+$ codecept run unit --coverage --coverage-html
+$ codecept run functional --coverage --coverage-html
+```

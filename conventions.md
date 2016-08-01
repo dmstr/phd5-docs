@@ -1,10 +1,22 @@
+## Code conventions
+
 ### Source-Code
 
-- all code, variables, tables, databases, constants - everything in the source code MUST BE written and named in English
+- all code, variables, tables, databases, constants - everything in the source code **MUST BE** written and named in English
 
-### Production
+#### PHP
 
-- nginx web services in production SHOULD define a `VIRTUAL_HOST` environment variable, which is used by the reverse-proxy
+- PSR-2
+
+#### LESS
+
+- CSS framework core classes, eg. `container`, `row`, `col-*` **MUST NOT** be modified
+
+#### docker-compose
+
+##### Production
+
+- nginx web services in production **SHOULD** define a `VIRTUAL_HOST` environment variable, which is used by the reverse-proxy
 
 
 ### Documentation

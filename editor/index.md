@@ -12,3 +12,4 @@
 - :construction_worker: Users & permissions
 - :construction_worker: Translations
 - :credit_card: Widget templates
+- :credit_card: [Redirects](module-redirects.md)

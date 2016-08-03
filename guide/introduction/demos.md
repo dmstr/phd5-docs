@@ -1,7 +1,7 @@
 ## Demos
 
 - http://yii2-app.osciv.com.staging-1.oneba.se
-- 
+- http://phd5-app.osciv.com.staging-1.oneba.se
 
 ## Tutorials
 

@@ -1,1 +1,0 @@
-http://docs.gitlab.com/ce/ci/yaml/README.html

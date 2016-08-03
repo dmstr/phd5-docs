@@ -1,7 +1,12 @@
 phd5
 ====
 
-- [developer](developer/README.md)
-- [editor](editor/README.md)
+### Source-code
+
+- [Developer Guide](developer/README.md)
+
+### WebUI
+
+- [Editor Manual](user/README.md)
 
 :credit_card: ee

@@ -42,8 +42,10 @@ Manage user accounts, profiles and authorizations.
 
 Manage application messages for internationalization.
 
+[Open](/translatemanager)
+
 ### [Redirects](module-redirects.md) :construction_worker: :credit_card: 
 
 URL redirects for domains or paths.
 
-[Link](/redirects)
+[Open](/redirects)

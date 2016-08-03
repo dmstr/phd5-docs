@@ -1,6 +1,6 @@
-# Application documentation
+# Overview
 
-## Modules
+## CE modules
 
 ### Pages
 
@@ -20,34 +20,40 @@ LESS AssetBundle from database for prototyping & development
 
 :blue_book: [Extension README](https://github.com/dmstr/yii2-prototype-module/blob/master/README.md)
 
-### Widgets :credit_card:
+---
+
+## :credit_card: EE modules
+
+### Widgets
 
 Flexible content managament system.
-
-> Widget templates :construction_worker: :credit_card: 
 
 :blue_book: [Project page](https://git.hrzg.de/hrzg/yii2-widgets2-module)
 :notebook: [Extension README](module-widgets.md)
 
-### Files :credit_card:
+### Files
 
 Media files like images, PDFs or ZIPs.
 
-### Settings :construction_worker:
+---
+
+## :construction_worker: Developer
+
+### Settings
 
 Key-value store for application settings.
 
-### Users & permissions :construction_worker:
+### Users & permissions
 
 Manage user accounts, profiles and authorizations.
 
-### Translations :construction_worker:
+### Translations
 
 Manage application messages for internationalization.
 
 [Open](/translatemanager)
 
-### [Redirects](module-redirects.md) :construction_worker: :credit_card: 
+### [Redirects](module-redirects.md) :credit_card: 
 
 URL redirects for domains or paths.
 

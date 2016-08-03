@@ -19,7 +19,7 @@
 
 - [Application frontend](development/frontend.md)
 - [Web backend](development/backend.md)
-- [Console](development/console.md)
+- [CLI tools](development/cli-tools.md)
 - [Extensions](development/extensions.md)
 - [Conventions](development/conventions.md)
 - [Upgrading](development/upgrading.md)

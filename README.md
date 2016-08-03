@@ -1,12 +1,14 @@
 phd5
 ====
 
-### Source-code
+### Source-code documentation
 
-- [Developer Guide](developer/README.md)
+- [Developer Guide](guide/README.md)
 
-### WebUI
+### Online help
 
-- [Editor Manual](user/README.md)
+- [Editor Manual](help/README.md)
 
-:credit_card: ee
+---
+
+### ![dmstr logo](http://t.phundament.com/dmstr-16-cropped.png) Built by [dmstr](http://diemeisterei.de)

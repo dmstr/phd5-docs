@@ -4,19 +4,21 @@
 
 ### Pages
 
+Manage nodes trees and controller routes, eg. for navbar or footer links.
+
 :blue_book: [Extension README](https://github.com/dmstr/yii2-pages-module/blob/master/README.md)
 
 [Open](/redirects)
 
 ### Layouts
 
-Twig layout snippets
+Twig layout snippets, for adding dynamic contents.
 
 :blue_book: [Extension README](https://github.com/dmstr/yii2-prototype-module/blob/master/README.md)
 
 ### Themes
 
-LESS AssetBundle from database for prototyping & development
+LESS AssetBundle from database for prototyping & development.
 
 :blue_book: [Extension README](https://github.com/dmstr/yii2-prototype-module/blob/master/README.md)
 

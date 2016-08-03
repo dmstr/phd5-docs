@@ -1,51 +1,98 @@
-Installation
-============
+Configuration
+=============
 
-> Note: Examples in this guide are run in the dockerized setup. 
-> You can run phd also  with [composer](../6-tutorials/installation-composer.md) 
-> for example within a Vagrant VM. 
+## Introduction
 
-When starting a new project it is recommended to download a [packaged release](https://github.com/phundament/app/releases)
-and create a fresh repository from it.
+phd uses an environment variables based configuration, see also [Dev/prod parity](http://12factor.net/dev-prod-parity) for more information about this topic.
 
-    cd myapp
-    git init
+## Environment settings
 
-> :bulb: It is recommended to create an initial commit from the unmodified template code, before making the first changes, see [tutorials](../6-tutorials/git-repository.md) for details.
+The following list displays configuration locations from highest to lowest priority, files are located in the application root folder.
 
-## `make` application
+1. `docker-compose.override.yml` (needs container restart)
+2. `docker-compose.yml` (needs container restart)
+3. `Dockerfile` (needs rebuilding)
+4. `.env` (can be change at runtime during developemt)
 
-phd uses `Makefile`s to execute common tasks during development, but you can also use standard *Docker* commands to control your stack.
-See *phd* [README](https://github.com/phundament/app/blob/master/README.md) for some examples.
+> defaults for `.env`, see [`.env-dist`](https://github.com/phundament/app/blob/master/.env-dist)
 
-Basically, `make` targets are just shorthands for lengthy Docker commands.
+ENV variable are immutable by default, so if a value is set in a `Dockerfile`, you can not
+ overwrite it in your `.env` file, but in `docker-compose.yml`.
 
-For the first initial setup run
+Only values in `.env` can be changed while the containers are running. If you change environment variables in 
+`docker-compose.yml` you need to restart your containers.  
 
-    make all
+## Application settings
 
-To see all available targets run
+You find the config files for an application in `src/config`, those can also be changed at runtime:
 
-    make help
+ - [`config/main.php`](https://github.com/phundament/app/blob/master/config/main.php) - main application configuration
+ - [`config/local.php`](https://github.com/phundament/app/blob/master/config/main.php) - application configuration settings for **local development only**
 
-You can also chain single commands
+> :exclamation: An important difference between application and environment configuration is that
+> ENV variables are immutable by default, but values in PHP arrays can be overwritten.
 
-    make setup up open bash
-   
-Or use a configuration target, in example for managing an isolated test-stack
-   
-    make TEST up setup bash
+## Usage
 
-> All `make` commands without a *configuration target*, like `TEST` or `STAGING` are run on the default stack 
-> without additional `docker-compose` parameters. 
+### Basic settings 
 
-You can find information in the [testing](../4-testing/testing.md) section.
+Initial configuration adjustments should be made for the following values
 
-> :bulb: To do a dry-run for a command you can use the `-n` option, eg. `make -n all`
+ - `APP_NAME`
+ - `APP_TITLE`
+ - `APP_LANGUAGES`
 
-See also [CLI tools](../3-development/cli-tools.md) the see which commands are available in the containers.
+> `.env-dist` can be adjusted and committed to reflect basic application settings, but we strongly
+> recommend **not to add secrets** like passwords or tokens to the repository. 
+
+During **local development** it is also recommended to enable debug settings in `.env`.
+
+    YII_ENV=dev
+    YII_DEBUG=1
+
+> :bangbang: Make sure you **do not** have these settings enabled in production deployments.
+
+You can also enable additional migrations during local development.
+
+    APP_MIGRATION_LOOKUP=@app/migrations/data
+
+> It is recommended to keep structural and data migrations separated.
+
+### Database migrations
+
+Lookup paths for migrations can be defined in application configuration, for details see [dmstr/yii2-migrate-command](https://github.com/dmstr/yii2-migrate-command/blob/master/README.md).
+
+    'params'      => [
+        'yii.migrations' => [
+            '@yii/rbac/migrations',
+            '@dektrium/user/migrations',
+            '@vendor/lajax/yii2-translate-manager/migrations',
+            '@bedezign/yii2/audit/migrations'
+        ]
+    ]
+
+### Asset bundles
+
+By default *phd* runs with the default bootstrap asset bundle from Yii.
+To enable asset customization, edit `src/assets/AppAsset.php` and uncomment `'less/app.less',`.
+
+There are three files included by default:
+
+ - `app.less` main LESS file for application
+ - `bootstrap.less` includes for bootstrap LESS files
+ - `variables.less` bootstrap settings
+ 
+Initial adjustment to the style settings of the application should be made in `variables.less`
+
+> When developing assets you can set `APP_ASSET_FORCE_PUBLISH=1` in your local `.env` file, this improves detection of
+changes for included files.
+> Note: This feature is only available in the `AppAsset` bundle for the application.
+
+For bundling assets for production usage, see tutorial about [asset compression](../6-tutorials/asset-compression.md).
+
 
 ----
+
 
 # Configuration
 

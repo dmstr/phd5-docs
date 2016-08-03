@@ -27,7 +27,7 @@ Flexible content managament system.
 > Widget templates :construction_worker: :credit_card: 
 
 :blue_book: [Project page](https://git.hrzg.de/hrzg/yii2-widgets2-module)
-:notebook: [Extension README](./module-widgets.md)
+:notebook: [Extension README](module-widgets.md)
 
 ### Files :credit_card:
 

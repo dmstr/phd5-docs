@@ -9,13 +9,13 @@ Manage nodes trees and controller routes, eg. for navbar or footer links.
 :blue_book: [Extension README](https://github.com/dmstr/yii2-pages-module/blob/master/README.md)
 
 
-### [Layouts](/prototype/less)
+### [Layouts](/prototype/twig)
 
 Twig layout snippets, for adding dynamic contents.
 
 :blue_book: [Extension README](https://github.com/dmstr/yii2-prototype-module/blob/master/README.md)
 
-### Themes
+### [Themes](/prototype/less)
 
 LESS AssetBundle from database for prototyping & development.
 
@@ -27,7 +27,7 @@ LESS AssetBundle from database for prototyping & development.
 
 ### Widgets
 
-Flexible content managament system.
+Flexible content management system.
 
 :blue_book: [Project page](https://git.hrzg.de/hrzg/yii2-widgets2-module)
 :notebook: [Extension README](module-widgets.md)

@@ -2,13 +2,12 @@
 
 ## CE modules
 
-### Pages
+### Pages [:arrow_right:](/pages)
 
 Manage nodes trees and controller routes, eg. for navbar or footer links.
 
 :blue_book: [Extension README](https://github.com/dmstr/yii2-pages-module/blob/master/README.md)
 
-[Open](/redirects)
 
 ### Layouts
 

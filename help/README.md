@@ -1,6 +1,6 @@
 # phd5 - help
 
-- [Index](index.md)
+- [Overview](index.md)
 - [Tutorial](tutorial.md)
 - [Examples](examples.md)
 

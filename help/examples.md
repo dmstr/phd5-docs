@@ -1,6 +1,8 @@
-## Frontend
+# Code examples :construction_worker:
 
-# Twig Layouts
+## Layouts `Twig`
+
+### Full width header and container
 
     {{ use ('hrzg/widget/widgets') }}
     {{ widget_container_widget({id: 'header'}) }}
@@ -9,8 +11,6 @@
     </div>
 
 ## Backend
-
-### Context menu items
 
 ### Extra menu items
 

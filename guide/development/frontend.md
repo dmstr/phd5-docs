@@ -35,3 +35,5 @@ you to add HTML and LESS files to your site.
 - create key `main`
  - add example LESS content
 - save
+
+### Context menu items

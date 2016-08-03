@@ -1,53 +1,56 @@
-phd5
-====
+# phd5
 
-Developer documentation
+## Introduction
 
-## About
+- [About](introduction/about.md)
+- [Features](introduction/features.md)
+- [Requirements](introduction/requirements.md)
+- [Basic concepts](introduction/basic-concepts.md)
+- [Demos](introduction/demos.md)
 
-- [About](about.md)
-- [Toolchain](toolchain.md)
-- dmstr/php-yii2
+## Development
 
-## Requirements
+- [Conventions](development/conventions.md)
 
-- Docker
+### Setup
 
-## Setup
+- [Installation](development/installation.md)
+- [Configuration](development/configuration.md)
 
-- Download
-- Install
-- [Configuration](configuration.md)
-- Build/CI
-- Staging/Production Docker-hosts
+### Usage
 
-## UI
+- [Application frontend](development/frontend.md)
+- [Web backend](development/backend.md)
+- [Console](development/console.md)
+- [Extensions](development/extensions.md)
+- [Upgrading](development/upgrading.md)
+- [Troubleshooting](development/troubleshooting.md)
 
-- [Web frontend](frontend.md)
-- [Admin backend](backend.md)
+### Testing
 
-## Develop
+- [Test suites](development/testing.md)
+- [QA](development/qa.md)
 
-- Local [development](development.md)
-- [Core modules](modules.md)
-- [Extensions](extensions.md)
-- [Troubleshooting](troubleshooting.md)
+## Deployment
 
-## Test
+- [CI](deployment/continuous-integration.md)
+- [Staging and Production](deployment/environments.md)
 
-- [Testing](testing.md)
-- Build
-- Codeception
+## Tutorials
 
-## Build/CI
+...
 
-- `.gitab-ci.yml`
-- Asset bundling (extra)
+## Resources
 
-## Deploy
+- toolchain.md
+- troubleshooting.md
 
-- [Deployment](deployment.md)
- - Staging/Production Docker-hosts
+### Support
 
+
+### Contribute
+
+
+### License
 
 

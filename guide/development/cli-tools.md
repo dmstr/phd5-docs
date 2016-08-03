@@ -32,3 +32,11 @@ or
 > If a line in the documentation is prefixed with `$` it means that this command needs to be run inside the container.
 
     $ composer update
+
+#### Examples
+    
+##### Show environment variables (for bash)
+
+    $ env | sort
+    
+> Note, there may be additional ENV variables available from `src/app.env`

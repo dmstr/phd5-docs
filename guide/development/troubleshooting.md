@@ -44,7 +44,7 @@ Docker
 
     ERROR: Cannot start container 88b754d7e46aca58961ef0a049216f0e7331e35ba905d84fab01016a4797a779: failed to create endpoint appdev_mariadb_1 on network bridge: Bind for 0.0.0.0:43306 failed: port is already allocated
 
-Change your port mapping.
+Remove or change your port mapping.
 
 #### Can't push to private registry
 
@@ -55,15 +55,6 @@ See also [issue on GitHub]()
 ```
 echo "nameserver 8.8.8.8" > /etc/resolv.conf && sudo /etc/init.d/docker restart
 ```
-
-#### Show environment variables (in container)
-
-    env | sort
-
-
-#### `YII_ENV=dev` and `phundament/app:production` image
-
-In most cases you won't be able to start images built `FROM phundament/app:production` image, if you set `YII_ENV=dev`, since development packages are missing on that image. It is also not recommended to use a production image in development mode.
 
 #### VM harddisk out of space
 
@@ -83,25 +74,6 @@ See https://github.com/chadoe/docker-cleanup-volumes
 Check your DNS settings, restart VM with `docker-machine`.
 
 
-#### Docker daemon does not restart (>=1.9)
-
-Error description
-
-    docker@dev5:~$ tail -f /var/log/docker.log 
-    
-    [...]
-    
-    time="2016-02-03T09:18:59.567541148Z" level=fatal msg="Error starting daemon: Error initializing network controller: could not delete the default bridge network: network bridge has active endpoints" 
-
-Remove stale network files    
-    
-    docker@dev5:~$ sudo rm -rf /var/lib/docker/network/files
-    docker@dev5:~$ sudo /etc/init.d/docker restart
-    Need TLS certs for dev5,127.0.0.1,10.0.2.15,192.168.99.100
-    -------------------
-    docker@dev5:~$ docker ps
-
-
 #### Cleanup volumes
 
 see https://github.com/chadoe/docker-cleanup-volumes 
@@ -116,63 +88,21 @@ docker run \
 		dcgc --max-image-age=30d --max-container-age=1d --dry-run
 ```
 
-#### Login
+#### Registry Login
 
 Interactive login
     
-    docker login tutum.co
+    docker login your-registry.example.com
 
 Login docker CLI
     
-    docker login --username=dmstr --password=$TUTUM_PASS --email=dmstr-tutum@h17n.de tutum.co
+    docker login --username=${YOUR_USER} --password=${YOUR_PASS} your-registry.example.com
 
-Login docker-compose 1.2.0
-    
-    docker login --username=dmstr --password=$TUTUM_PASS --email=dmstr-tutum@h17n.de https://tutum.co/v1
-
-> Note! Check if Docker saves the credentials locally.
-
-### boot2docker (local development)
-
-#### Tutum login not working
-
-Error: 
-
-    FATA[0017] Error response from daemon: v1 ping attempt failed with error: Get https://registy.example.com/v1/_ping: dial tcp: lookup registy.example.com: no such host. If this private registry supports only HTTP or HTTPS with an unknown CA certificate, please add `--insecure-registry registy.example.com` to the daemon's arguments. In the case of HTTPS, if you have access to the registry's CA certificate, no need for the flag; simply place the CA certificate at /etc/docker/certs.d/registy.example.com/ca.crt 
-
-Workaround: Add registry host to `/etc/hosts`
-
-    boot2docker ssh "echo '54.85.213.230 tutum.co' | sudo tee -a /etc/hosts"
-    boot2docker ssh "sudo /etc/init.d/docker restart"
-
-> Heads up! On some Docker-hosts, the `--insecure-registry` flag is not working as expected.
-
-
-#### Private registry certificates
-
-    boot2docker ssh
-
-Download private cert (docker >= 1.6)
-    
-    sudo mkdir -m 755 -p /etc/docker/certs.d/registry.hrzg.de
-    curl -k https://git.hrzg.de/herzog/pub/raw/master/ssh/hrzg.de.crt > /etc/docker/certs.d/registry.hrzg.de/ca.crt
-
-    sudo mkdir -m 755 -p /var/lib/boot2docker/certs
-    curl http://curl.haxx.se/ca/cacert.pem > /var/lib/boot2docker/certs/ca.crt
-
-Upddate daemon arguments
-
-    EXTRA_ARGS="--insecure-registry registry.hrzg.de --insecure-registry https://registry.hrzg.de/v1/ --registry-mirror=http://192.168.23.30:5555 --dns 192.168.23.17 --dns 8.8.4.4"
-
-Restart docker
-
-    /etc/init.d/docker restart
+> Note! Check if Docker saves the credentials locally in `~/.docker`
 
 
 
-
-
-## Gitlab CI Server
+### Gitlab CI Server
 
 #### General
 

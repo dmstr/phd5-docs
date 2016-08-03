@@ -1,4 +1,4 @@
-# phd5
+# phd5 - guide
 
 ## Introduction
 
@@ -9,8 +9,6 @@
 - [Demos](introduction/demos.md)
 
 ## Development
-
-- [Conventions](development/conventions.md)
 
 ### Setup
 
@@ -23,6 +21,7 @@
 - [Web backend](development/backend.md)
 - [Console](development/console.md)
 - [Extensions](development/extensions.md)
+- [Conventions](development/conventions.md)
 - [Upgrading](development/upgrading.md)
 - [Troubleshooting](development/troubleshooting.md)
 

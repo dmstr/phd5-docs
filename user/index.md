@@ -6,6 +6,8 @@
 
 :blue_book: [Extension README](https://github.com/dmstr/yii2-pages-module/blob/master/README.md)
 
+[Open](/redirects)
+
 ### Layouts
 
 Twig layout snippets
@@ -25,6 +27,7 @@ Flexible content managament system.
 > Widget templates :construction_worker: :credit_card: 
 
 :blue_book: [Project page](https://git.hrzg.de/hrzg/yii2-widgets2-module)
+:notebook: [Extension README](./modules-widgets.md)
 
 ### Files :credit_card:
 

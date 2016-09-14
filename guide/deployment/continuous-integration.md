@@ -11,6 +11,13 @@ Example: Gitlab CI
 
 > http://docs.gitlab.com/ce/ci/yaml/README.html
 
+### Setup
+
+Set **Variables**
+
+- `PHP_IMAGE_NAME`	registry.example.com/namespace/project_php
+- `GITHUB_API_TOKEN`	abcd1234
+
 ### Workflow
 
 1. Clone application from local repository

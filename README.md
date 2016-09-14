@@ -3,12 +3,6 @@ phd5
 
 **:construction: This repository is under construction!**
 
-### Application templates
-
-- https://github.com/dmstr/docker-phd5-app
-- https://git.hrzg.de/hrzg/docker-ee-app
-- https://github.com/dmstr/docker-yii2-app
-
 ### Source-code documentation
 
 - [Developer Guide](guide/README.md)
@@ -16,6 +10,12 @@ phd5
 ### Online help
 
 - [Editor Manual](help/README.md)
+
+### Application templates
+
+- https://github.com/dmstr/docker-phd5-app
+- https://git.hrzg.de/hrzg/docker-ee-app
+- https://github.com/dmstr/docker-yii2-app
 
 ---
 

@@ -8,6 +8,7 @@ Features
 - Support for efficient building and testing on *GitLab CI*
 - using stable PHP package versions, embracing semver
 - continuous integration support
+- application versioning
 
 ### Frontend
 

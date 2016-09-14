@@ -53,6 +53,13 @@ or
 
     docker exec -it app_php_1 bash
 
+
+
+
+> TODO make clean - be aware of data-loss
+
+
+
 ### Inside the PHP container
 
 - composer

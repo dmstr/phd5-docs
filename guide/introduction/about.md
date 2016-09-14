@@ -61,6 +61,24 @@ Germany
 | codemix/ | ~1000 | 0 | 0 
 
 
+Source
+———
+
+PHP Image für Yii2 (runtime only)
+https://git.hrzg.de/dmstr/docker-php-yii2
+
+Dockerized Yii2 App (100 lines, no db)
+https://git.hrzg.de/dmstr/docker-yii2-app
+
+Phundament 5 (nur Open-Source)
+https://git.hrzg.de/dmstr/docker-phd-app
+
+Entrprise-Edition (inkl. Closed Source)
+https://git.hrzg.de/hrzg/docker-ee-app
+
+Commercial/Closed source:
+https://git.hrzg.de/groups/hrzg
+
 
 
 

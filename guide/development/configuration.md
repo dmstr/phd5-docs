@@ -14,6 +14,8 @@ The following list displays configuration locations from highest to lowest prior
 3. `Dockerfile` (needs rebuilding)
 4. `.env` (can be change at runtime during developemt)
 
+> TODO: app.env-dist
+
 > defaults for `.env`, see [`.env-dist`](https://github.com/phundament/app/blob/master/.env-dist)
 
 ENV variable are immutable by default, so if a value is set in a `Dockerfile`, you can not
@@ -31,6 +33,13 @@ You find the config files for an application in `src/config`, those can also be 
 
 > :exclamation: An important difference between application and environment configuration is that
 > ENV variables are immutable by default, but values in PHP arrays can be overwritten.
+
+---
+
+
+
+    make all
+
 
 ## Usage
 

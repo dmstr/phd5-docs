@@ -48,6 +48,8 @@ To run specific tests you can use the `OPTS` environment variable
     make TEST run-tests OPTS='acceptance dev/MyCept --steps'
 
 
+> TODO: - VNC settings (Test-Selenium)
+
 
 ### Functional vs. acceptance tests
    

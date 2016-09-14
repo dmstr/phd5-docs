@@ -1,5 +1,7 @@
 ## Code conventions
 
+- DO not add secrets....
+
 ### Source-Code
 
 - all code, variables, tables, databases, constants - everything in the source code **MUST BE** written and named in English

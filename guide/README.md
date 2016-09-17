@@ -14,12 +14,13 @@
 
 - [Installation](development/installation.md)
 - [Configuration](development/configuration.md)
+- [CLI](development/cli.md)
 
 ### Usage
 
 - [Application frontend](development/frontend.md)
 - [Web backend](development/backend.md)
-- [CLI tools](development/cli-tools.md)
+- [Console](development/cli-tools.md)
 - [Extensions](development/extensions.md)
 - [Conventions](development/conventions.md)
 - [Upgrading](development/upgrading.md)

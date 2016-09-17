@@ -49,6 +49,36 @@ Features
 - shell file linting
 
 
+
+### Comparision
+
+| Template | src LOC | Services | Extensions |
+|----------|---------|----------|------------|
+| dmstr/yii2-app | ~100 | 0 | 0 
+| dmstr/phd5-app | ~350 | 1 | 8
+| dmstr/ee-app | ~450 | 4 | 20 
+| codemix/ | ~1000 | 0 | 0 
+
+
+Source
+———
+
+PHP Image für Yii2 (runtime only)
+https://git.hrzg.de/dmstr/docker-php-yii2
+
+Dockerized Yii2 App (100 lines, no db)
+https://git.hrzg.de/dmstr/docker-yii2-app
+
+Phundament 5 (nur Open-Source)
+https://git.hrzg.de/dmstr/docker-phd-app
+
+Entrprise-Edition (inkl. Closed Source)
+https://git.hrzg.de/hrzg/docker-ee-app
+
+Commercial/Closed source:
+https://git.hrzg.de/groups/hrzg
+
+
 ---
 
 https://git.hrzg.de/hrzg/yii2-widgets2-module

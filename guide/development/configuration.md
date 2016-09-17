@@ -5,31 +5,42 @@ Configuration
 
 phd uses an environment variables based configuration, see also [Dev/prod parity](http://12factor.net/dev-prod-parity) for more information about this topic.
 
+## 
+
+> TODO: app.env-dist
+
+##
+
+> defaults for `.env`, see [`.env-dist`](https://github.com/phundament/app/blob/master/.env-dist)
+
+
 ## Environment settings
+
+Control environment settings are defined in `.env` which is used by `docker-compose` by default.
+
+> :exclamation: Values in `.env` must be explicitly passed to a service configuration or application.
 
 The following list displays configuration locations from highest to lowest priority, files are located in the application root folder.
 
 1. `docker-compose.override.yml` (needs container restart)
 2. `docker-compose.yml` (needs container restart)
-3. `Dockerfile` (needs rebuilding)
-4. `.env` (can be change at runtime during developemt)
+3. `Dockerfile` (needs rebuilding and restart)
+4. `src/app.env` (can be change at runtime; development only)
 
-> TODO: app.env-dist
+>
 
-> defaults for `.env`, see [`.env-dist`](https://github.com/phundament/app/blob/master/.env-dist)
+ENV variable are immutable by convention, so if a value is set in a `Dockerfile`, you can not
+ overwrite it in your `app.env` file, but in `docker-compose.yml`.
 
-ENV variable are immutable by default, so if a value is set in a `Dockerfile`, you can not
- overwrite it in your `.env` file, but in `docker-compose.yml`.
-
-Only values in `.env` can be changed while the containers are running. If you change environment variables in 
+Only values in `app.env` can be changed while the containers are running. If you change environment variables in 
 `docker-compose.yml` you need to restart your containers.  
 
 ## Application settings
 
-You find the config files for an application in `src/config`, those can also be changed at runtime:
+You find the config files for an application in `src/config`, those can also be changed at runtime during development:
 
  - [`config/main.php`](https://github.com/phundament/app/blob/master/config/main.php) - main application configuration
- - [`config/local.php`](https://github.com/phundament/app/blob/master/config/main.php) - application configuration settings for **local development only**
+ - [`APP_CONFIG_FILE`](https://github.com/phundament/app/blob/master/config/main.php) - alias for  additional configuration file
 
 > :exclamation: An important difference between application and environment configuration is that
 > ENV variables are immutable by default, but values in PHP arrays can be overwritten.

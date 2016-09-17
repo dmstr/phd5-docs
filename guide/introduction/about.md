@@ -13,23 +13,12 @@ Its toolset is infrastructure-agnostic and can be run on various platforms, such
 
 The standard modules are content-agnostic and include environment-based configuration, authentication and authorization, build-automation, testing, i18n, key/value-store, code-generation (Models/DAO, REST/API), prototyping and semantic-versioning.
 
-The application is built upon Docker, PHP and Yii 2.0 Framework and composer packages. Whenever possible phd uses a stable version for images and libraries. It is designed to be able to use an immensely wide set of libraries.
+The application is built upon Docker, PHP, Yii 2.0 Framework and composer packages. Whenever possible **phd** uses a stable version for images and libraries. It is designed to be able to use an immensely wide set of libraries.
 
 Packages, plugins, extensions and libraries are hand-picked by core-developers, focussing on maintainability of the whole application stack, while it also follows the [12factor specifications](http://12factor.net).
 
 
 Production ready and industrial grade delivery, with regular updates ensured through automated build processes. - **phd** is built, developed and maintained by dmstr. 
-
-- - -
-
-Branches
---------
-
-The phd repository contains the following main branches:
-
-- master (development, unstable)
-- 4.0 (alpha, beta, RC, stable releases)
-- 3.0 (alpha, beta, RC, stable releases)
 
 
 Special thanks
@@ -44,40 +33,11 @@ Developed by
 [diemeisterei GmbH](http://diemeisterei.de)  
 Immenhofer Straße 21  
 70180 Stuttgart  
-Germany
+Germany :de:
 
 - Core developer: Tobias Munk (schmunk42)
 - [Contributors](https://github.com/phundament/app/graphs/contributors)
 
-
-
-### Comparision
-
-| Template | src LOC | Services | Extensions |
-|----------|---------|----------|------------|
-| dmstr/yii2-app | ~100 | 0 | 0 
-| dmstr/phd5-app | ~350 | 1 | 8
-| dmstr/ee-app | ~450 | 4 | 20 
-| codemix/ | ~1000 | 0 | 0 
-
-
-Source
-———
-
-PHP Image für Yii2 (runtime only)
-https://git.hrzg.de/dmstr/docker-php-yii2
-
-Dockerized Yii2 App (100 lines, no db)
-https://git.hrzg.de/dmstr/docker-yii2-app
-
-Phundament 5 (nur Open-Source)
-https://git.hrzg.de/dmstr/docker-phd-app
-
-Entrprise-Edition (inkl. Closed Source)
-https://git.hrzg.de/hrzg/docker-ee-app
-
-Commercial/Closed source:
-https://git.hrzg.de/groups/hrzg
 
 
 

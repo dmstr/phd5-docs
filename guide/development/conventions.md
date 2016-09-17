@@ -1,5 +1,15 @@
 ## Code conventions
 
+Branches
+--------
+
+The phd repository contains the following main branches:
+
+- master (development, unstable)
+- 4.0 (alpha, beta, RC, stable releases)
+- 3.0 (alpha, beta, RC, stable releases)
+
+
 - DO not add secrets....
 
 ### Source-Code

@@ -11,6 +11,23 @@ Example: Gitlab CI
 
 > http://docs.gitlab.com/ce/ci/yaml/README.html
 
+### GitLab CI
+
+Example trigger for [`stacks-staging`](https://git.hrzg.de/dangerzone/stacks-staging)
+
+    deploy:latest:
+      stage: deploy
+      script:
+        - curl -X POST -F token=${PROJECT_TOKEN} -F ref=${PROJECT_REF} -F "variables[REDEPLOY_STACK_DIR]=${STACK_DIR}"  https://git.hrzg.de/api/v3/projects/256/trigger/builds
+      only:
+        - latest
+
+Variables:
+
+- `PROJECT_TOKEN` - token from `stacks-staging` project
+- `PROJECT_REF` - branch, usually `master`
+- `PROJECT_DIR` - location of `docker-compose.yml`, eg. `auto/cusomter/www.example.com`
+
 ### Setup
 
 Set **Variables**

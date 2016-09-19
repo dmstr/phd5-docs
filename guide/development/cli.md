@@ -1,28 +1,38 @@
+# Usage
+
 ## `make` application
 
 phd uses `Makefile`s to execute common tasks during development, but you can also use standard *Docker* commands to control your stack.
-See *phd* [README](https://github.com/phundament/app/blob/master/README.md) for some examples.
 
 Basically, `make` targets are just shorthands for lengthy Docker commands.
 
-After the initial `.env` configuration, for first initial setup run
+> TODO: Link "Backend", "Frontend"
 
-    make all
+## CLI
 
 To see all available targets run
 
     make help
 
+After the initial `.env` configuration, for first initial setup run
+
+    make all
+
 You can also chain single commands
 
     make setup up open bash
+
+Or run `docker-compose` commands against your current stack
+
+	docker-compose ps
+	docker-compose logs
+
    
 Or use `Makefile`s for a different folder i.e. for managing an isolated test-stack
    
 	cd tests
     make all
     make run-tests
-
 
 You can find information in the [testing](../4-testing/testing.md) section.
 
@@ -32,9 +42,10 @@ You can find information in the [testing](../4-testing/testing.md) section.
 
 > :warning: removing containers, i.e. with `make clean` removes also data stored only in the container, you can use host-volumes for persisting data during development 
 
-## Docker commands
+### `Make` vs. Docker commands
 
-You can create a container bash with
+
+You can create a new container bash with
 
     make bash
 
@@ -42,7 +53,7 @@ or
     
     docker-compose run --rm php bash
 
-or    
+Alternatively you can also execute a bash within a running container
     
     docker-compose exec php bash
     
@@ -52,5 +63,5 @@ or
 
 
 
-
+> TODO: link tutorials
 

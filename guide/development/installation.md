@@ -7,7 +7,7 @@ Installation
 
 ## New project
 
-When starting a new project it is recommended to download the [latest release](https://github.com/dmstr/phd5-ce/releases)
+When starting a new project it is recommended to **download the [latest release](https://github.com/dmstr/phd5-ce/releases)**
 and create a fresh repository from it.
 
     cd myapp

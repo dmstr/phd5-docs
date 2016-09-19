@@ -5,29 +5,87 @@ Configuration
 
 phd uses an environment variables based configuration, see also [Dev/prod parity](http://12factor.net/dev-prod-parity) for more information about this topic.
 
-## 
+There are two level of environment configurations. 
 
-> TODO: app.env-dist
+**Variables for controlling the application stacks *(outside on your host)* with `docker-compose`, are defined in `.env` files.**
 
-##
+**Environment settings used within the application services *(inside a container)* are defined in `*.yml` files and `src/app.env`.**
 
-> defaults for `.env`, see [`.env-dist`](https://github.com/phundament/app/blob/master/.env-dist)
+## Basic configuration
+
+:exclamation: Before starting the application the first time, update your `.env-dist`, `tests/.env-dist` and `src/app.env` files with sane defaults for the new project.
+
+### Development stack
+
+	COMPOSE_PROJECT_NAME=myapp
+	STACK_PHP_IMAGE=local/namespace/myapp_php
+	GITHUB_API_TOKEN={GITHUB_API_TOKEN}
+
+### Testing stack
+
+	COMPOSE_PROJECT_NAME=test-myapp
+	STACK_PHP_IMAGE=local/namespace/myapp_php
+
+> Windows users, use a semicolon as path separator `COMPOSE_FILE=./docker-compose.yml;./docker-compose.dev.yml`
+
+### Application environment
+
+Initial configuration adjustments should be made for the following values
+
+	APP_NAME=myapp
+	APP_TITLE="MyApp"
+	APP_LANGUAGES=en,fr,zh
+
+> `app.env-dist` should be adjusted and committed to reflect basic application settings, but we strongly recommend **not to add secrets** like passwords or tokens to the repository. 
 
 
-## Environment settings
+## Advanced configuration
 
-Control environment settings are defined in `.env` which is used by `docker-compose` by default.
+### Environment variables
 
-> :exclamation: Values in `.env` must be explicitly passed to a service configuration or application.
+Further important settings
 
-The following list displays configuration locations from highest to lowest priority, files are located in the application root folder.
+ - `YII_ENV` - current application environment, eg. `dev`, `test`, `prod`
+ - `YII_DEBUG` - application debug settings 
+ - `APP_CONFIG_FILE` - alias for  additional configuration file
+ - `APP_MIGRATION_LOOKUP` - alias for additional migration paths eg. `@app/migrations/demo-data`
 
-1. `docker-compose.override.yml` (needs container restart)
-2. `docker-compose.yml` (needs container restart)
-3. `Dockerfile` (needs rebuilding and restart)
-4. `src/app.env` (can be change at runtime; development only)
+For all available environment settings, see `src/app.env`.
 
->
+### Development & debugging
+
+During **local development** it is recommended to enable debug settings in `src/app.env`.
+
+    
+
+> :bangbang: Make sure you **do not** have these settings enabled in production deployments.
+
+### PHP source-code
+
+You find the config files for an application in `src/config`, those can also be changed at runtime during development:
+
+ - `config/main.php` - main application configuration entrypoint
+ - `config/common.php` - configuration for web and console applcations
+ - 
+
+> :exclamation: An important difference between application and environment configuration is that
+> ENV variables are immutable by default, but values in PHP arrays can be overwritten.
+
+
+## Hierarchy & scopes
+
+The following list displays configuration locations from highest to lowest priority and their corresponding scope; files are located in the application root folder `/` or in the `tests/` direcory
+
+| Defined in | .yml | bash | app | runtime | restart | rebuild | variable replacement |
+|------------|------|------|-----|---|---|---|---|
+| `.env`     | Yes | No | No | No | Yes | No | No |
+| `docker-compose.override.yml` | Yes | Yes | Yes | No | Yes | No | Yes
+| `docker-compose.yml` | Yes | Yes | Yes | No| Yes | No | Yes
+| `Dockerfile` | No | Yes | Yes | No| Yes | Yes | No 
+| `src/app.env`  | No | No | Yes | Yes | No | No | Yes
+| `src/config/*`  | No | No | Yes | Yes | No | No | Yes
+
+> :exclamation: Values in `.env` must be explicitly passed to a service configuration in a `.yml`` file.
 
 ENV variable are immutable by convention, so if a value is set in a `Dockerfile`, you can not
  overwrite it in your `app.env` file, but in `docker-compose.yml`.
@@ -35,112 +93,3 @@ ENV variable are immutable by convention, so if a value is set in a `Dockerfile`
 Only values in `app.env` can be changed while the containers are running. If you change environment variables in 
 `docker-compose.yml` you need to restart your containers.  
 
-## Application settings
-
-You find the config files for an application in `src/config`, those can also be changed at runtime during development:
-
- - [`config/main.php`](https://github.com/phundament/app/blob/master/config/main.php) - main application configuration
- - [`APP_CONFIG_FILE`](https://github.com/phundament/app/blob/master/config/main.php) - alias for  additional configuration file
-
-> :exclamation: An important difference between application and environment configuration is that
-> ENV variables are immutable by default, but values in PHP arrays can be overwritten.
-
----
-
-
-
-    make all
-
-
-## Usage
-
-### Basic settings 
-
-Initial configuration adjustments should be made for the following values
-
- - `APP_NAME`
- - `APP_TITLE`
- - `APP_LANGUAGES`
-
-> `.env-dist` can be adjusted and committed to reflect basic application settings, but we strongly
-> recommend **not to add secrets** like passwords or tokens to the repository. 
-
-During **local development** it is also recommended to enable debug settings in `.env`.
-
-    YII_ENV=dev
-    YII_DEBUG=1
-
-> :bangbang: Make sure you **do not** have these settings enabled in production deployments.
-
-You can also enable additional migrations during local development.
-
-    APP_MIGRATION_LOOKUP=@app/migrations/data
-
-> It is recommended to keep structural and data migrations separated.
-
-### Database migrations
-
-Lookup paths for migrations can be defined in application configuration, for details see [dmstr/yii2-migrate-command](https://github.com/dmstr/yii2-migrate-command/blob/master/README.md).
-
-    'params'      => [
-        'yii.migrations' => [
-            '@yii/rbac/migrations',
-            '@dektrium/user/migrations',
-            '@vendor/lajax/yii2-translate-manager/migrations',
-            '@bedezign/yii2/audit/migrations'
-        ]
-    ]
-
-### Asset bundles
-
-By default *phd* runs with the default bootstrap asset bundle from Yii.
-To enable asset customization, edit `src/assets/AppAsset.php` and uncomment `'less/app.less',`.
-
-There are three files included by default:
-
- - `app.less` main LESS file for application
- - `bootstrap.less` includes for bootstrap LESS files
- - `variables.less` bootstrap settings
- 
-Initial adjustment to the style settings of the application should be made in `variables.less`
-
-> When developing assets you can set `APP_ASSET_FORCE_PUBLISH=1` in your local `.env` file, this improves detection of
-changes for included files.
-> Note: This feature is only available in the `AppAsset` bundle for the application.
-
-For bundling assets for production usage, see tutorial about [asset compression](../6-tutorials/asset-compression.md).
-
-
-----
-
-
-# Configuration
-
-## Local development
-
-docker-compose
-
-.env
-
-> Windows users, use a semicolon as path separator `COMPOSE_FILE=./docker-compose.yml;./docker-compose.dev.yml`
-
-- docker-compose.yml
-- docker-compose.dev.yml
-
-See also [ENV dmstr/docker-php-yii2](https://github.com/dmstr/docker-php-yii2)
-
-## Application
-
-src/app.env
-
-YII_ENV
-YII_DEBUG
-
-src/config    
-
-### Commands
-
-        'file:migrate' => [
-            'class' => 'yii\console\controllers\MigrateController',
-            'templateFile' => '@vendor/dmstr/yii2-db/db/mysql/templates/file-migration.php'
-        ]

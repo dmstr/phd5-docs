@@ -18,11 +18,12 @@
 ### Usage
 
 - [CLI](development/cli.md)
+- [Application Console](development/console.md)
 - [Web-backend](development/backend.md)
 - [Web-frontend](development/frontend.md)
-- [Application Console](development/cli-tools.md)
 - [Extensions](development/extensions.md)
-- [Upgrading](development/upgrading.md)
+- [Conventions](development/conventions.md)
+- [Troubleshooting](development/troubleshooting.md)
 
 ### Testing
 
@@ -36,14 +37,9 @@
 
 ## Tutorials
 
-...
+- [List of tutorials](tutorials/)
 
 ## Appendix
-
-- [Conventions](development/conventions.md)
-- toolchain.md
-- troubleshooting.md
-- [Troubleshooting](development/troubleshooting.md)
 
 ### Support
 

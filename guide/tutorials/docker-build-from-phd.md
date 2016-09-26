@@ -19,9 +19,14 @@ Initialize application
 
 ```
 docker-compose run --rm \
-    -e APP_ADMIN_PASSWORD=admin1 \
     -e APP_MIGRATION_LOOKUP=@app/migrations/demo-data \
     php yii app/setup
+```
+
+Set admin password
+
+```
+docker-compose run --rm yii user/password admin admin1
 ```
 
 Start stack

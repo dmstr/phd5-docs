@@ -1,4 +1,4 @@
-# Requiements
+# Requirements
 
 
 ## Docker

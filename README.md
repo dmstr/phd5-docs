@@ -13,6 +13,7 @@ phd5
 
 ### Application templates
 
+- https://github.com/dmstr/planck
 - https://github.com/dmstr/docker-phd5-app
 - https://git.hrzg.de/hrzg/docker-ee-app
 - https://github.com/dmstr/docker-yii2-app

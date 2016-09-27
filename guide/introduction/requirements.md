@@ -5,8 +5,8 @@
 
 ### On your host-system
 
-- `docker`
-- `docker-compose`
+- [`docker`](https://docs.docker.com)
+- [`docker-compose`](https://github.com/docker/compose) *included in Docker for Mac and Windows*
 - `git` (optional)
 - `make` (optional)
 

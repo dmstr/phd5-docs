@@ -20,14 +20,22 @@ caches or testing containers.
 
 ### Images
 
-- dmstr/nginx-php (*currently phundament/nginx-one*)
-- dmstr/php-yii2
-- dmstr/yii2-app, dmstr/phd5-app
+#### Runtime
+
+- [`dmstr/docker-php-yii2`](https://github.com/dmstr/docker-php-yii2) PHP runtime prepared for Yii 2.0 Framework
+- *phundament/nginx-one (for running PHP and nginx as separate containers)*
+
+#### Pre-build application template images
+
+- [`dmstr/docker-yii2-app`](https://github.com/dmstr/docker-yii2-app)
+- [`dmstr/phd5-app`](https://github.com/dmstr/phd5-app)
 
 ### Stacks
 
-Stacks and their service definitions can have different flavours. You may need slightly different setups in testing, staging
-and production environment. phd features as `yaml-converter-command`, which can create stack files from templates.
+Stacks and their service definitions can have different flavours. You may need slightly different setups in development, testing, staging
+and production environment. 
+
+**phd** supports [extending configurations](https://docs.docker.com/compose/extends/) from `docker-compose`.
   
 - [View project stacks](https://github.com/phundament/app/tree/master/build/compose)
 

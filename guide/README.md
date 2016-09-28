@@ -38,15 +38,3 @@
 ## Tutorials
 
 - [List of tutorials](tutorials/)
-
-## Appendix
-
-### Support
-
-
-### Contribute
-
-
-### License
-
-

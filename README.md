@@ -17,6 +17,11 @@ phd5
 - https://git.hrzg.de/hrzg/docker-ee-app
 - https://github.com/dmstr/docker-yii2-app
 
+### Mirrors
+
+- https://github.com/dmstr/docs-phd5
+- https://git.hrzg.de/dmstr/docs-phd5
+
 ---
 
 ### ![dmstr logo](http://t.phundament.com/dmstr-16-cropped.png) Built by [dmstr](http://diemeisterei.de)

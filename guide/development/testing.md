@@ -1,79 +1,101 @@
 Testing
 =======
 
+## TL;dr
+
+    cd tests
+    make all
+    make run-tests
+
+## About
+
+*phd* uses a separate stack for running tests, since testing an application requires some changes in the stack setup and should be run isolated from your development or production stack.
+
+For acceptance or end-to-end tests for example you might want to use a "real" Selenium browser.
+
 ### Running in isolated Docker stacks
 
 Creating and running a test environment can be a cumbersome task, like executing your tests in an isolated database. 
 
-Therefore the phd 4 Docker images contain pre-installed Codeception binaries for running  Yii 2.0 Framework unit-, functional- and acceptance-test-suites.
+Therefore the phd 4 Docker images contain pre-installed Codeception binaries for running Yii 2.0 Framework unit-, functional- and acceptance-test-suites.
 
+### Configuration
 
-### With `make`
+- codeception.yml
+- docker-compose.test.yml (Test-Stack)
+- .env (Test-Stack ENV variables)
+- Data-migrations for tests should be placed into `tests/codection/_migrations`.
+
+    
+### Switching to the test environment
 
 Or one-by-one via `Makefile` targets, make sure to build your images first, if you have made changes to `src`.
 
-    make build
+    cd tests
+    make -C .. build
 
 > :information_source: It is possible to use host-volumes during local testing/debugging, but running containers without host-volumes is usually much closer to the final production setup.
 
 Next step is to get a clean stack selected and configured by using `TEST` target.  
 
-    make TEST clean
+    make clean
     
 Before the test-suites can be run, we need to setup the application, like during development setup, but in the test-stack.
     
-    make TEST setup up 
+    make up setup 
 
 Enter the `tester` container    
     
-    make TEST bash
+    make run-tests
 
 Run codeception directly *(container bash)*
 
-    $ codecept run acceptance allow_fail
+    make bash
+    $ codecept run
 
 
 ### Advanced usage
     
+If you add a new module to a suite or after Codeception updates, you may need to re-build tester classes
+
+    $ codecept build
+
 Running test suites from a different location
 
-     make TEST run-tests OPTS='-c src/extensions/hrzg/resque-tests'
+    $ codecept run -c path/to/tests
 
-With additional migrations
-   
-     make TEST setup APP_MIGRATION_LOOKUP='@ext/onebase/core/migrations/data'
+To run specific tests
 
-To run specific tests you can use the `OPTS` environment variable
+    $ codecept run acceptance extensions --steps
 
-    make TEST run-tests OPTS='acceptance dev/MyCept --steps'
+Watch acceptance tests via VNC viewer
 
-
-> TODO: - VNC settings (Test-Selenium)
+    make open-vnc
 
 
-### Functional vs. acceptance tests
+### Code-coverage
+
+```
+$ docker-php-ext-enable xdebug
+$ codecept run unit --coverage --coverage-html
+$ codecept run functional --coverage --coverage-html
+```
+
+
+
+### FAQ
+
+#### Functional vs. acceptance tests
    
 Due to limitations functional-testing should only be used for basic tests, see codeception.com
    
 For Login, JavaScript, Cookies, Session, ... use acceptance tests. See commands `wait(1)`, `waitForElement(1)`.
 
-   
-### Codeception development and update commands
+#### Grouping tests
 
-If you add a new module to a suite or after Codeception updates, you may need to update your Codeception classes
+tests/codeception
 
-    make TEST bash
-    
-Re-build in container
-
-    $ codecept build
-
-Run tests from a custom location *(container-bash)*  
-
-    $ codecept run -c src/extensions/<MODULE_ID>
-
-
-### Grouping tests
+As a basic convention we use two test groups `mandatory` and `optional`. While the former have to pass in the CI the latter ones are allowed to fail.
 
 See http://codeception.com/docs/07-AdvancedUsage#Groups
 
@@ -85,64 +107,16 @@ Features or tests currently in development
     
     // @group optional
 
-----
-
-# Testing
-
-## TL;dr
-
-	cd tests
-	make all
-
-## About
-
-*phd* uses a separate stack for running tests, since testing an application requires some changes in the stack setup and should be run isolated from your development or production stack.
-
-For acceptance or end-to-end tests for example you might want to use a "real" Selenium browser.
-	
-## Setup
-
+#### Detecting application type
 
 Console vs. Web config
 
     $applicationType
-    
-## Structure
 
-### Configuration
-
-- codeception.yml
-- docker-compose.test.yml (Test-Stack)
-- .env (Test-Stack ENV variables)
-
-### Data
-
-Data-migration for running test should be placed into `tests/codection/_migrations`.
-
-### Tests
-
-tests/codeception
-
-As a basic convention we use two test groups `mandatory` and `optional`. While the former have to pass in the CI the latter ones are allowed to fail.
-
-Re-run failed tests
+#### Re-run failed tests
 
 	codecept run -g failed
 
-#### Unit
-
-#### CLI
-
-#### Functional
-
-#### E2E (acceptance)
+#### e2e (acceptance)
 
 > Note: In Codeception acceptance tests checks are performed *as seen* in the browser, for example you have to check for `MYLINK` if there's a `text-transform: uppercase` or a link `mylink`.
-
-### Code-coverage
-
-```
-$ docker-php-ext-enable xdebug
-$ codecept run unit --coverage --coverage-html
-$ codecept run functional --coverage --coverage-html
-```

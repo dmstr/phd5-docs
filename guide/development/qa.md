@@ -1,23 +1,19 @@
 QA
 ==
 
-Run the following commands from a by starting the test-stack and running a `bash` in the tester container
+TL;dr
+-----
 
-    make TEST up setup
-    make TEST bash
-
+    make lint
 
 Linkchecker
 -----------
+    
+    $ linkchecker http://web -r 3       
 
+Sitemap    
     
-    $ linkchecker http://WEB -r 3
-        
-
-Sitemap
-    
-    
-    $ linkchecker http://WEB --threads 2 --file-output sitemap -o none
+    $ linkchecker http://web --threads 2 --file-output sitemap -o none
 
 "Warm caches"
 
@@ -34,20 +30,18 @@ HTML-Validator
     validator:
       image: magnetikonline/html5validator
       entrypoint: ["java", "-jar", "/root/build/validator.nu/vnu.jar"]
-      links:
-        - nginx:WEB
-
 
 Index page
 
-    docker-compose run validator http://WEB/en
+    docker-compose run validator http://web/en
 
 Login page
 
-    docker-compose run validator http://WEB/en
+    docker-compose run validator http://web/en
 
 From bash in validator
 
+    docker-compose exec validator bash
     $ java -jar validator.nu/vnu.jar
 
 
@@ -56,9 +50,9 @@ Lint
     
 https://github.com/redcoolbeans/dockerlint
     
-    docker run -it --rm -v "$PWD/$(DOCKERFILE)":/Dockerfile:ro redcoolbeans/dockerlint
+    docker run -it --rm -v "$PWD/Dockerfile":/Dockerfile:ro redcoolbeans/dockerlint
     
 https://github.com/projectatomic/dockerfile_lint
     
-    docker run -it --rm --privileged -v `pwd`:/root/ projectatomic/dockerfile-lint dockerfile_lint -f $(DOCKERFILE)
+    docker run -it --rm --privileged -v $PWD:/root/ projectatomic/dockerfile-lint dockerfile_lint -f Dockerfile
     

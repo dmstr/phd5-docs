@@ -25,7 +25,7 @@
 ### Docker images
 
 - PHP
-
+- Yii 2.0 extensions from dmstr https://github.com/dmstr?utf8=✓&query=yii2-
 
 ## Build
 

@@ -5,18 +5,27 @@ phd5
 
 ### Source-code documentation
 
-- [Developer Guide](guide/README.md)
+- :green_book: [Developer Guide](guide/README.md)
 
 ### Online help
 
-- [Editor Manual](help/README.md)
+- :green_book: [Editor Manual](help/README.md)
 
 ### Application templates
 
-- https://github.com/dmstr/planck
-- https://github.com/dmstr/docker-phd5-app
-- https://git.hrzg.de/hrzg/docker-ee-app
-- https://github.com/dmstr/docker-yii2-app
+- :white_circle: https://github.com/dmstr/planck
+- :dvd: https://github.com/dmstr/docker-yii2-app
+- :dvd: https://github.com/dmstr/docker-phd5-app
+- :dvd: :credit_card: https://git.hrzg.de/hrzg/docker-ee-app
+
+### Docker images
+
+- :cd: https://github.com/dmstr/docker-php-yii2
+
+### Mirrors
+
+- :white_square_button: https://github.com/dmstr/docs-phd5
+- :white_square_button: https://git.hrzg.de/dmstr/docs-phd5
 
 ---
 

@@ -37,4 +37,4 @@
 
 ## Tutorials
 
-- [List of tutorials](tutorials/)
+- [List of tutorials](tutorials/README.md)

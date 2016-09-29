@@ -13,6 +13,8 @@ Fork, clone or download the *planck* repository.
 git clone https://github.com/dmstr/planck.git
 ```
 
+Edit the base image if your want to build from another pre-build application template.
+
 Edit defaults and copy `.env-dist` to `.env`.
 
 Initialize application
@@ -38,9 +40,21 @@ docker-compose up -d
 
 ## Customize
 
-### Override ENV variables
+### Application environment variables
 
-    docker cp planck_php_1:/app/src/app.env ./src
+    docker cp $(docker-compose ps -q php):/app/src/app.env ./src/app.env-dist
+
+Edit `Dockerfile`, add
+    
+    RUN cp src/app.env-dist src/app.env
+
+The `app.env-dist` file is intentionally copied as `app.env` onto the image. If you want to make changes during runtime, you also need to create a local file and mount this into the container.
+
+    cp src/app.env-dist src/app.env
+    
+Enable the host-volume by uncommenting `services.php.volumes` in `docker-compose.dev.yml`     
+
+    - ./src/app.env:/app/src/app.env
 
 ### Create frontend module
 
@@ -81,8 +95,10 @@ Create CRUD module
 
 ### Install additional packages
     
-    docker cp planck_php_1:/app/composer.json .
-    docker cp planck_php_1:/app/composer.lock .
+    docker cp $(docker-compose ps -q php):/app/composer.json .
+    docker cp $(docker-compose ps -q php):/app/composer.lock .
+
+Edit run `composer require` or edit `composer.json`
 
     composer update
     
@@ -94,15 +110,23 @@ Create CRUD module
 
 Copy `test` from phd5.
 
-## Deploy
+### `Makefile` support
 
-#### Setup build
+Copy `Makefile` and `Makefile.base` from phd5.
+
+## Build
+
+### Setup build
+
+#### Travis
 
 Enable Travis build
 https://travis-ci.org/profile/schmunk42
 
 GitHub Services > Travis
 https://github.com/schmunk42/planck/settings/installations
+
+## Release
 
 DockerHub setup
 
@@ -112,7 +136,11 @@ Set ENV settings
 - `REGISTRY_USER`
 - `DEPLOY_TOKEN`
 
-GitLab setup
+#### GitLab setup
+
+- `REGISTRY_HOST`
+
+## Deploy
 
 ```
 curl -X POST \

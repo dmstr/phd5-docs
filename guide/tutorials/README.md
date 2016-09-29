@@ -1,1 +1,1 @@
-- [planck](docker-build-from-phd.md)
+- [planck](./docker-build-from-phd.md)

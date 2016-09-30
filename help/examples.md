@@ -4,12 +4,17 @@
 
 ### Widgets :credit_card:
 
+Simple
+
+    {{ use ('hrzg/widget/widgets') }}
+    {{ cell_widget({id: 'main'}) }}
+
 Full width header and container
 
     {{ use ('hrzg/widget/widgets') }}
-    {{ widget_container_widget({id: 'header'}) }}
+    {{ cell_widget({id: 'header'}) }}
     <div class="container">
-        {{ widget_container_widget({id: 'container'}) }}
+        {{ cell_widget({id: 'container'}) }}
     </div>
 
 ### Filefly :credit_card:

@@ -1,7 +1,7 @@
 
 ### Database migrations
 
-> > It is recommended to keep structural and data migrations separated.
+> :bulb: It is recommended to keep structural and data migrations separated.
 
 Lookup paths for migrations can be defined in application configuration, for details see [dmstr/yii2-migrate-command](https://github.com/dmstr/yii2-migrate-command/blob/master/README.md).
 
@@ -27,7 +27,12 @@ https://github.com/dmstr/yii2-db/blob/master/README.md
 
 ### Commands
 
+Configure migrate command with predefined values *use only for creating file migrations*
+
+    'controllerMap' => [
         'file:migrate' => [
             'class' => 'yii\console\controllers\MigrateController',
-            'templateFile' => '@vendor/dmstr/yii2-db/db/mysql/templates/file-migration.php'
+            'templateFile' => '@vendor/dmstr/yii2-db/db/mysql/templates/file-migration.php',
+            'migrationPath' => '@app/modules/_migrations/demo-data',
         ]
+    ],

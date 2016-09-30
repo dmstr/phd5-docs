@@ -1,8 +1,10 @@
 # Code examples :construction_worker:
 
-## Layouts `Twig`
+## Twig layouts
 
-### Full width header and container
+### Widgets :credit_card:
+
+Full width header and container
 
     {{ use ('hrzg/widget/widgets') }}
     {{ widget_container_widget({id: 'header'}) }}
@@ -10,7 +12,7 @@
         {{ widget_container_widget({id: 'container'}) }}
     </div>
 
-### File Manager
+### Filefly :credit_card:
 
     {{ use ('hrzg/filemanager/widgets') }}
     {{ file_manager_widget_widget(

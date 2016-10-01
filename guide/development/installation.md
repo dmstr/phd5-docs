@@ -16,3 +16,9 @@ and create a fresh repository from it.
     git commit -m "inital commit"
   
 > :bulb: It is recommended to create an initial commit from the unmodified template code, before making the first changes.
+
+---
+
+Related topics:
+
+- [Configure](configuration.md) the environment & application

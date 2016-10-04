@@ -9,7 +9,27 @@ Adjust basic settings, eg. `app.assets.registerPrototypeAssetKey`
 
 ## Settings
 
-added extra.menuItems Twig widget
+- `pages.availableRoutes`
+- `pages.availableViews`
+- `pages.availableGlobalRoutes`
+- `widgets.availablePhpClasses`
+- `backend.adminltes.skin`
+- `registerPrototypeAssetKey`
+- `registerPatchAssetKey`
+- `<markdocs>.markdownUrl`
+- `<markdocs>.forkUrl`
+- `<markdocs>.defaultIndexFile`
+- `<markdocs>.cachingTime`
+- `<markdocs>.htmlUrl`
+
+## Twig
+
+`extra.menuItems`
+
+## Parameters
+
+- `context.menuItems`
+
 
 ## User
 

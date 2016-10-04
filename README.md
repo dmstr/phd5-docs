@@ -16,7 +16,7 @@ phd5
 - :white_circle: https://github.com/dmstr/planck
 - :dvd: https://github.com/dmstr/docker-yii2-app
 - :dvd: https://github.com/dmstr/docker-phd5-app
-- :dvd: :credit_card: https://git.hrzg.de/hrzg/docker-ee-app
+- :dvd: :credit_card: https://git.hrzg.de/hrzg/phd5-ee-app
 
 ### Docker images
 

@@ -53,7 +53,7 @@ $ docker-machine active dev
 $ docker-machine ls
 NAME      ACTIVE   DRIVER         STATE     URL
 dev       *        virtualbox     Running   tcp://192.168.99.103:2376
-staging            digitalocean   Running   tcp://104.236.50.118:2376
+staging            digitalocean   Running   tcp://10.236.50.118:2376
 ```
 
 #### create

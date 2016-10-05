@@ -33,19 +33,15 @@ Adjust basic settings, eg. `app.assets.registerPrototypeAssetKey`
 
 ## User
 
-### Create editor user
+### Create users and assign roles
 
-- p.review0
-- dev / !dev.1
-- editor / editor-1234
-- preview / preview1
+- admin
+- dev (Developer)
+- editor (Editor)
+- preview (Frontend)
 
 > Note: The user `admin` is very similar to a root-user, by default it has every permission, or speaking in Yii terms `can()` always returns `true`.
 
-
-### Assign permissions
-
-Create an user and assign `Editor` role
 
 ## Pages
 

@@ -10,5 +10,8 @@ Enter container-bash
 
 Run docs generator
 
-    $ apidoc api src tmp/docs
-    $ apidoc guide docs tmp/docs
+    $ php -dmemory_limit=512M vendor/bin/apidoc api \
+    --template=online \
+    --exclude=yiisoft,Test,Tests,test,tests,ezyang,phpdocumentor,nikic,php_codesniffer,phptidy,php-cs-fixer,faker \
+    src/,vendor/ \
+    runtime/html

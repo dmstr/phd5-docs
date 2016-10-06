@@ -15,3 +15,5 @@ Run docs generator
     --exclude=yiisoft,Test,Tests,test,tests,ezyang,phpdocumentor,nikic,php_codesniffer,phptidy,php-cs-fixer,faker \
     src/,vendor/ \
     runtime/html
+
+> The above command is an example, which excluded certain folders containing a lot of files or files mainly for debugging

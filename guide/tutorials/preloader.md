@@ -78,8 +78,6 @@ While the page is complete loaded then we can hide the preloader
 	
     	$('.preloader-container').fadeOut();
     	
-    	$('.preloader-image').fadeOut();
-
 	});
 	
 Check out the [DEMO](https://www.connectivity.mercedes-benz.com/de)

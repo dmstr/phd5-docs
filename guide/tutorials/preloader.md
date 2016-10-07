@@ -5,8 +5,7 @@ What is a preloader?
 --------------------
 
 Preloaders give the viewer something to look at while the Application loads.
-Check out the [DEMO](https://www.connectivity.mercedes-benz.com/de)
- 	 
+
 
 
 HTML
@@ -80,6 +79,3 @@ While the page is complete loaded then we can hide the preloader
     	
 	});
 	
-Check out the [DEMO](https://www.connectivity.mercedes-benz.com/de)
-
-

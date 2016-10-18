@@ -40,6 +40,14 @@ Media files like images, PDFs or ZIPs.
 
 ## :construction_worker: Developer
 
+### Backend
+
+- `/backend`
+- pages root node `backend` (Access domain `GLOBAL`)
+ - use *setting* `pages` `availableGlobalRoutes` for backend menu items
+
+:blue_book: [Project page](https://github.com/dmstr/yii2-backend-module)
+
 ### Settings
 
 Key-value store for application settings.

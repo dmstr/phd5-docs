@@ -74,6 +74,9 @@ Edit run `composer require` or edit `composer.json`
 
 > :exclamation: Running composer updates in a Docker container might be pretty slow if you are using host-volumes on OS X. See also: [issue](https://github.com/docker/for-mac/issues/77).
 
+See also [Composer update](composer-update-packages.md)
+
+
 ## Test
 
 Copy `test` from phd5.
@@ -114,7 +117,7 @@ Set ENV settings
 
 - `REGISTRY_HOST`
 
-
+See also [CI](../deployment/continuous-integration.md)
 
 ## Deploy
 
@@ -125,3 +128,5 @@ curl -X POST \
   -F "variables[TRIGGER_STACK_DIR]=demos/${TRAVIS_REPO_SLUG}" 
   https://{$GITLAB_HOSTNAME}/api/v3/projects/${GITLAB_PROJECT_ID}/trigger/builds
 ```
+
+See also [Environments](../deployment/environments.md)

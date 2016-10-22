@@ -2,20 +2,20 @@
 
 ## CE modules
 
-### [Pages](/pages)
+### Pages
 
 Manage nodes trees and controller routes, eg. for navbar or footer links.
 
 :blue_book: [Extension README](https://github.com/dmstr/yii2-pages-module/blob/master/README.md)
 
 
-### [Layouts](/prototype/twig)
+### Layouts
 
 Twig layout snippets, for adding dynamic contents.
 
 :blue_book: [Extension README](https://github.com/dmstr/yii2-prototype-module/blob/master/README.md)
 
-### [Themes](/prototype/less)
+### Themes
 
 LESS AssetBundle from database for prototyping & development.
 

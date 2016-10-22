@@ -1,11 +1,11 @@
 Code-generation
 ===============
 
-Backend prototype/CRUD module
+Backend frontend/CRUD module
 -----------------------
 
 phd allows you to use you custom designed database schema as the base for CRUD admin interfaces.
-To add a new module to your application backend create a `prototype` module with phd and Yii's built-in tools
+To add a new module to your application, we create a `frontend` module with phd and Yii's built-in tools
 
 > If you would like to create an extension module in a composer package, please start by 
 > [creating an extension](44-extension-development.md) first.
@@ -23,28 +23,28 @@ For debugging and multiple one-off commands, you can enter the CLI container wit
 First, create the module with
 
     yii gii/giiant-module \
-        --moduleID=prototype \
-        --moduleClass=app\\modules\\prototype\\Module
+        --moduleID=frontend \
+        --moduleClass=app\\modules\\frontend\\Module
 
-and add it to your application config or `src/config/local.php`
+and add it to your application config in `src/config/common.php`
 
     'modules' => [
-        'prototype' => [
-            'class'  => 'app\modules\prototype\Module',
+        'frontend' => [
+            'class'  => 'app\modules\frontend\Module',
             'layout' => '@admin-views/layouts/main',
         ],
     ]
 
 ### Create migrations
 
-	$ yii migrate/create init --migrationPath=@app/modules/prototype/migrations
+	$ yii migrate/create init --migrationPath=@app/modules/frontend/migrations
 
-Add migration to application params
+Add migration to application params in `src/config/common.php`
 
     'params' => [
         'yii.migrations' => [
             [...],
-            '@app/modules/prototype/migrations'
+            '@app/modules/frontend/migrations'
         ],
     ],
 
@@ -62,12 +62,12 @@ Create the backend CRUDs with gii and Giiant
       --overwrite=1 \
       --tablePrefix=app_ \
       --modelDb=db \
-      --modelNamespace=app\\modules\\prototype\\models \
-      --modelQueryNamespace=app\\modules\\prototype\\models\\query \
+      --modelNamespace=app\\modules\\frontend\\models \
+      --modelQueryNamespace=app\\modules\\frontend\\models\\query \
       --crudAccessFilter=1 \
-      --crudControllerNamespace=app\\modules\\prototype\\controllers \
-      --crudSearchModelNamespace=app\\modules\\prototype\\models\\search \
-      --crudViewPath=@app/modules/prototype/views \
+      --crudControllerNamespace=app\\modules\\frontend\\controllers \
+      --crudSearchModelNamespace=app\\modules\\frontend\\models\\search \
+      --crudViewPath=@app/modules/frontend/views \
       --crudPathPrefix= \
       --tables=app_view,app_less
 
@@ -76,18 +76,23 @@ See also [Giiant documentation](https://github.com/schmunk42/yii2-giiant/blob/ma
 Have also a look at [guidelines for good schema design](http://www.yiiframework.com/wiki/227/guidelines-for-good-schema-design/)
 even if it was written for Yii 1 it is still valid today. 
 
-Login to the application backend and go to the prototype module.
+Login to the application backend and go to the frontend module.
+
+:bulb: You can define and register the batch command in the Module bootstrapping process.
 
 ### Create widget for view contents
 
-See `modules/prototype/widgets/ViewWidget.php`
+See [Online help](https://github.com/dmstr/docs-phd5/blob/master/help/frontend-twig.md)
+
 
 ### Create asset bundle for LESS from the database
 
-See `modules/prototype/assets/PrototypeAsset.php`
+See [Online help](https://github.com/dmstr/docs-phd5/blob/master/help/frontend-less.md)
 
 
 ### Create additional controllers
 
-    yii gii/controller --controllerClass=modules\\frontend\\controllers\\MyController --viewPath=@modules/frontend/views/my
+    $ yii gii/controller \
+        --controllerClass=modules\\frontend\\controllers\\MyController \
+        --viewPath=@modules/frontend/views/my
 

@@ -54,15 +54,9 @@ Enable the host-volume by uncommenting `services.php.volumes` in `docker-compose
     - ./src/local.env:/app/src/local.env
 
 
-### Create frontend module
+### Create frontend module & database CRUD with `schmunk42/yii2-giiant`
 
-
-
-### Create database CRUD
-
-Create CRUD module
-
-	$ yii gii/module --moduleID=crud --moduleClass=aye\\crud\\Module
+See [Code generation](code-generation.md)
 
 
 
@@ -72,13 +66,13 @@ Create CRUD module
 
 Edit run `composer require` or edit `composer.json`
 
-    composer update
+    composer update -vv
     
     edit Dockerfile
     
     docker-compose build
 
-
+> :exclamation: Running composer updates in a Docker container might be pretty slow if you are using host-volumes on OS X. See also: [issue](https://github.com/docker/for-mac/issues/77).
 
 ## Test
 

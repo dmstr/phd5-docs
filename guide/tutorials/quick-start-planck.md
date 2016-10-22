@@ -40,50 +40,23 @@ docker-compose up -d
 
 ## Customize
 
+
 ### Application environment variables
 
-    docker cp $(docker-compose ps -q php):/app/src/app.env ./src/app.env-dist
+Should be set in `Dockerfile` or `src/local.env` (runtime changes) 
 
-Edit `Dockerfile`, add
-    
-    RUN cp src/app.env-dist src/app.env
+    edit src/local.env
 
-The `app.env-dist` file is intentionally copied as `app.env` onto the image. If you want to make changes during runtime, you also need to create a local file and mount this into the container.
+Edit `Dockerfile`
 
-    cp src/app.env-dist src/app.env
-    
 Enable the host-volume by uncommenting `services.php.volumes` in `docker-compose.dev.yml`     
 
-    - ./src/app.env:/app/src/app.env
+    - ./src/local.env:/app/src/local.env
+
 
 ### Create frontend module
 
-Adjust config
 
-    return [
-        'aliases' => [
-            '@aye/frontend' => '@app/modules/frontend'
-        ],
-        'modules' => [
-            'frontend' => [
-                'class' => 'aye\frontend\Module'
-            ]
-        ]
-    ];
-
-Create bash    
-    
-    docker-compose run --rm -e YII_ENV=dev php bash
-
-Create frontend module    
-    
-    $ yii gii/module --moduleID=frontend --moduleClass=aye\\frontend\\Module
-
-Create additional controller
-
-    $ yii gii/controller \
-        --controllerClass=aye\\frontend\\controllers\\ExamplesController \
-        --viewPath=@aye/frontend/views/examples
 
 ### Create database CRUD
 
@@ -96,7 +69,6 @@ Create CRUD module
 ### Install additional packages
     
     docker cp $(docker-compose ps -q php):/app/composer.json .
-    docker cp $(docker-compose ps -q php):/app/composer.lock .
 
 Edit run `composer require` or edit `composer.json`
 
@@ -106,13 +78,19 @@ Edit run `composer require` or edit `composer.json`
     
     docker-compose build
 
+
+
 ## Test
 
 Copy `test` from phd5.
 
+See [testing](../development/testing.md)
+
 ### `Makefile` support
 
 Copy `Makefile` and `Makefile.base` from phd5.
+
+
 
 ## Build
 
@@ -125,6 +103,8 @@ https://travis-ci.org/profile/schmunk42
 
 GitHub Services > Travis
 https://github.com/schmunk42/planck/settings/installations
+
+
 
 ## Release
 
@@ -139,6 +119,8 @@ Set ENV settings
 #### GitLab setup
 
 - `REGISTRY_HOST`
+
+
 
 ## Deploy
 

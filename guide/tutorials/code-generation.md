@@ -16,35 +16,53 @@ To add a new module to your application, we create a `frontend` module with phd 
 
 For debugging and multiple one-off commands, you can enter the CLI container with
 
-    docker-compose run --rm php bash
+    docker-compose run --rm -e YII_ENV=dev php bash
 
 ### Generate module code
 
-First, create the module with
+We will create a module in `src/modules/frontend` which is namespaced as `myapp\frontend`.
+
+To add it to your application adjust configuration in `src/config/common.php`.
+
+    return [
+        'aliases' => [
+            '@myapp/frontend' => '@myapp/modules/frontend'
+        ],
+        'modules' => [
+            'frontend' => [
+                'class' => 'myapp\frontend\Module'
+                'layout' => 'container',
+            ]
+        ]
+    ];
+
+Then, create the module with
 
     yii gii/giiant-module \
         --moduleID=frontend \
-        --moduleClass=app\\modules\\frontend\\Module
+        --moduleClass=myapp\\frontend\\Module
 
-and add it to your application config in `src/config/common.php`
+> :bulb: You can create a default Yii 2.0 module by using the standard Gii generator    
+>    
+>     $ yii gii/module --moduleID=frontend --moduleClass=myapp\\frontend\\Module
 
-    'modules' => [
-        'frontend' => [
-            'class'  => 'app\modules\frontend\Module',
-            'layout' => '@admin-views/layouts/main',
-        ],
-    ]
+Create additional controller
+
+    $ yii gii/controller \
+        --controllerClass=myapp\\frontend\\controllers\\ExamplesController \
+        --viewPath=@myapp/frontend/views/examples
+
 
 ### Create migrations
 
-	$ yii migrate/create init --migrationPath=@app/modules/frontend/migrations
+	$ yii migrate/create init --migrationPath=@myapp/frontend/migrations
 
 Add migration to application params in `src/config/common.php`
 
     'params' => [
         'yii.migrations' => [
             [...],
-            '@app/modules/frontend/migrations'
+            '@myapp/frontend/migrations'
         ],
     ],
 
@@ -52,6 +70,7 @@ And run the migrations
     
     $ yii migrate
 
+See also [how to create file migrations](database-migrations-from-file.md).
 
 ### Generate CRUDs with giiant 
 
@@ -62,11 +81,11 @@ Create the backend CRUDs with gii and Giiant
       --overwrite=1 \
       --tablePrefix=app_ \
       --modelDb=db \
-      --modelNamespace=app\\modules\\frontend\\models \
-      --modelQueryNamespace=app\\modules\\frontend\\models\\query \
+      --modelNamespace=myapp\\frontend\\models \
+      --modelQueryNamespace=myapp\\frontend\\models\\query \
       --crudAccessFilter=1 \
-      --crudControllerNamespace=app\\modules\\frontend\\controllers \
-      --crudSearchModelNamespace=app\\modules\\frontend\\models\\search \
+      --crudControllerNamespace=myapp\\frontend\\controllers \
+      --crudSearchModelNamespace=myapp\\frontend\\models\\search \
       --crudViewPath=@app/modules/frontend/views \
       --crudPathPrefix= \
       --tables=app_view,app_less
@@ -79,20 +98,3 @@ even if it was written for Yii 1 it is still valid today.
 Login to the application backend and go to the frontend module.
 
 :bulb: You can define and register the batch command in the Module bootstrapping process.
-
-### Create widget for view contents
-
-See [Online help](https://github.com/dmstr/docs-phd5/blob/master/help/frontend-twig.md)
-
-
-### Create asset bundle for LESS from the database
-
-See [Online help](https://github.com/dmstr/docs-phd5/blob/master/help/frontend-less.md)
-
-
-### Create additional controllers
-
-    $ yii gii/controller \
-        --controllerClass=modules\\frontend\\controllers\\MyController \
-        --viewPath=@modules/frontend/views/my
-

@@ -11,16 +11,17 @@ phd5
 
 - :green_book: [Editor Manual](help/README.md)
 
-### Application templates
-
-- :white_circle: https://github.com/dmstr/planck
-- :dvd: https://github.com/dmstr/docker-yii2-app
-- :dvd: https://github.com/dmstr/docker-phd5-app
-- :dvd: :credit_card: https://git.hrzg.de/hrzg/phd5-ee-app
-
 ### Docker images
 
 - :cd: https://github.com/dmstr/docker-php-yii2
+
+### Application templates
+
+- :dvd: https://github.com/dmstr/docker-yii2-app
+- :dvd: https://github.com/dmstr/docker-phd5-app
+- :dvd: :credit_card: https://git.hrzg.de/hrzg/phd5-ee-app
+- :white_circle: https://github.com/dmstr/planck
+
 
 ### Mirrors
 

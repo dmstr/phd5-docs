@@ -74,6 +74,20 @@ Enable the host-volume by uncommenting `services.php.volumes` in `docker-compose
     - ./src/local.env:/app/src/local.env
 
 
+### Create database migrations
+
+    make bash
+    
+    $ yii migrate/create
+    
+Adjust migration code or [create migrations from files](database-migrations-from-file.md)
+
+Apply schema changes by running the migrations.
+    
+    $ yii migrate
+
+
+
 ### Create frontend module & database CRUD with `schmunk42/yii2-giiant`
 
 See [Code generation](code-generation.md)

@@ -13,7 +13,7 @@ phd5
 
 ### Docker images
 
-- :cd: https://github.com/dmstr/docker-php-yii2
+- :cd: https://github.com/dmstr/docker-php-yii2 :whale: https://hub.docker.com/r/dmstr/php-yii2/
 
 ### Application templates
 

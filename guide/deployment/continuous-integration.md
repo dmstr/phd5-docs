@@ -62,7 +62,20 @@ Adjust your `Dockerfile` and build `FROM phundament/app:production`.
 
     make build
 
+### Travis
 
+Push example
+
+```
+after_success: |
+  docker login -u="$REGISTRY_USER" -p="$REGISTRY_PASS" $REGISTRY_HOST
+  if [ "${TRAVIS_BRANCH}" = "release" ]; then
+    docker tag ${STACK_PHP_IMAGE} ${STACK_PHP_IMAGE_LATEST}
+    docker-compose push || exit 1
+    docker push ${STACK_PHP_IMAGE_LATEST} || exit 1
+  fi
+  docker logout
+```
 
 Production
 ----------

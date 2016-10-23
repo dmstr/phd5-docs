@@ -7,17 +7,32 @@ Visit [`dmstr/planck`](https://github.com/dmstr/planck) for an example.
 
 ## Getting started
 
-Fork, clone or download the *planck* repository.
+### Installation
+
+Fork and clone
 
 ```
 git clone https://github.com/dmstr/planck.git
 ```
 
-Edit the base image if your want to build from another pre-build application template.
+or [download](https://github.com/dmstr/planck/releases) the *planck* repository.
 
-Edit defaults and copy `.env-dist` to `.env`.
+> :bulb: Edit the base image if your want to build from another pre-build application template.
 
-Initialize application
+*See also [guide](../development/installation.md)*
+
+
+### Configuration
+
+Copy `.env-dist` to `.env` and adjust project defaults.
+ 
+ *See also [guide](../development/configuration.md)*
+
+Update `Dockerfile` with application default, like `APP_NAME` and `APP_LANGUAGES`.
+
+### Initialize application
+
+Run inital setup with demo data migrations
 
 ```
 docker-compose run --rm \
@@ -37,6 +52,11 @@ Start stack
 docker-compose up -d
 ```
 
+Open the application in your browser
+
+```
+open http://$DOCKER_HOST_IP:21080
+```
 
 ## Customize
 

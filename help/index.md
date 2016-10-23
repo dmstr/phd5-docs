@@ -1,6 +1,6 @@
 # Overview
 
-## CE modules
+## Modules
 
 ### Pages
 
@@ -21,18 +21,14 @@ LESS AssetBundle from database for prototyping & development.
 
 :blue_book: [Extension README](https://github.com/dmstr/yii2-prototype-module/blob/master/README.md)
 
----
-
-## :credit_card: EE modules
-
-### Widgets
+### :credit_card: Widgets 
 
 Flexible content management system.
 
 :blue_book: [Project page](https://git.hrzg.de/hrzg/yii2-widgets2-module)
 :notebook: [Extension README](module-widgets.md)
 
-### Files
+### :credit_card: Files
 
 Media files like images, PDFs or ZIPs.
 

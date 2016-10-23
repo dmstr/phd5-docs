@@ -73,6 +73,9 @@ See https://github.com/chadoe/docker-cleanup-volumes
 
 Check your DNS settings, restart VM with `docker-machine`.
 
+#### Can not connect to hosts on private networks
+
+May be caused by overlapping subnets, as workaround is to remove networks with `docker network ls -q |  xargs docker rnetwork rm`.
 
 #### Cleanup volumes
 

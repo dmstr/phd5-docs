@@ -113,7 +113,12 @@ See also [Composer update](composer-update-packages.md)
 
 ## Test
 
-Copy `test` from phd5.
+    cd tests
+    docker-compose up -d
+
+Run tests
+
+    docker-compose run --rm php codecept run
 
 See [testing](../development/testing.md)
 

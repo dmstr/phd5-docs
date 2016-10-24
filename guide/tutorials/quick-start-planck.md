@@ -43,7 +43,7 @@ docker-compose run --rm \
 Set admin password
 
 ```
-docker-compose run --rm yii user/password admin admin1
+docker-compose run --rm php yii user/password admin admin1
 ```
 
 Start stack

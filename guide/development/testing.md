@@ -107,6 +107,13 @@ Features or tests currently in development
     
     // @group optional
 
+Further groups
+
+- @group essential
+- @group init
+- @group run-once
+
+
 #### Detecting application type
 
 Console vs. Web config

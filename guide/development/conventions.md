@@ -20,6 +20,13 @@ The phd repository contains the following main branches:
 
 - PSR-2
 
+##### Console
+
+end of command:
+
+    $this->stdout("Done.\n");    
+
+
 #### LESS
 
 - CSS framework core classes, eg. `container`, `row`, `col-*` **MUST NOT** be modified

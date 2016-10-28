@@ -1,0 +1,26 @@
+graph TD
+
+    new[download] --> all((make all))
+    new-develop[fork] --> all
+    existing[git pull] --> env((check env files))
+    env --> all
+
+    all --> browser>browser]
+    all --> error{error}
+    error --> ci[CI OK?]
+    ci -- no --> maintainer>ask maintainer]
+    ci -- yes --> clean
+
+    error --> clean(make clean)
+    clean --> all
+
+    test[test] --> cd-tests((cd tests))
+    cd-tests --> all
+
+
+
+    %% Styles
+     classDef green fill:#9f6,stroke:#333,stroke-width:2px;
+     classDef orange fill:#f96,stroke:#333,stroke-width:4px;
+     class new green
+     class existing orange

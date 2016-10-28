@@ -1,6 +1,15 @@
 Continuous integration
 ======================
 
+> TODO: build -> version only in test
+
+## Using *Git* branches to build releases and trigger deployments
+ 
+    make latest
+    
+    make release
+
+
 Example: Gitlab CI
 
 - build

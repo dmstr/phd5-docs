@@ -28,7 +28,15 @@ Staging
 
 See also `build/compose`.
 
+### GitLab trigger
 
+    deploy:staging:
+      type: deploy
+      environment: staging-2
+      script:
+        - curl -X POST -F token=${TOKEN_STACKS_STAGING_2} -F "ref=master" -F "variables[TRIGGER_STACK_DIR]=projects/${CI_PROJECT_PATH}" ${ROJ_REPO_URL}
+      only:
+        - latest    
 
 
 Production

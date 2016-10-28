@@ -37,7 +37,7 @@ Initial configuration adjustments should be made for the following values
 	APP_LANGUAGES=en,fr,zh
 
 > `app.env-dist` should be adjusted and committed to reflect basic application settings, but we strongly recommend **not to add secrets** like passwords or tokens to the repository. 
-
+> Note: The `app.env-dist` file is intentionally copied as `app.env` onto the image. If you want to make changes during runtime, you also need to create a local file and mount this into the container.
 
 ## Advanced configuration
 
@@ -78,12 +78,12 @@ The following list displays configuration locations from highest to lowest prior
 
 | Defined in | .yml | bash | app | runtime | restart | rebuild | variable replacement |
 |------------|------|------|-----|---|---|---|---|
-| `.env`     | Yes | No | No | No | Yes | No | No |
-| `docker-compose.override.yml` | Yes | Yes | Yes | No | Yes | No | Yes
-| `docker-compose.yml` | Yes | Yes | Yes | No| Yes | No | Yes
-| `Dockerfile` | No | Yes | Yes | No| Yes | Yes | No 
-| `src/app.env`  | No | No | Yes | Yes | No | No | Yes
-| `src/config/*`  | No | No | Yes | Yes | No | No | Yes
+| `.env`     | :ok: | :x: | :x: | :x: | :ok: | :x: | :x: |
+| `docker-compose.override.yml` | :ok: | :ok: | :ok: | :x: | :ok: | :x: | :ok:
+| `docker-compose.yml` | :ok: | :ok: | :ok: | :x:| :ok: | :x: | :ok:
+| `Dockerfile` | :x: | :ok: | :ok: | :x:| :ok: | :ok: | :x: 
+| `src/app.env`  | :x: | :x: | :ok: | :ok: | :x: | :x: | :ok:
+| `src/config/*`  | :x: | :x: | :ok: | :ok: | :x: | :x: | :ok:
 
 > :exclamation: Values in `.env` must be explicitly passed to a service configuration in a `.yml`` file.
 

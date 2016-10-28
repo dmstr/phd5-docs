@@ -1,4 +1,4 @@
-# Usage
+# Host-system CLI tools
 
 ## `make` application
 
@@ -62,6 +62,14 @@ or
     docker exec -it myapp_php_1 bash
 
 
+#### Examples
+
+Setup application with demo data and default user password
+
+    docker-compose run --rm \
+        -e APP_ADMIN_PASSWORD=mod.Uless11 \
+        -e APP_MIGRATION_LOOKUP=@app/migrations/demo-data \
+        php yii app/setup
 
 > TODO: link tutorials
 

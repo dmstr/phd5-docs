@@ -56,3 +56,10 @@ https://github.com/projectatomic/dockerfile_lint
     
     docker run -it --rm --privileged -v $PWD:/root/ projectatomic/dockerfile-lint dockerfile_lint -f Dockerfile
     
+
+
+Explorative Testing
+-------------------
+
+docker-acception
+

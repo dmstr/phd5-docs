@@ -1,6 +1,6 @@
-## Building an application `FROM dmstr/phd5`
+# Building an application `FROM dmstr/phd5`
 
-The Docker images from *phd* can also be used to build slim customized applications, just by adding modules to the source code.
+Docker images from *phd* apps can also be used as base images, just by adding modules to the source code.
 
 Visit [`dmstr/planck`](https://github.com/dmstr/planck) for an example.
 
@@ -9,15 +9,8 @@ Visit [`dmstr/planck`](https://github.com/dmstr/planck) for an example.
 
 ### Installation
 
-Fork and clone
-
-```
-git clone https://github.com/dmstr/planck.git
-```
-
-or [download](https://github.com/dmstr/planck/releases) the *planck* repository.
-
-> :bulb: Edit the base image if your want to build from another pre-build application template.
+- [Download](https://github.com/dmstr/planck/releases) the *planck* repository.
+- :bulb: Edit the base image if your want to build from another pre-build application template.
 
 *See also [guide](../development/installation.md)*
 
@@ -26,9 +19,10 @@ or [download](https://github.com/dmstr/planck/releases) the *planck* repository.
 
 Copy `.env-dist` to `.env` and adjust project defaults.
  
+Update `Dockerfile` with application default, like `APP_NAME` and `APP_LANGUAGES`.
+
  *See also [guide](../development/configuration.md)*
 
-Update `Dockerfile` with application default, like `APP_NAME` and `APP_LANGUAGES`.
 
 ### Initialize application
 
@@ -63,11 +57,11 @@ open http://$DOCKER_HOST_IP:21080
 
 ### Application environment variables
 
-Should be set in `Dockerfile` or `src/local.env` (runtime changes) 
+Persistent defaults should be set in `Dockerfile` 
+
+For runtime changes you caan create a file under `src/local.env`. 
 
     edit src/local.env
-
-Edit `Dockerfile`
 
 Enable the host-volume by uncommenting `services.php.volumes` in `docker-compose.dev.yml`     
 
@@ -78,14 +72,16 @@ Enable the host-volume by uncommenting `services.php.volumes` in `docker-compose
 
     make bash
     
-    $ yii migrate/create
+    $ yii migrate/create first
     
-Adjust migration code or [create migrations from files](database-migrations-from-file.md)
+Adjust migration code 
+
+*See also [create migrations from files](database-migrations-from-file.md)*
+
 
 Apply schema changes by running the migrations.
     
     $ yii migrate
-
 
 
 ### Create frontend module & database CRUD with `schmunk42/yii2-giiant`

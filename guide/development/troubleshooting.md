@@ -34,6 +34,10 @@ If you're experiencing slow updates, check what's going on in detail with
 You need to use https://getcomposer.org/doc/articles/aliases.md, see also https://github.com/dmstr/yii2-cms-metapackage/issues/1
 
 
+#### `config` settings
+
+    "asset-pattern-skip-version": "(-build|-patch)"
+
 
 
 Docker

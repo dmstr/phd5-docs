@@ -1,10 +1,14 @@
 # Testing with Inernet Explorer
 
-https://github.com/SeleniumHQ/selenium/wiki/InternetExplorerDriver
+## Installation
 
-http://selenium-release.storage.googleapis.com/index.html
+- Download VM from http://modern.ie
+- Download *Java*
+- Download *selenium-standalone*  
+- Download `IEDriver.exe`
+ - Extract driver to "Windows" or another directory `PATH`
 
-Extract driver to "Windows" or another `PATH`
+Start 
 
     cmd
     cd Downloads
@@ -16,12 +20,14 @@ Extract driver to "Windows" or another `PATH`
 In elevated (as Administrator) command prompt
 
 ### 32 bit
-REG ADD "HKLM\SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BFCACHE" /v iexplore.exe /t REG_DWORD /d 0
+
+    REG ADD "HKLM\SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BFCACHE" /v iexplore.exe /t REG_DWORD /d 0
 
 ### 64 bit
-REG ADD "HKLM\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\Main\FeatureControl" /v FEATURE_BFCACHE /t REG_DWORD /d 0
 
+    REG ADD "HKLM\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\Main\FeatureControl" /v FEATURE_BFCACHE /t REG_DWORD /d 0
 
+## Selenium config
 
     config:
         WebDriver:
@@ -31,4 +37,10 @@ REG ADD "HKLM\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\Main\FeatureContr
             browser: 'internet explorer'
             window_size: 1024x768
             restart: restart
+            
+## Resources
+
+- https://github.com/SeleniumHQ/selenium/wiki/InternetExplorerDriver
+- http://selenium-release.storage.googleapis.com/index.html
+- http://elgalu.github.io/2014/run-protractor-against-internet-explorer-vm/
             

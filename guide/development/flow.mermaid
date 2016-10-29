@@ -1,26 +1,73 @@
 graph TD
 
-    new[download] --> all((make all))
-    new-develop[fork] --> all
-    existing[git pull] --> env((check env files))
-    env --> all
+    PROJECT_ROOT["project root directory"]
+    make_all["make all"]
+    make_bash["make bash"]
+    make_open
 
-    all --> browser>browser]
-    all --> error{error}
+
+    start --> download-release
+    start --> fork-repo
+    start --> git-pull
+
+    download-release --> cd_root
+    fork-repo --> cd_root
+    cd_root --> update-env
+    git-pull --> check-env{check-env}
+
+    check-env --> cd_root
+
+    cd_root --> make_latest
+
+    make_all --> error{error}
+    ci -- no --> maintainer
+    ci -- yes --> make_clean
+
     error --> ci[CI OK?]
-    ci -- no --> maintainer>ask maintainer]
-    ci -- yes --> clean
+    error --> make_clean
+    make_clean --> make_all
 
-    error --> clean(make clean)
-    clean --> all
+    subgraph Test
+    test[test] --> cd_tests
+    cd_tests -.-> test:make_all
+    test:make_all -.-> test:make_open-vnc
+    test:make_open-vnc -.-> run-tests
+    test:make_open-vnc -.-> browser
+    end
 
-    test[test] --> cd-tests((cd tests))
-    cd-tests --> all
+    make_all --> browser>browser]
 
+    subgraph CI
+    make_latest --> CI-BUILD
+    CI-BUILD --> CI-TEST
+    CI-TEST --> CI-RELEASE
+    CI-RELEASE --> CI-DEPLOY
+    CI-DEPLOY --> roj-redeploy
+    end
+
+    subgraph DevOps
+    docker-compose_run_roj --> $roj:bash
+    $roj:bash --> roj-redeploy
+    end
+
+    subgraph QA
+    make_lintö
+    $linkchecker
+    end
+
+    cd_tests -.-> make_bash
+    make_bash --> $codecept
+
+
+    $codecept["$ codecept"]
+
+    maintainer>ask maintainer]
 
 
     %% Styles
      classDef green fill:#9f6,stroke:#333,stroke-width:2px;
      classDef orange fill:#f96,stroke:#333,stroke-width:4px;
-     class new green
-     class existing orange
+     classDef yellow fill:#ff0,stroke:#333,stroke-width:2px;
+     class start green
+     class error orange
+     class test yellow

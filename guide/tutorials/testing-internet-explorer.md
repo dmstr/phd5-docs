@@ -2,8 +2,8 @@
 
 ## Download
 
-- Download VM from http://modern.ie
-- Download *Java*
+- Download Windows VM from http://modern.ie
+- Download and install *Java* in Windows VM https://java.com/de/download/
 - Download *selenium-standalone* and `IEDriver.exe` from http://selenium-release.storage.googleapis.com/index.html
  - Extract driver to "Windows" or another directory `PATH`
 

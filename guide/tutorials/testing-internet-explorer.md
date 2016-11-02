@@ -1,6 +1,6 @@
 # Testing with Inernet Explorer
 
-## Installation
+## Download
 
 - Download VM from http://modern.ie
 - Download *Java*
@@ -8,16 +8,12 @@
 - Download `IEDriver.exe`
  - Extract driver to "Windows" or another directory `PATH`
 
-Start 
-
-    cmd
-    cd Downloads
-    java -jar selenium-server-standalone-2.53.1.jar
+## Setup
 
 > Add Host-Only network
 > Find IP with `ipconfig` in Windows command prompt
 
-In elevated (as Administrator) command prompt
+For IE11, add registry keys
 
 ### 32 bit
 
@@ -27,7 +23,15 @@ In elevated (as Administrator) command prompt
 
     REG ADD "HKLM\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\Main\FeatureControl" /v FEATURE_BFCACHE /t REG_DWORD /d 0
 
-## Selenium config
+## Usage
+
+Run in elevated (as Administrator) command prompt to start to selenium server
+
+    cmd
+    cd Downloads
+    java -jar selenium-server-standalone-2.53.1.jar
+
+### Selenium config for Codeception
 
     config:
         WebDriver:

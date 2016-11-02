@@ -4,8 +4,7 @@
 
 - Download VM from http://modern.ie
 - Download *Java*
-- Download *selenium-standalone*  
-- Download `IEDriver.exe`
+- Download *selenium-standalone* and `IEDriver.exe` from http://selenium-release.storage.googleapis.com/index.html
  - Extract driver to "Windows" or another directory `PATH`
 
 ## Setup
@@ -45,6 +44,5 @@ Run in elevated (as Administrator) command prompt to start to selenium server
 ## Resources
 
 - https://github.com/SeleniumHQ/selenium/wiki/InternetExplorerDriver
-- http://selenium-release.storage.googleapis.com/index.html
 - http://elgalu.github.io/2014/run-protractor-against-internet-explorer-vm/
             

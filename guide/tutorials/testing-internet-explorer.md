@@ -22,6 +22,8 @@ For IE11, add registry keys
 
     REG ADD "HKLM\SOFTWARE\Wow6432Node\Microsoft\Internet Explorer\Main\FeatureControl" /v FEATURE_BFCACHE /t REG_DWORD /d 0
 
+See also http://elgalu.github.io/2014/run-protractor-against-internet-explorer-vm/ for setting IE options in GUI.
+
 ## Usage
 
 Run in elevated (as Administrator) command prompt to start to selenium server
@@ -44,5 +46,4 @@ Run in elevated (as Administrator) command prompt to start to selenium server
 ## Resources
 
 - https://github.com/SeleniumHQ/selenium/wiki/InternetExplorerDriver
-- http://elgalu.github.io/2014/run-protractor-against-internet-explorer-vm/
             

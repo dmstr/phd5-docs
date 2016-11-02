@@ -1,4 +1,4 @@
-# Testing with Inernet Explorer
+# Testing with Internet Explorer or Edge
 
 ## Download
 

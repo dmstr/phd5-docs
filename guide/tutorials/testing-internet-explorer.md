@@ -9,8 +9,8 @@
 
 ## Setup
 
-> Add Host-Only network
-> Find IP with `ipconfig` in Windows command prompt
+> ### Virtualbox
+> Add Host-Only network and find your IP with `ipconfig` in Windows command prompt
 
 For IE11, add registry keys
 

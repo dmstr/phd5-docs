@@ -38,11 +38,13 @@ Run in elevated (as Administrator) command prompt to start to selenium server
         WebDriver:
             host: 192.168.99.1
             port: 14444
-            url: http://10.5.112.100:32898/
+            url: http://192.168.99.1:10081/
             browser: 'internet explorer'
             window_size: 1024x768
             restart: restart
-            
+
+> :bulb: Example uses forwarded ports on the host machine to Selenium on the Windows VM and the web server used for testing in Docker.
+
 ## Resources
 
 - https://github.com/SeleniumHQ/selenium/wiki/InternetExplorerDriver

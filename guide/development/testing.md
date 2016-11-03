@@ -17,7 +17,7 @@ For acceptance or end-to-end tests for example you might want to use a "real" Se
 
 Creating and running a test environment can be a cumbersome task, like executing your tests in an isolated database. 
 
-Therefore the phd 4 Docker images contain pre-installed Codeception binaries for running Yii 2.0 Framework unit-, functional- and acceptance-test-suites.
+Therefore the phd Docker images contain pre-installed Codeception binaries for running Yii 2.0 Framework unit-, functional- and acceptance-test-suites.
 
 ### Configuration
 
@@ -53,6 +53,7 @@ Run codeception directly *(container bash)*
     make bash
     $ codecept run
 
+> :bulb: Basically tests should be independent from each other. But depending on your setup `cli` tests can be used to initialize the test environment for the application. 
 
 ### Advanced usage
     
@@ -82,15 +83,6 @@ $ codecept run functional --coverage --coverage-html
 ```
 
 
-
-### FAQ
-
-#### Functional vs. acceptance tests
-   
-Due to limitations functional-testing should only be used for basic tests, see codeception.com
-   
-For Login, JavaScript, Cookies, Session, ... use acceptance tests. See commands `wait(1)`, `waitForElement(1)`.
-
 #### Grouping tests
 
 tests/codeception
@@ -114,6 +106,18 @@ Further groups
 - @group run-once
 
 
+
+
+### FAQ
+
+#### Functional vs. acceptance tests
+   
+Due to limitations functional-testing should only be used for basic tests, see codeception.com
+   
+For Login, JavaScript, Cookies, Session, ... use acceptance tests. See commands `wait(1)`, `waitForElement(1)`.
+
+> Note: In Codeception acceptance tests checks are performed *as seen* in the browser, for example you have to check for `MYLINK` if there's a `text-transform: uppercase` or a link `mylink`.
+
 #### Detecting application type
 
 Console vs. Web config
@@ -123,7 +127,3 @@ Console vs. Web config
 #### Re-run failed tests
 
 	codecept run -g failed
-
-#### e2e (acceptance)
-
-> Note: In Codeception acceptance tests checks are performed *as seen* in the browser, for example you have to check for `MYLINK` if there's a `text-transform: uppercase` or a link `mylink`.

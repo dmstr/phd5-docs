@@ -16,7 +16,7 @@ Create a new database to store application information.
 
 ### Composer installation
 
-You can install _phd 4_ using [composer](https://getcomposer.org/download/)...
+You can install _phd_ using [composer](https://getcomposer.org/download/)...
 
     composer global require "fxp/composer-asset-plugin:1.1.*"
     composer create-project --stability=beta phundament/app myapp

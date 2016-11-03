@@ -1,7 +1,7 @@
 Troubleshooting
 ===============
 
-For more frequently asked questions (FAQ) see [GitHub](https://github.com/phundament/app/issues) and [Stackoverflow](http://stackoverflow.com/questions/tagged/phundament)
+For more frequently asked questions (FAQ) see [GitHub](https://github.com/dmstr/docker-phd5-app/issues) and [Stackoverflow](http://stackoverflow.com/questions/tagged/phundament)
 
 Yii
 ---

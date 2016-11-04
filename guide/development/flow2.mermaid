@@ -1,0 +1,219 @@
+%% https://knsv.github.io/mermaid/#flowcharts-basic-syntax
+
+graph LR
+
+    start((Start))
+
+    cd_root["project root directory"]
+    cd_tests
+
+    browser>browser]
+    VNC-Viewer.app>VNC-Viewer.app]
+    maintainer>ask maintainer]
+
+    docker_push
+    registry((registry))
+
+    subgraph Source Code
+      Dockerfile
+      .env
+      composer.lock
+      composer.json
+      src
+      web
+      vendor
+      subgraph output
+        _lint
+        _reports
+      end
+    end
+
+    subgraph Make
+      make_open-db
+      make_open
+      make_latest
+      make_all["make all"]
+      make_clean
+      make_init
+      make_build["make build"]
+      make_up
+      make_setup
+      make_bash["make bash"]
+      make_lint
+      composer_update
+      composer_require
+    end
+
+    subgraph Test Make
+      cd_tests
+      make_run-tests
+      make_open-vnc
+      test:make_up
+    end
+
+    subgraph CI
+      CI-BUILD === CI-TEST
+      CI-TEST === CI-RELEASE
+      CI-RELEASE === CI-DEPLOY
+    end
+
+    subgraph Services
+      php_container
+      database_container
+      selenium_container
+    end
+
+    subgraph Container Commands
+      $yii_giiant-batch
+      $codecept
+      $yii
+      $linkchecker
+    end
+
+    subgraph Images
+      dmstr/roj((dmstr/roj))
+      php((library/php))
+      percona((Percona DB))
+      dmstr/php-yii2((dmstr/php-yii2))
+      dmstr/phd5-app((phd5-ce))
+      hrzg/phd5-ee-app((phd5-ee))
+      schmunk42/gitlab-runner((gitlab-runner))
+      jolicode/phaudit((jolicode/phaudit))
+      namespace/app((Docker Image))
+    end
+
+    subgraph DevOps
+      docker-compose_run_roj -.-> roj_container
+      roj_container --> $roj:bash
+    end
+
+    subgraph Deployments
+      deployment-staging
+      deployment-production
+    end
+
+
+    start --> download-release
+    start --> fork-repo
+    start --> git-pull
+    update-env --> cd_root
+    download-release --> update-env
+    fork-repo --> update-env{update-env}
+    git-pull --> check-env{check-env}
+
+    check-env --> cd_root
+    cd_root -.- cd_tests
+
+    cd_root ==> make_all
+    %%cd_root -.- make_clean
+    %%cd_root -.- make_init
+    %%cd_root -.- make_build
+    %%cd_root -.- make_setup
+    %%cd_root -.- make_up
+    %%cd_root -.- make_open
+    %%cd_root -.- make_bash
+    %%cd_root -.- make_lint
+    %%cd_root -.- make_latest
+    cd_root -.- git_push
+
+    cd_tests -.- make_bash
+    %%cd_tests -.- make_run-tests
+    cd_tests -.- make_open
+    %%cd_tests -.- make_open-vnc
+    %%cd_tests -.- test:make_up
+    %%test:make_up ==> make_open-vnc
+    %%test:make_up ==> make_run-tests
+
+
+    namespace/app -.- php_container
+    browser -.- php_container
+    php_container --> $codecept($codecept)
+    php_container --> $yii($yii)
+    php_container --> $linkchecker($linkchecker)
+
+    schmunk42/gitlab-runner -.-> CI-BUILD
+    jolicode/phaudit -.-> make_lint
+
+    make_build -. docker build .-> namespace/app
+    Dockerfile -.- vendor
+    Dockerfile -.- src
+    Dockerfile -.- web
+    Dockerfile -.- composer.lock
+    composer.json --- composer.lock
+    composer_update --> composer.lock
+    composer_require --> composer.lock
+    composer.lock --> vendor
+
+    php --> dmstr/php-yii2
+    dmstr/php-yii2 --> dmstr/phd5-app
+    dmstr/php-yii2 --> hrzg/phd5-ee-app
+    dmstr/php-yii2 --> namespace/app
+    dmstr/phd5-app -- planck --> namespace/app
+    hrzg/phd5-ee-app -- curie --> namespace/app
+
+    %% error -.- CI-TEST
+    cd_tests(cd_tests)
+
+    git_push --> CI-BUILD
+
+    make_lint --> _lint
+    Dockerfile --> make_build
+    make_open --> browser
+    make_setup --> database_container
+    make_clean --> make_all
+    make_bash -- docker-compose run --> php_container
+    make_latest ==> CI-BUILD
+    %% make_latest --- CI-RELEASE
+    cd_root ==> make_latest
+    make_all === make_init
+    %%make_init --> .env
+    make_init === make_build
+    make_build === make_up
+    make_up === make_setup
+    make_setup ==> make_open
+    make_open-vnc -.-> VNC-Viewer.app
+    make_open-db -.- database_container
+    make_all --> error{error}
+
+
+
+    CI-BUILD -.- make_build
+    %% CI-TEST --> make_lint
+    CI-RELEASE ==> docker_push
+    CI-DEPLOY --> roj-redeploy
+    namespace/app === docker_push
+    docker_push ==> registry
+    %% namespace/app --> registry
+    CI-TEST --> make_run-tests
+    VNC-Viewer.app --> selenium_container
+    make_run-tests --> $codecept
+    %% cd_tests -.- make_all
+    $codecept --> _reports
+    $yii_giiant-batch --> src
+
+
+    dmstr/roj -.-> roj_container
+    $roj:bash --> roj-redeploy
+    roj-redeploy --> deployment-staging
+    deployment-staging -.- registry
+    deployment-production -.- registry
+    roj-redeploy --> deployment-production
+
+
+    error -- no --> maintainer
+    error -- yes --> make_clean
+
+
+.,
+    %% Styles
+     classDef default fill:#c00,stroke:#333,stroke-width:4px;
+     classDef gray fill:#ccc,stroke:#333,stroke-width:4px;
+     classDef green fill:#9f6,stroke:#333,stroke-width:2px;
+     classDef orange fill:#f96,stroke:#333,stroke-width:4px;
+     classDef yellow fill:#ff0,stroke:#333,stroke-width:2px;
+     classDef cyan fill:#1dd,stroke:#ccc,stroke-width:4px;
+     class make_build gray
+     class start,make_all,make_open green
+     class make_latest,deployment-staging,deployment-production orange
+     class make_run-tests yellow
+     class roj_container,php_container,selenium_container,database_container cyan

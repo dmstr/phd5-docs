@@ -6,7 +6,7 @@ Frontend module
 
 You can create a standard Yii module with
 
-    yii gii/giiant \
+    yii gii/giiant-module \
         --moduleID=frontend \
         --moduleClass=myapp\\frontend\\Module
                 

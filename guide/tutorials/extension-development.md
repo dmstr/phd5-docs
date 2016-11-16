@@ -58,6 +58,8 @@ This is a one-time push from this repo, you should install your extension via co
 
 #### Private packages
 
+If your package should be availible via [Toran Proxy](https://toran.hrzg.de) add repository URL to [repository list](https://toran.hrzg.de/repositories/) and add a Deploy Key to project settings.
+
 If you are developing packages for a private repository you can enable your package by adding it's repository URL to `composer.json`
 
 ```

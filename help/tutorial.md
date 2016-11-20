@@ -1,37 +1,15 @@
-Backend
-====
+Tutorial
+========
 
-You can access the web-application backend via `/backend`
+## Editor
+
+## Accessing the application backend
+
+After starting the application stack and opening it in your browser, you can access the web-application backend via `/backend`.
+
+![login](./images/login.png)
 
 Login with `admin` / `admin1` and change the admin password.
-
-Adjust basic settings, eg. `app.assets.registerPrototypeAssetKey`
-
-## Settings
-
-- `pages.availableRoutes`
-- `pages.availableViews`
-- `pages.availableGlobalRoutes`
-- `widgets.availablePhpClasses`
-- `backend.adminltes.skin`
-- `registerPrototypeAssetKey`
-- `registerPatchAssetKey`
-- `<markdocs>.markdownUrl`
-- `<markdocs>.forkUrl`
-- `<markdocs>.defaultIndexFile`
-- `<markdocs>.cachingTime`
-- `<markdocs>.htmlUrl`
-
-## Twig
-
-`extra.menuItems`
-
-## Parameters
-
-- `context.menuItems`
-
-
-## User
 
 ### Create users and assign roles
 
@@ -43,30 +21,36 @@ Adjust basic settings, eg. `app.assets.registerPrototypeAssetKey`
 > Note: The user `admin` is very similar to a root-user, by default it has every permission, or speaking in Yii terms `can()` always returns `true`.
 
 
-## Pages
-
-### Create sitemap
+### Create sitemap with the `pages` module
 
 - `/pages`
 
-## Prototype
+![pages](./images/pages.png)
 
-- Twig templates
-- Semantic HTML
-- Variables LESS
 
-### LESS
+## Choose a theme for content prototyping
 
-- https://github.com/twbs/bootstrap/blob/master/less/variables.less
+see also https://github.com/twbs/bootstrap/blob/master/less/variables.less
 
-## Widgets :credit_card:
 
-- Übersetzungen
+### Add basic layout Twigs
+
+see also Examples
+
+
+## Add content through widgets
+
 - Widgets, Editor
   - Tipps & Tricks
   - https://git.hrzg.de/hrzg/yii2-widgets2-module
 
+---
 
-### Staging Content
+## Developer
 
-- Create "hidden node" in pages
+### Templates 
+
+## Translations
+
+- Übersetzungen
+

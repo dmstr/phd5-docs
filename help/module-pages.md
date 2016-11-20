@@ -2,6 +2,11 @@
 Module: Pages
 -----
 
+### Settings
+
+- pages root node `backend` (Access domain `GLOBAL`)
+ - use *setting* `pages` `availableGlobalRoutes` for backend menu items
+
 The `pages` module is a manager for sitemap trees.
 
 ### Create a new page
@@ -22,3 +27,10 @@ The `pages` module is a manager for sitemap trees.
   registered as `docs`.
 - save
 
+### Staging Content
+
+- Create "hidden node" in pages
+
+---
+
+:blue_book: [Extension README](https://github.com/dmstr/yii2-pages-module/blob/master/README.md)

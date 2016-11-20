@@ -16,6 +16,11 @@ To test if your environment is ready, simply run the following status commands, 
 	docker info
 	docker ps
 
+> :bangbang: Due to disk performance issues like ... it's currently a recommended workaround to run composer from your host system for
+> updates.
+
+    composer global require fxp/composer-assetplugin wikimedia/composer-merge-plugin
+
 ## Non-dockerized installation
 
 > :warning: Running **phd** without Docker *should work*, but is not actively supported. 

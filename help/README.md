@@ -1,7 +1,10 @@
 # phd5 - help
 
-- [Overview](index.md)
-- [Tutorial](tutorial.md)
+## Tutorials
+
+- [Initial setup as admin](tutorial-admin.md)
+- [CMS prototyping functions for editors](tutorial-editor.md)
+- [Web-developer tools](tutorial-dev.md)
 
 ## Modules
 

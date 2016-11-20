@@ -5,7 +5,7 @@ graph LR
   start((Start))
 
   cd_tests
-  cd_root["project root directory"]
+  cd_root{project root directory}
 
   browser>browser]
   VNC-Viewer.app>VNC-Viewer.app]
@@ -104,6 +104,8 @@ graph LR
     roj_container --> $roj:bash
   end
 
+  deployment((Deployment))
+
   start --> download-release
   start --> fork-repo
   start --> git-pull
@@ -129,7 +131,6 @@ graph LR
   CI-TEST-OK? === CI-RELEASE
   CI-RELEASE ==> CI-DEPLOY
   CI-TEST -.-> make_run-tests
-  %% CI-TEST --> CI-TEST-OK?{error}
   _lint --> CI-TEST-OK?
   _reports --> CI-TEST-OK?
 
@@ -173,6 +174,11 @@ graph LR
   make_bash -- docker-compose run --> php_container
   make_latest == create_new_latest ==> CI-BUILD
 
+  cd_tests -.-> make_all
+  make_all -.-> make_build
+  make_setup -.-> make_run-tests
+  cd_tests --> host-volumes{host-volumes}
+
   git_push -.-> CI-BUILD
 
   %% make_latest --- CI-RELEASE
@@ -184,14 +190,6 @@ graph LR
   make_open-vnc -.-> VNC-Viewer.app
   make_open-db -.- database_container
   make_run-tests -- $codecept --> php_container
-  %%make_all --> error{error}
-  %% cd_tests -.- make_bash
-  %% cd_tests -.- make_run-tests
-  %% cd_tests -.- make_open
-  %% cd_tests -.- make_open-vnc
-  %%cd_tests -.- make_up
-  %%test:make_up ==> make_open-vnc
-  %%test:make_up ==> make_run-tests
 
   browser -.- php_container
   php_container --> $yii($yii)
@@ -203,25 +201,24 @@ graph LR
   selenium/firefox -.- selenium_container
 
   docker_push ==> registry
-  %% namespace/app --> registry
+
   VNC-Viewer.app --> selenium_container
-  %% cd_tests -.- make_all
   $codecept --> _reports
   $yii_giiant-batch --> src
-
 
   dmstr/roj -.- roj_container
   $roj:bash --> roj-redeploy
   roj-redeploy --> deployment-staging
-  registry -.- deployment-staging
   roj-redeploy --> deployment-production
 
   namespace/app --- docker_push
 
   initial_setup --> deployment-staging
 
-  error -- no --> maintainer
-  error -- yes --> make_clean
+  error --> make_clean
+  error -- read --- troubleshooting.md
+  error -- ask --> maintainer
+
 
   $yii_db/x-dump-data --> ./runtime/mysql
 

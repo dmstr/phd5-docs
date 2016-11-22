@@ -39,6 +39,10 @@ Initial configuration adjustments should be made for the following values
 > `app.env-dist` should be adjusted and committed to reflect basic application settings, but we strongly recommend **not to add secrets** like passwords or tokens to the repository. 
 > Note: The `app.env-dist` file is intentionally copied as `app.env` onto the image. If you want to make changes during runtime, you also need to create a local file and mount this into the container.
 
+> To be able to use translatemanager every defined/used language must be present in the app_language table. 
+> You can insert new languages in backend:
+> http://<YOUR_DOMAIN>/translatemanager/language/create
+
 ## Advanced configuration
 
 ### Environment variables

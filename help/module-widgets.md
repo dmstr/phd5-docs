@@ -14,7 +14,11 @@ Full width header and container
     <div class="container">
         {{ cell_widget({id: 'container'}) }}
     </div>
-    
+
+## References
+
+- [JSON Editor documentation](https://github.com/jdorn/json-editor)
+
 ---
 
 :blue_book: [Project page](https://git.hrzg.de/hrzg/yii2-widgets2-module)

@@ -38,6 +38,18 @@ See also `build/compose`.
       only:
         - latest    
 
+---
+
+Transfer data from staging to migrations
+
+- Go to `/resque`
+- `yii db/x-dump/data`
+- Download (via Moxiemanager or Filyfly)
+- Create file migration, place into tests/codeception/_migrations/VERSION
+- cd tests
+- make clean all
+- make run-tests (or make bash $ codecept run)
+
 
 Production
 ==========
@@ -54,3 +66,17 @@ Production
  - auth
 - Use correct time in migration history
 - minimize the number of `dev-master` packages
+
+## ENV variables
+
+### Mailer config
+
+APP_MAILER_HOST=mailcatcher
+APP_MAILER_USERNAME=smtp-user
+APP_MAILER_PASSWORD=secret
+
+```
+APP_MAILER_HOST=mailcatcher
+APP_MAILER_USERNAME=smtp-user
+APP_MAILER_PASSWORD=secret
+```

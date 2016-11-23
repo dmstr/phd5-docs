@@ -1,5 +1,7 @@
 # phd5 - help
 
+- [Overview](index.md)
+
 ## Tutorials
 
 - [Initial setup as admin](tutorial-admin.md)

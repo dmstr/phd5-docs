@@ -23,3 +23,7 @@ changes for included files.
 
 For bundling assets for production usage, see tutorial about [asset compression](../6-tutorials/asset-compression.md).
 
+#### Cleanup
+
+    rm -rf /app/web/assets/*
+    yii app/clear-assets --interactive=0

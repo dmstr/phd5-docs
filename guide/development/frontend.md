@@ -29,6 +29,11 @@ Layout & navigation
 View files can be found in `src/views/layouts`.
 
 
+## Debugging application
+
+- /debug
+
+
 Events
 ------
 

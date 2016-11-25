@@ -22,7 +22,15 @@ Lookup paths for migrations can be defined in application configuration, for det
       --migrationPath='@app/migrations/demo-data' \
       data_migration
 
-https://github.com/dmstr/yii2-db/blob/master/README.md
+Do not forget to add the migration path to the configuration
+
+    'params'      => [
+        'yii.migrations' => [
+            '@app/migrations/demo-data',
+        ]
+    ]
+
+:green_book: https://github.com/dmstr/yii2-db/blob/master/README.md
 
 
 ### Commands

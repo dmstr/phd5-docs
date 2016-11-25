@@ -133,6 +133,6 @@ To see the help of each command, enter:
 
     $ env | sort
     
-> Note, there may be additional ENV variables available in an application loadedfrom `src/app.env`
+> Note, there may be additional ENV variables available in an application loaded from `src/app.env`
 
 

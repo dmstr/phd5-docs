@@ -30,7 +30,7 @@ To add it to your application adjust configuration in `src/config/common.php`.
         'modules' => [
             'frontend' => [
                 'class' => 'app\modules\frontend\Module',
-                'layout' => 'container',
+                'layout' => '//container',
             ]
         ]
     ];

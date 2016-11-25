@@ -59,7 +59,7 @@ To add it to your application adjust your configuration in `src/config/common.ph
     return [
         'modules' => [
             'crud' => [
-                'class' => 'app\modules\crud\Module'
+                'class' => 'app\modules\crud\Module',
                 'layout' => '@admin-views/layouts/main',
             ]
         ]
@@ -98,19 +98,20 @@ See also [how to create file migrations](database-migrations-from-file.md).
 
 Create the backend CRUDs with gii and Giiant
 
-    yii giiant-batch \
+        yii giiant-batch \
       --interactive=0 \
       --overwrite=1 \
       --tablePrefix=app_ \
       --modelDb=db \
-      --modelNamespace=myapp\\frontend\\models \
-      --modelQueryNamespace=myapp\\frontend\\models\\query \
+      --modelNamespace=app\\modules\\crud\\models \
+      --modelQueryNamespace=app\\modules\\crud\\models\\query \
       --crudAccessFilter=1 \
-      --crudControllerNamespace=myapp\\frontend\\controllers \
-      --crudSearchModelNamespace=myapp\\frontend\\models\\search \
-      --crudViewPath=@app/modules/frontend/views \
+      --crudControllerNamespace=app\\modules\\crud\\controllers \
+      --crudSearchModelNamespace=app\\modules\\crud\\models\\search \
+      --crudViewPath=@app/modules/crud/views \
       --crudPathPrefix= \
-      --tables=app_view,app_less
+      --tablePrefix=<PREFIX_> \
+      --tables=<COMMA_SEPARATED_LIST_OF_TABLES>
 
 See also [Giiant documentation](https://github.com/schmunk42/yii2-giiant/blob/master/README.md).
 

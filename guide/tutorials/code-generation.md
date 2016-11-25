@@ -101,7 +101,6 @@ Create the backend CRUDs with gii and Giiant
         yii giiant-batch \
       --interactive=0 \
       --overwrite=1 \
-      --tablePrefix=app_ \
       --modelDb=db \
       --modelNamespace=app\\modules\\crud\\models \
       --modelQueryNamespace=app\\modules\\crud\\models\\query \

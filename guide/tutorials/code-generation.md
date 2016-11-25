@@ -29,7 +29,7 @@ To add it to your application adjust configuration in `src/config/common.php`.
     return [
         'modules' => [
             'frontend' => [
-                'class' => 'app\modules\crud\Module',
+                'class' => 'app\modules\frontend\Module',
                 'layout' => 'container',
             ]
         ]
@@ -59,7 +59,7 @@ To add it to your application adjust your configuration in `src/config/common.ph
     return [
         'modules' => [
             'frontend' => [
-                'class' => 'myapp\crud\Module'
+                'class' => 'app\modules\crud\Module'
                 'layout' => '@admin-views/layouts/main',
             ]
         ]
@@ -69,7 +69,7 @@ To add it to your application adjust your configuration in `src/config/common.ph
 > :bulb: When using a non-autoloaded namespace you need to register an alias before running the `gii` command
 > 
 >         'aliases' => [
->            '@name/package' => '@myapp/modules/crud'
+>            '@name/package' => '@app/modules/crud'
 >        ],
 
 

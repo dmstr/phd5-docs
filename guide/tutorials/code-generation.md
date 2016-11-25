@@ -71,8 +71,11 @@ To add it to your application adjust your configuration in `src/config/common.ph
         ]
     ];
 
+
+> :bulb: When using a non-autoloaded namespace you need to register an alias before running the `gii` command
+> 
 >         'aliases' => [
->            '@myapp/frontend' => '@myapp/modules/crud'
+>            '@name/package' => '@myapp/modules/crud'
 >        ],
 
 

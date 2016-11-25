@@ -29,7 +29,7 @@ To add it to your application adjust configuration in `src/config/common.php`.
     return [
         'modules' => [
             'frontend' => [
-                'class' => 'app\modules\crud\Module'
+                'class' => 'app\modules\crud\Module',
                 'layout' => 'container',
             ]
         ]

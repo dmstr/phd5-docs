@@ -54,19 +54,13 @@ To add a new module to your application, we create a `crud` module with phd and 
         --moduleID=crud \
         --moduleClass=app\\modules\\crud\\Module
 
-Then, create the module with
-
-    yii gii/giiant-module \
-        --moduleID=crud \
-        --moduleClass=myapp\\crud\\Module
-
 To add it to your application adjust your configuration in `src/config/common.php`.
 
     return [
         'modules' => [
             'frontend' => [
                 'class' => 'myapp\crud\Module'
-                'layout' => 'container',
+                'layout' => '@admin-views/layouts/main',
             ]
         ]
     ];

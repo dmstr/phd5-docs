@@ -58,7 +58,7 @@ To add it to your application adjust your configuration in `src/config/common.ph
 
     return [
         'modules' => [
-            'frontend' => [
+            'crud' => [
                 'class' => 'app\modules\crud\Module'
                 'layout' => '@admin-views/layouts/main',
             ]

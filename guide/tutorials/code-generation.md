@@ -120,3 +120,15 @@ even if it was written for Yii 1 it is still valid today.
 Login to the application backend as `admin` and go to the `crud` module.
 
 :bulb: You can define and register the batch command in the Module bootstrapping process.
+
+## Forms
+
+Create a form model.
+
+Enter application console
+
+    $ yii gii/form \
+      --modelClass=app\\modules\\frontend\\models\\TranslateForm \
+      --viewName=translate \
+      --viewPath=@app/modules/frontend/views/default
+

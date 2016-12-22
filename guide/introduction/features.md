@@ -21,8 +21,8 @@ Features
 - user management (dektrium/yii2-user)
 - role-based access control (dektrium/yii2-rbac)
 - runtime settings
-- I18N
-- (dmstr/yii2-pages-module)
+- I18N [lajax/yii2-translate-manager](https://github.com/lajax/yii2-translate-manager)
+- sitemaps (dmstr/yii2-pages-module)
 - extended model & crud code generators (schmunk42/yii2-giiant)
 - markdown documentation in application backend (schmunk42/yii2-markdocs-module)
 

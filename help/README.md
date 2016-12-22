@@ -8,10 +8,16 @@
 - [CMS prototyping functions for editors](tutorial-editor.md)
 - [Web-developer tools](tutorial-dev.md)
 
+## Nutzerhandbuch
+
+- [Dashoard] (user-dashboard.md)
+- [Sitetree - Pages] (user-pages.md)
+- [Widgets] (user-dashboard.md)
+
 ## Modules
 
 - [Pages](module-pages.md)
-- [Widgets](module-widgets.md)
+- [Twig & Widgets](module-widgets.md)
 - [Files](module-filefly.md)
 - [Layouts](module-prototype-twig.md)
 - [Themes](module-prototype-less.md)

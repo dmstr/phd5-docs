@@ -9,7 +9,7 @@ The `settings` module provides an easy to use key/value-storage.
 - `pages.availableViews`
 - `pages.availableGlobalRoutes`
 - `widgets.availablePhpClasses`
-- `backend.adminltes.skin`
+- `backend.adminlte.skin`
 - `registerPrototypeAssetKey`
 - `registerPatchAssetKey`
 - `<markdocs>.markdownUrl`

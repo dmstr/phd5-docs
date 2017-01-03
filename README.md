@@ -19,7 +19,6 @@ phd5
 
 - :dvd: https://github.com/dmstr/docker-yii2-app
 - :dvd: https://github.com/dmstr/docker-phd5-app :arrow_down: https://github.com/dmstr/phd5-app/releases
-- :dvd: :credit_card: https://git.hrzg.de/hrzg/phd5-ee-app :arrow_down: https://git.hrzg.de/hrzg/phd5-ee-app/tags
 - :white_circle: https://github.com/dmstr/planck :arrow_down: https://github.com/dmstr/planck/releases
 
 

@@ -74,10 +74,11 @@ Setup application with demo data and default user password
 > TODO: link tutorials
 
 
-### Help `make help`
+### Help 
+
+Run `make help`
 
 ```
-> make
 #
 # General targets
 #

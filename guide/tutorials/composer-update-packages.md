@@ -46,7 +46,7 @@ You can now update the package with
 
 ### Source code repositories
 
-- see `composer.json` section `config`
+- see `composer.json` section `config`, edit `preferred-install`.
 
 #### Switching from `dist` to `source`
 
@@ -54,12 +54,14 @@ You can now update the package with
 
 - check and **backup your changes** in `vendor`
 - delete folders from `vendor` you want as source
+- edit `composer.json` like described above
 
 Run update in container
 
-	$ composer install --prefer-source
+	$ composer install
 
-	
+> Note: As an alternative to editing `preferred-install`, you can also run `composer install  --prefer-source`, but be aware that this will clone all outdated or missing repos.
+
 ### Update composer or global packages
 
 In some cases you need to update globally installed tools like `composer`, `codeception` or `fxpio/composer-asset-plugin`.

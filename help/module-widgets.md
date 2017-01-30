@@ -15,6 +15,14 @@ Full width header and container
         {{ cell_widget({id: 'container'}) }}
     </div>
 
+#### Filefly (images)
+
+    "image": {
+        "type": "string",
+        "format": "filefly",
+        "default": "/_phd/test.png"
+    }
+
 ## References
 
 - [JSON Editor documentation](https://github.com/jdorn/json-editor)

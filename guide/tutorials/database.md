@@ -24,6 +24,8 @@ Using a PostgreSQL database
 
 Install PHP extension in `Dockerfile`
 
+a) with base-image: `php-fpm`
+
     RUN apt-get update \
      && apt-get install -y \
             libpq5 \
@@ -32,6 +34,11 @@ Install PHP extension in `Dockerfile`
      && apt-get clean \
      && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
      && docker-php-ext-install pdo_pgsql
+
+b) With base-image: `php-fpm-alpine`
+
+    RUN apk add postgresql-dev
+    RUN docker-php-ext-install pdo_pgsql
 
 Add container
 

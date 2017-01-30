@@ -4,7 +4,7 @@
 
 phd uses `Makefile`s to execute common tasks during development, but you can also use standard *Docker* commands to control your stack.
 
-Basically, `make` targets are just shorthands for lengthy Docker commands.
+Basically, `make` **targets** are just shorthands for lengthy Docker commands.
 
 > TODO: Link "Backend", "Frontend"
 
@@ -18,7 +18,7 @@ After the initial `.env` configuration, for first initial setup run
 
     make all
 
-You can also chain single commands
+You can also chain single **targets**
 
     make setup up open bash
 

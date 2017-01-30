@@ -73,3 +73,37 @@ Setup application with demo data and default user password
 
 > TODO: link tutorials
 
+
+### Help 
+
+Run `make help`
+
+```
+#
+# General targets
+#
+
+usage: make [target ...]
+
+system:
+  help.....................show this help
+
+development:
+  all......................shorthand for 'build init up setup open'
+  dev......................install composer package (enable host-volume in docker-compose config)
+  init.....................initialize development environment
+  bash.....................open application development bash
+  upgrade..................update application package, pull, rebuild
+  assets...................open application development bash
+  latest...................push to latest/release branch
+  lint.....................run source-code linting
+  lint-composer............run composer linting
+
+base:
+  build....................build images in test-stack
+  up.......................start stack
+  clean....................remove all containers in stack
+  open.....................open application web service in browser
+  open-db..................open application database service in browser
+  setup....................run application setup
+```

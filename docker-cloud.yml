@@ -1,5 +1,5 @@
 # Webserver & worker
-php:
+www:
   command: "sh -c 'yii app/setup && forego start -r -f /root/Procfile'"
   environment:
     APP_NAME: phd5-dcd
@@ -24,6 +24,10 @@ php:
 worker:
   image: dmstr/phd5-app
   command: yii resque/work "*"
+  links:
+    - db
+    - mailcatcher
+    - redis
 
 # Cache & database
 redis:

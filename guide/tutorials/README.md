@@ -3,6 +3,7 @@
 ## Setup
 
 - [Quick start tutorial for planck](quick-start-planck.md)
+- [Docker Cloud](docker-cloud.md)
 
 ## Assets
 

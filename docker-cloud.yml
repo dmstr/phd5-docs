@@ -5,12 +5,12 @@ php:
     APP_NAME: phd5-dcd
     APP_TITLE: phd5 Docker Cloud Demo
     APP_LANGUAGES: de,en,ru
+    # Initial password, when there is no admin user
     APP_ADMIN_PASSWORD: admin1
     APP_MIGRATION_LOOKUP: '@app/migrations/demo-data'
     APP_ASSET_USE_BUNDLED: '1'
     APP_INTERACTIVE: '0'
-    # set to empty to skip
-    MYSQL_ROOT_PASSWORD: ''
+    # Replace with SMTP relay...
     APP_MAILER_HOST: 'mailcatcher:1025'
   image: 'dmstr/phd5-app:latest'
   links:
@@ -31,9 +31,9 @@ redis:
 db:
   command: --character-set-server=utf8 --collation-server=utf8_general_ci
   environment:
+    - MYSQL_ROOT_PASSWORD=ENTER_A_VERY_STRONG_RANDOM_PASSWORD_HERE
     - MYSQL_DATABASE=phd
-    - MYSQL_PASSWORD=tg62af82j2db
-    - MYSQL_RANDOM_ROOT_PASSWORD=1
+    - MYSQL_PASSWORD=ENTER_A_STRONG_RANDOM_PASSWORD_HERE
     - MYSQL_USER=phd
   image: 'percona:5.7'
 

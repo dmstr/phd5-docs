@@ -27,6 +27,8 @@ phd5
 - :white_square_button: https://github.com/dmstr/docs-phd5
 - :white_square_button: https://git.hrzg.de/dmstr/docs-phd5
 
+[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/)
+
 ---
 
 ### ![dmstr logo](http://t.phundament.com/dmstr-16-cropped.png) Built by [dmstr](http://diemeisterei.de)

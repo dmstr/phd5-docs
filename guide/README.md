@@ -1,6 +1,6 @@
-**phd5 - guide**
+### phd5 - guide
 
-## Introduction
+#### Introduction
 
 - [About](introduction/about.md)
 - [Features](introduction/features.md)
@@ -8,14 +8,14 @@
 - [Basic concepts](introduction/basic-concepts.md)
 - [Demos](introduction/demos.md)
 
-## Development
+#### Development
 
-### Setup
+##### Setup
 
 - [Installation](development/installation.md)
 - [Configuration](development/configuration.md)
 
-### Usage
+##### Usage
 
 - [CLI](development/cli.md)
 - [Application Console](development/console.md)
@@ -25,16 +25,16 @@
 - [Conventions](development/conventions.md)
 - [Troubleshooting](development/troubleshooting.md)
 
-### Testing
+##### Testing
 
 - [Test suites](development/testing.md)
 - [QA](development/qa.md)
 
-## Deployment
+#### Deployment
 
 - [CI](deployment/continuous-integration.md)
 - [Staging and Production](deployment/environments.md)
 
-## Tutorials
+#### Tutorials
 
 - [List of tutorials](tutorials/README.md)

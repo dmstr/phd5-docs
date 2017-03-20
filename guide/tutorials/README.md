@@ -35,6 +35,7 @@
 
 ## Developer
 
+- [Logging](logging.md)
 - [Code convetions](code-conventions.md) *TODO*
 - [Upgrading applications](upgrading.md)
 - [Toolchain](toolchain.md)

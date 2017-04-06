@@ -4,12 +4,13 @@ services:
     image: dmstr/phd5-app:5.0.0-beta32
     command: sh -c 'yii migrate --interactive=0 && forego start -r -f /root/Procfile'
     ports:
-    - 80
+    - '80:80'
     depends_on:
     - redis
     - db
     environment:
       - MYSQL_ROOT_PASSWORD=
+      - APP_ADMIN_EMAIL=play-with-docker@h17n.de
   worker:
     image: dmstr/phd5-app:5.0.0-beta32
     command: yii resque/work "*"
@@ -25,3 +26,7 @@ services:
       - MYSQL_DATABASE=phd5
       - MYSQL_USER=phd5
       - MYSQL_PASSWORD=secret
+  mailcatcher:
+    image: nisenabe/mailcatcher
+    ports:
+      - '1080:1080'

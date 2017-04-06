@@ -1,5 +1,19 @@
 # Overview
 
+#Welcome
+
+##Welcome to your new Website
+
+This is Doro, your brand new website. 
+Doro comes with some basic installations and justs needs to be filled by you.
+
+What is included?
+
+- Page Tree: Create your own Page Tree with as many pages as you like
+- Widgets: With every Doro you get a set of Widgets to create Content in the Frontend
+
+---
+
 ## Tutorials
 
 - [Initial setup as admin](tutorial-admin.md)

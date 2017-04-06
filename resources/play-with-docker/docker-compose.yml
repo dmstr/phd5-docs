@@ -1,0 +1,20 @@
+version: '2.0'
+services:
+  php:
+    image: dmstr/phd5-app:5.0.0-beta32
+    command: sh -c 'yii migrate --interactive=0 && forego start -r -f /root/Procfile'
+    ports:
+    - 80
+    depends_on:
+    - redis
+  worker:
+    image: dmstr/phd5-app:5.0.0-beta32
+    command: yii resque/work "*"
+    depends_on:
+    - redis
+  redis:
+    image: redis
+  db:
+    image: percona:5.7
+    environment:
+      - MYSQL_DATABASE=phd5

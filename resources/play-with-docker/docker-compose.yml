@@ -7,14 +7,21 @@ services:
     - 80
     depends_on:
     - redis
+    - db
+    environment:
+      - MYSQL_ROOT_PASSWORD=
   worker:
     image: dmstr/phd5-app:5.0.0-beta32
     command: yii resque/work "*"
     depends_on:
     - redis
+    - db
   redis:
     image: redis
   db:
     image: percona:5.7
     environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=1
       - MYSQL_DATABASE=phd5
+      - MYSQL_USER=phd5
+      - MYSQL_PASSWORD=secret

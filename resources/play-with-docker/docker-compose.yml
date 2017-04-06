@@ -4,10 +4,11 @@ services:
     image: dmstr/phd5-app:5.0.0-beta32
     command: sh -c 'yii migrate --interactive=0 && forego start -r -f /root/Procfile'
     ports:
-    - '80:80'
+      - '80:80'
     depends_on:
-    - redis
-    - db
+      - redis
+      - db
+      - mailcatcher
     environment:
       - MYSQL_ROOT_PASSWORD=
       - APP_TITLE=Play with phd

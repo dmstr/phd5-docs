@@ -10,7 +10,11 @@ services:
     - db
     environment:
       - MYSQL_ROOT_PASSWORD=
-      - APP_ADMIN_EMAIL=play-with-docker@h17n.de
+      - APP_TITLE=Play with phd
+      - APP_ADMIN_EMAIL=admin@play-with-docker.local
+      - APP_ADMIN_PASSWORD=admin1
+      - APP_ASSET_USE_BUNDLED=1
+      - APP_MIGRATION_LOOKUP=@app/migrations/demo-data
   worker:
     image: dmstr/phd5-app:5.0.0-beta32
     command: yii resque/work "*"

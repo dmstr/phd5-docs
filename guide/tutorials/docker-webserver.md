@@ -58,6 +58,25 @@ information.
 Automated virtual hosts with Docker
 -----------------------------------
 
+### Via Docker networking
+
+See `resources/reverse`, add the following to your application stack
+
+```
+services:
+  php:
+    [...]
+    networks:
+      - default
+      - proxy
+networks:
+  proxy:
+    external:
+      name: reverse_default
+```
+
+### Via bridge device
+
 To automatically create virtual hosts for your projects, you can use a combination of this [nginx-proxy](https://registry.hub.docker.com/u/jwilder/nginx-proxy/)
 image and the [xip.io](http://xip.io) wildcard DNS service.
 

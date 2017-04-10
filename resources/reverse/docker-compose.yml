@@ -1,0 +1,8 @@
+version: '2'
+services:
+  proxy:
+    image: schmunk42/nginx-proxy:0.4.0
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    ports:
+      - 80:80

@@ -25,6 +25,8 @@ Features
 - sitemaps (dmstr/yii2-pages-module)
 - extended model & crud code generators (schmunk42/yii2-giiant)
 - markdown documentation in application backend (schmunk42/yii2-markdocs-module)
+- Job queue
+
 
 ### Console
 

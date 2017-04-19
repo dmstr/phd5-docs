@@ -18,6 +18,11 @@ and create a fresh repository from it.
 > :bulb: It is recommended to create an initial commit from the unmodified template code, before making the first changes.
 
 ---
+    
+    composer install --ignore-platform-reqs -o
+
+
+---
 
 Related topics:
 

@@ -60,7 +60,7 @@ To add it to your application adjust your configuration in `src/config/common.ph
         'modules' => [
             'crud' => [
                 'class' => 'app\modules\crud\Module',
-                'layout' => '@admin-views/layouts/main',
+                'layout' => '@backend/views/layouts/main',
             ]
         ]
     ];

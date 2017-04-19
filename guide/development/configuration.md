@@ -5,7 +5,9 @@ Configuration
 
 phd uses an environment variables based configuration, see also [Dev/prod parity](http://12factor.net/dev-prod-parity) for more information about this topic.
 
-There are two level of environment configurations. 
+There are two level of environment configurations.
+ 
+
 
 **Variables for controlling the application stacks *(outside on your host)* with `docker-compose`, are defined in `.env` files.**
 
@@ -77,6 +79,10 @@ You find the config files for an application in `src/config`, those can also be 
 
 
 ## Hierarchy & scopes
+
+- docker-compose.yml (shared across environments `dev`, `test`, `prod` and)
+- docker-compose.override.yml (local overrides, eg. `src/` and `vendor`, shared across environments `dev`, `test`)
+- docker-compose.dev.yml, docker-compose.test.yml (environment specific settings)
 
 The following list displays configuration locations from highest to lowest priority and their corresponding scope; files are located in the application root folder `/` or in the `tests/` direcory
 

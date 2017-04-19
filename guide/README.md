@@ -35,6 +35,56 @@
 - [CI](deployment/continuous-integration.md)
 - [Staging and Production](deployment/environments.md)
 
+---
+
 #### Tutorials
 
-- [List of tutorials](tutorials/README.md)
+##### Setup
+
+- [Quick start tutorial for planck](tutorials/quick-start-planck.md)
+- [Docker Cloud](tutorials/docker-cloud.md)
+
+##### Assets
+
+- [Asset bundles](tutorials/asset-bundles.md) *TODO*
+- [Asset compression](tutorials/asset-compression.md)
+
+##### Code
+
+- [Code generation](tutorials/code-generation.md)
+- [File migrations](tutorials/database-migrations-from-file.md)
+- [Generate docs](tutorials/documentation-generation.md)
+- [Develop vendor extensions with git repositories](tutorials/extension-development.md)
+- [Update application packages](tutorials/composer-update-packages.md)
+
+##### Testing
+
+- [Testing Yii 2.0 extensions with phd Docker images](tutorials/testing-yii2-extensions.md) --- extension-testing.md
+
+##### Database
+
+- [Working with other databases](tutorials/database.md)
+- [Create migrations from MySQL dumps](tutorials/database-migrations-from-file.md)
+
+##### Docker
+
+- docker-host-cleanup.md
+- docker-machine.md
+- docker-webserver.md
+
+##### Developer
+
+- [Logging](tutorials/logging.md)
+- [Code convetions](tutorials/code-conventions.md) *TODO*
+- [Upgrading applications](tutorials/upgrading.md)
+- [Toolchain](tutorials/toolchain.md)
+
+##### Installation
+
+- :warning: installation-composer.md
+- :warning: vagrant.md
+
+##### Other
+
+- history.md
+- older-versions.md

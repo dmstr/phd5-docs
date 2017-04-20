@@ -7,6 +7,7 @@
 - [Requirements](introduction/requirements.md)
 - [Basic concepts](introduction/basic-concepts.md)
 - [Demos](introduction/demos.md)
+- [Tutorial](tutorials/quick-start-planck.md)
 
 #### Development
 
@@ -39,27 +40,20 @@
 
 #### Tutorials
 
-##### Setup
-
-- [Quick start tutorial for planck](tutorials/quick-start-planck.md)
-- [Docker Cloud](tutorials/docker-cloud.md)
-
-##### Assets
-
-- [Asset bundles](tutorials/asset-bundles.md) *TODO*
-- [Asset compression](tutorials/asset-compression.md)
-
-##### Code
+##### Development
 
 - [Code generation](tutorials/code-generation.md)
 - [File migrations](tutorials/database-migrations-from-file.md)
 - [Generate docs](tutorials/documentation-generation.md)
 - [Develop vendor extensions with git repositories](tutorials/extension-development.md)
 - [Update application packages](tutorials/composer-update-packages.md)
+- [Upgrading applications](tutorials/upgrading.md)
+- [Logging](tutorials/logging.md)
 
-##### Testing
+##### Assets
 
-- [Testing Yii 2.0 extensions with phd Docker images](tutorials/testing-yii2-extensions.md) --- extension-testing.md
+- [Asset bundles](tutorials/asset-bundles.md)
+- [Asset compression](tutorials/asset-compression.md)
 
 ##### Database
 
@@ -72,19 +66,10 @@
 - docker-machine.md
 - docker-webserver.md
 
-##### Developer
-
-- [Logging](tutorials/logging.md)
-- [Code convetions](tutorials/code-conventions.md) *TODO*
-- [Upgrading applications](tutorials/upgrading.md)
-- [Toolchain](tutorials/toolchain.md)
-
-##### Installation
-
-- :warning: installation-composer.md
-- :warning: vagrant.md
-
 ##### Other
 
-- history.md
-- older-versions.md
+- [Testing Yii 2.0 extensions with phd Docker images](tutorials/testing-yii2-extensions.md)
+- [Classic PHP installation](tutorials/installation-composer.md)
+- [Vagrant](tutorials/vagrant.md)
+- [Toolchain](tutorials/toolchain.md)
+- [History](tutorials/history.md)

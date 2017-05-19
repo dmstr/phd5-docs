@@ -3,7 +3,8 @@
 ## On your host-system
 
 - [`docker >=1.10.0`](https://docs.docker.com)
-- [`docker-compose >=1.8.0`](https://github.com/docker/compose) *included in Docker for Mac and Windows*
+- [`docker-compose >=1.8.0`](https://github.com/docker/compose) *included in Docker for Mac and Windows*,
+  on Linux the fastest way to get it is probably `sudo pip install docker-compose`.
 - `git` (optional)
 - `make` (optional)
 
@@ -19,7 +20,7 @@ To test if your environment is ready, simply run the following status commands, 
 > :bangbang: Due to disk performance issues like ... it's currently a recommended workaround to run composer from your host system for
 > updates.
 
-    composer global require fxp/composer-assetplugin wikimedia/composer-merge-plugin
+    composer global require fxp/composer-asset-plugin wikimedia/composer-merge-plugin
 
 ## Non-dockerized installation
 

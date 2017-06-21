@@ -25,4 +25,5 @@ Create a new Page in **Pages** and choose the Route `/contact/default/index`
 and additional create a object in the Advanced section: `schema:name`
 
 ### Step 5
-Create a new authorization (Berechtigung) with the name 'contact_default_index' und assign it to the 'public user'
+Create a new authorization (Berechtigung) with the name `contact_default_index`
+und assign it to the `public user`

@@ -3,10 +3,15 @@
 
 ### Step 1
 Create Form in Settings. This 5 seetings are needed: 
+
 `name.schema`
+
 `name.confirmMail`
+
 `name.fromEmail`
+
 `name.subject`
+
 `name.toEmail`
 
 ### Step 2

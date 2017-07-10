@@ -55,6 +55,13 @@ Run codeception directly *(container bash)*
 
 > :bulb: Basically tests should be independent from each other. But depending on your setup `cli` tests can be used to initialize the test environment for the application. 
 
+## Writing tests
+
+    make bash
+    
+    $ codecept generate:cept e2e folder/StartCept
+ 
+
 ### Advanced usage
     
 If you add a new module to a suite or after Codeception updates, you may need to re-build tester classes

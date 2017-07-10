@@ -14,6 +14,7 @@
  - [Widget Templates](frontend-developer/module-widget-template.md)
  - [Twig Layouts](frontend-developer/module-prototype-twig.md)
  - [Settings](frontend-developer/module-settings.md)
+ - [Contact Forms](frontend-developer/modul-contact.md)
  
 #### Admin
  

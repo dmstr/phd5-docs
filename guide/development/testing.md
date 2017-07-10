@@ -3,6 +3,7 @@ Testing
 
 ## TL;dr
 
+    make init
     cd tests
     make all
     make run-tests

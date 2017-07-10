@@ -22,6 +22,11 @@ Example: Gitlab CI
 
 ### GitLab CI
 
+Add variable `REGISTRY_HOST`
+
+
+---
+
 Example trigger for [`stacks-staging`](https://git.hrzg.de/dangerzone/stacks-staging)
 
     deploy:latest:
@@ -43,6 +48,7 @@ Set **Variables**
 
 - `PHP_IMAGE_NAME`	registry.example.com/namespace/project_php
 - `GITHUB_API_TOKEN`	abcd1234
+
 
 ### Workflow
 
@@ -71,6 +77,13 @@ Adjust your `Dockerfile` and build `FROM phundament/app:production`.
 
     make build
 
+-----
+
+Setup ENv variables in roj
+PROJECT_TOKEN
+
+
+
 ### Travis
 
 Push example
@@ -93,3 +106,12 @@ Production
 
 
 Push to branch `foo` results in Docker image `appsrc:foo`.
+
+---
+
+<div class="mermaid">
+graph LR;
+    Local-->Repository;
+    Repository-->Image;
+    Image-->Registry;
+</div>

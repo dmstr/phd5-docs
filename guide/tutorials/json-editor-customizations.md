@@ -1,4 +1,13 @@
-# custom editor
+# Custom editor
+
+First of all when we use the word "editor" in the JSONEditor world we are 
+actually saying "input". Every input in the generated form is an editor. So an
+editor can be a textarea, a checkbox, a bunch of radio buttons, etc.
+
+JSONEditor comes with built in editors but we can "build" our custom editor
+to. In order to build an editor we have to "extend" (javascript does not have 
+inheritance) the built in "JSONEditor.AbstractEditor" class. and add it to the
+`JSONEditor.defaults.editors` object.
 
 In example a date picker editor that needs (as a dependency) the jquery datepicker.
 
@@ -99,7 +108,8 @@ In example a date picker editor that needs (as a dependency) the jquery datepick
 
 # Add the editor resolver
 
-In order to use a custom editor you have to register it, like this
+In order to **USE** a custom editor you have to **REGISTER** it adding a "resolver" into
+the `JSONEditor.defaults.resolvers` object, like this:
 
     JSONEditor.defaults.resolvers.unshift(function(schema) {
         if(schema.format === 'datepicker') {
@@ -109,7 +119,7 @@ In order to use a custom editor you have to register it, like this
     
 after registration you can add something like this in your schema
 
-   "Datum": {
+    "Datum": {
        "title": 'Date',
        "type": "string",
        "format": "datepicker",
@@ -120,17 +130,13 @@ after registration you can add something like this in your schema
            "dayNamesMin": [ "So", "Mo", "Di", "Mi", "Do", "Fr", "Sa" ],
            "hideIfNoPrevNext": true,
            "firstDay": 1
-       },
-       "propertyOrder": 1,
-       "required": true,
-       "options": {
-           "grid_columns": 3
        }
-   }
+    }
 
-# custom validator
+# Custom validator
 
-In example a custo validator that will be applied to schemas that have `format === "datepicker"` 
+In example a custom validator that will be applied to schemas that have
+`format === "datepicker"`  **AND** `schema.required === true`
 
     JSONEditor.defaults.custom_validators.push(function(schema, value, path) {
       var errors = [];
@@ -148,7 +154,24 @@ In example a custo validator that will be applied to schemas that have `format =
       return errors;
     });
     
-# add custom language error messages and set default language
+now you can add a `required` property to the datepicker schema
+
+       "Datum": {
+           "title": 'Date',
+           "type": "string",
+           "format": "datepicker",
+           "datepickerOptions": {
+               "dateFormat": "dd-mm-yy",
+               "constrainInput": false,
+               "monthNames": [ "Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember" ],
+               "dayNamesMin": [ "So", "Mo", "Di", "Mi", "Do", "Fr", "Sa" ],
+               "hideIfNoPrevNext": true,
+               "firstDay": 1
+           },
+           "required": true    // <------- here
+       }
+    
+# Add custom language error messages and set default language
 
     JSONEditor.defaults.language = "es";
     

@@ -192,7 +192,3 @@ In example a custo validator that will be applied to schemas that have `format =
     	button_collapse: "colapso"
     	button_expand: "Ampliar"
     };
-
-# COMMING SOON
-
-error messages on validate

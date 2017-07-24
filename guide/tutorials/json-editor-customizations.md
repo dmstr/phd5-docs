@@ -215,3 +215,29 @@ now you can add a `required` property to the datepicker schema
     	button_collapse: "colapso"
     	button_expand: "Ampliar"
     };
+
+# YII integration: Asset Bundle
+
+    namespace app\assets;
+    
+    use yii\web\AssetBundle;
+    
+    class JsonEditorExtraAsset extends AssetBundle
+    {
+        public $sourcePath = '@app/assets/web';
+    
+        public $js = [
+            'js/editors/datepicker.js',
+            'js/languages/de.js',
+        ];
+    
+        public $depends = [
+            'beowulfenator\JsonEditor\JsonEditorAsset',
+        ];
+    }
+    
+Registering with Twig:
+
+    {{ use ('app/assets/JsonEditorExtraAsset') }}
+    {{ register_json_editor_extra_asset() }}
+    

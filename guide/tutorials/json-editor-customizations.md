@@ -96,46 +96,60 @@ In example a date picker editor that needs (as a dependency) the jquery datepick
     
     });
 
-# Add the editor resolver
+# Resolvers: using custom editors
 
-In order to **USE** a custom editor you have to **REGISTER** it adding a "resolver" into
-the `JSONEditor.defaults.resolvers` object, like this:
+JSONEditor uses **resolvers** to know wich editor to use with a specific schema.
+First it must know the type of **value** (string, boolean, number, etc), and 
+optionally the **format** (color, table, html, checkbox, etc).
+In fact a checkbox could be used for a boolean type but also for a string type.
+You can add extra resolvers to JSONEditor.
+If we want to tell JSONEditor that we want to use our custom datepicker editor
+with the following schema:
+
+        "date": {
+           "type": "string",
+           "format": "datepicker"
+        }
+
+Then we must tell JSON Editor that any schema that has type "string" and format 
+"datepicker" must resolve (use) the datepicker edito. like this:
 
     JSONEditor.defaults.resolvers.unshift(function(schema) {
-        if(schema.format === 'datepicker') {
+        if(schema.format === 'datepicker' && schema.type === 'string') {
             return 'datepicker'
         }
     });
     
-after registration you can add something like this in your schema
+If two resolvers follow the same parameters, the new one will be used instead.
 
-    "Datum": {
-       "title": 'Date',
-       "type": "string",
-       "format": "datepicker",
-       "datepickerOptions": {
-           "dateFormat": "dd-mm-yy",
-           "constrainInput": false,
-           "monthNames": [ "Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember" ],
-           "dayNamesMin": [ "So", "Mo", "Di", "Mi", "Do", "Fr", "Sa" ],
-           "hideIfNoPrevNext": true,
-           "firstDay": 1
-       }
-    }
 
 # Custom validator
 
-In example a custom validator that will be applied to schemas that have
-`format === "datepicker"`  **AND** `schema.required === true`
+The process of adding custom validations is similar to the resolver process.
+Let's say we want the value of our datepicker to be setted and to do so
+we modify our scheme like this:
 
-    JSONEditor.defaults.custom_validators.push(function(schema, value, path) {
+        "date": {
+           "type": "string",
+           "format": "datepicker",
+           "setted": true
+        }
+
+We need to tell JSONEditor again which parameters must follow. like this:
+
+    JSONEditor.defaults.datepicker.push(function(schema, value, path) {
         var errors = [];
-        if(schema.format === "datepicker" && schema.required === true) {
+        if(schema.format === "datepicker" && schema.type === 'string' && schema.setted === true) {
+        
+            function isSet(pValue) {
+                // isSet validation code that
+                // returns true if value is setted
+            }
     
-            if(typeof value === 'undefined' || value === '') {
+            if(!isSet(value)) {
                 errors.push({
                     path: path,
-                    property: 'required',
+                    property: 'setted',
                     message: this.translate("error_notset")
                 });
             }
@@ -143,69 +157,35 @@ In example a custom validator that will be applied to schemas that have
         }
         return errors;
     });
-    
-now you can add a `required` property to the datepicker schema
 
-       "Datum": {
-           "title": 'Date',
-           "type": "string",
-           "format": "datepicker",
-           "datepickerOptions": {
-               "dateFormat": "dd-mm-yy",
-               "constrainInput": false,
-               "monthNames": [ "Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember" ],
-               "dayNamesMin": [ "So", "Mo", "Di", "Mi", "Do", "Fr", "Sa" ],
-               "hideIfNoPrevNext": true,
-               "firstDay": 1
-           },
-           "required": true    // <------- here
-       }
-    
-# Add custom language error messages and set default language
+Note the JSONEditor.defaults.`datepicker`.push part.
 
-    JSONEditor.defaults.language = "es";
+If the editor does not have a valid value an error object will be created and
+returned to JSONEditor. The `this.translate("error_notset")` is a JSONEditor 
+feature for i18n. Read the netxt topic for more information.
     
+# i18n (add translations)
+    
+JSON Editor uses a translate function to generate strings in the UI. A default en
+language mapping is provided. You can easily override individual translations in
+the default language or create your own language mapping entirely.
+
+-Override a specific translation
+
+    JSONEditor.defaults.languages.en.error_minLength = "This better be at least {{0}} characters long or else!";
+
+-Create your own language mapping. Any keys not defined here will fall back to
+the "en" language
+
     JSONEditor.defaults.languages.es = {
-    	error_notset: "La propiedad se debe establecer"
-    	error_notempty: "valor requerido",
-    	error_enum: "El valor debe ser uno de los valores enumerados"
-    	error_anyOf: "El valor debe validar contra al menos uno de los esquemas previstos"
-    	error_oneOf: 'El valor debe validar contra Exactamente uno de los esquemas previstos. En la actualidad valida contra {{0}} del régimen ».
-    	error_not: "El valor no debe validar contra el esquema proporcionado"
-    	error_type_union: "El valor debe ser uno de los tipos previstos"
-    	tipo_error: "El valor debe ser del tipo {0} {}"
-    	error_disallow_union: "El valor no debe ser uno de los tipos previstos no permitidos"
-    	error_disallow: "El valor no debe ser del tipo {0} {}"
-    	error_multipleOf: "El valor debe ser un múltiplo de {0} {}"
-    	error_maximum_excl: "El valor debe ser inferior a {0} {}"
-    	error_maximum_incl: "El valor debe ser como máximo {{0}}"
-    	error_minimum_excl: "El valor debe ser mayor que {0} {}"
-    	error_minimum_incl: "El valor debe ser al menos {0} {}"
-    	error_maxLength: "El valor debe ser en la mayoría de {{0}} caracteres"
-    	error_minLength: "El valor debe ser al menos {0} {} caracteres"
-    	error_pattern: "El valor debe coincidir con el patrón {0} {}"
-    	error_additionalItems: "No hay datos adicionales permitidos en esta matriz"
-    	error_maxItems: "El valor debe tener como máximo {{0}} artículos"
-    	error_minItems: "Valor debe tener al menos {0} {} artículos"
-    	error_uniqueItems: "array debe tener objetos únicos"
-    	error_maxProperties: "El objeto debe tener como máximo {{0}} propiedades"
-    	error_minProperties: "El objeto debe tener al menos {0} {} propiedades"
-    	error_required: "El objeto no se encuentra la propiedad requerida '{0} {}'"
-    	error_additional_properties: "No hay propiedades adicionales permitidos, pero la propiedad {0} {} se establece"
-    	error_dependency: "debe tener la propiedad {0} {}"
-    	button_delete_all: "Todo"
-    	button_delete_all_title: "Eliminar todo"
-    	button_delete_last: "Última {{0}}"
-    	button_delete_last_title: "Eliminar último {{0}}"
-    	button_add_row_title: "Añadir {{0}}"
-    	button_move_down_title: "Bajar"
-    	button_move_up_title: "Mover hacia arriba"
-    	button_delete_row_title: "Eliminar {{0}}"
-    	button_delete_row_title_short: "Borrar"
-    	button_collapse: "colapso"
-    	button_expand: "Ampliar"
+      error_notset: "propiedad debe existir"
     };
 
+By default, all instances of JSON Editor will use the en language. To override
+this default, set the JSONEditor.defaults.language property.
+
+    JSONEditor.defaults.language = "es";  
+    
 # YII integration: Asset Bundle
 
     namespace app\assets;

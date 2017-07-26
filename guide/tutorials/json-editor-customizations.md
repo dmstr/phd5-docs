@@ -1,15 +1,24 @@
 # Custom editor
 
-First of all when we use the word "editor" in the JSONEditor world we are 
-actually saying "input". Every input in the generated form is an editor. So an
-editor can be a textarea, a checkbox, a bunch of radio buttons, etc.
+In the JSONEditor world, every input in a form is an Editor.
+An editor can be a textarea, a checkbox, a bunch of radio buttons, etc.
+JSONEditor "build" the form editor following parameters that are defines in a
+json schema. Very important are the "type" and the "format properties"
+for example this
+
+    "username": {
+       "type": "string",
+       "format": "checkbox"
+    }
+
+will produce an input type checkbox whos value is a string.
 
 JSONEditor comes with built in editors but we can "build" our custom editor
-to. In order to build an editor we have to "extend" (javascript does not have 
-inheritance) the built in "JSONEditor.AbstractEditor" class. and add it to the
-`JSONEditor.defaults.editors` object.
+to. In order to build an editor we have to "extend" the built in
+"JSONEditor.AbstractEditor" class. and add it to the `JSONEditor.defaults.editors`
+object.
 
-In example a date picker editor that needs (as a dependency) the jquery datepicker.
+In example a datepicker editor (needs the jquery datepicker).
 
     JSONEditor.defaults.editors.datepicker = JSONEditor.AbstractEditor.extend({
         build: function () {
@@ -29,7 +38,7 @@ In example a date picker editor that needs (as a dependency) the jquery datepick
             // input
             self.input = document.createElement('input');
             self.input.type = 'text';
-            self.input.name = self.formname; // IMPORTANT
+            self.input.name = self.formname; // IMPORTANT this will set the correct name of the input
             self.input.classList.add('form-control');
             self.group.appendChild(self.input);
     
@@ -43,8 +52,8 @@ In example a date picker editor that needs (as a dependency) the jquery datepick
             self.customDatepickerOptions = self.schema.datepickerOptions ? self.schema.datepickerOptions : {};
             self.customDatepickerOptions.minDate = new Date();
             self.customDatepickerOptions.onSelect = function(selectedDate) {
-                self.value = selectedDate; // IMPORTANT
-                self.onChange(true); // IMPORTANT
+                self.value = selectedDate;
+                self.onChange(true); // IMPORTANT this will tell JSONEditor that something change (the value)
                 if(self.jsoneditor.options.show_errors !== "never") {
                     window.requestAnimationFrame(function() {
                         if (self.validate()) {

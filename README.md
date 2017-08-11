@@ -31,4 +31,4 @@ phd5
 
 ---
 
-### ![dmstr logo](http://t.phundament.com/dmstr-16-cropped.png) Built by [dmstr](http://diemeisterei.de)
+### ![dmstr logo](https://t.phundament.com/dmstr-16-cropped.png) Built by [dmstr](http://diemeisterei.de)

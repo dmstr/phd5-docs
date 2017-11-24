@@ -1,0 +1,19 @@
+{
+  "name": "phd5-docs",
+  "version": "1.0.0",
+  "description": "make bash",
+  "main": "index.js",
+  "dependencies": {
+    "remark-cli": "^4.0.0",
+    "remark-lint-blank-lines-1-0-2": "^2.0.0",
+    "remark-lint-code": "^2.0.0",
+    "remark-preset-lint-recommended": "^3.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint-md": "remark -r ./.remarkrc"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,7 +1,8 @@
 version: '2'
 services:
     php:
-      image: dmstr/phd5-app:5.1.0-rc1
+      image: dmstr/phd5-app:5.1.0-rc2
+      working_dir: /phd5-docs/.app
       ports:
         - 17200:80
       depends_on:
@@ -12,13 +13,16 @@ services:
         - DB_ENV_MYSQL_PASSWORD=ENTER_A_STRONG_RANDOM_PASSWORD_HERE
         - DB_ENV_MYSQL_USER=phd
         - DB_ENV_MYSQL_DATABASE=docs
-        - APP_TITLE=phd5 docs
-        - APP_CONFIG_FILE=/docs-phd5/.app/config/docs.php
+        #- APP_TITLE=phd5 docs
+        - APP_CONFIG_FILE=/phd5-docs/.app/config/docs.php
         - APP_ADMIN_EMAIL=docs@phd5.local
         - APP_ADMIN_PASSWORD=admin1
         - APP_MAILER_USE_FILE_TRANSPORT=1
+        - COMPOSER_VENDOR_DIR=/phd5-docs/.app/vendor
       volumes:
-        - ./:/docs-phd5
+        # Re-use local composer cache via host-volume
+        - ~/.composer-docker/cache:/root/.composer/cache:delegated
+        - ./:/phd5-docs
     redis:
         image: redis:3
     db:

@@ -1,7 +1,7 @@
 version: '2'
 services:
     php:
-      image: dmstr/phd5-app:5.1.0-rc2
+      image: dmstr/phd5-app:5.1.0-rc3
       working_dir: /phd5-docs/.app
       ports:
         - 17200:80

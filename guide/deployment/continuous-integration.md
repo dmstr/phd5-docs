@@ -1,117 +1,109 @@
 Continuous integration
 ======================
 
-> TODO: build -> version only in test
+*phd* is designed to easily run in various CI/CD tools supporting *Docker*.
 
-## Using *Git* branches to build releases and trigger deployments
- 
-    make latest
+
+## Introduction
+
+### Workflow diagram
+
+<div class="mermaid">
+
+graph LR;
+    build(Build)
+    test(Testing)
+    release(Release)
+    image((Image))
+
+    subgraph CI
+        build
+        test
+        release
+    end
     
-    make release
+subgraph Registry
+image
+end
+
+build==>test
+test==>release
+test-->report
+release-->image
+
+</div>
+
+- Clone application from local repository
+- Start application `make all`
+- Make changes in local development stack
+- Run tests in isolated local testing stack `make TEST up setup run-tests`
+- Commit (triggers CI)
+- CI builds images
+- CI starts isolated stacks (by setting custom `COMPOSE_PROJECT_NAME`s) from built images and performs setup operations
+- CI runs tests (also acceptance tests with Selenium containers)
+- CI creates reports
+- CI performs cleanup of isolated stacks
+- CI tags images and pushes them to a registry (if tests were successful)
 
 
-Example: Gitlab CI
 
-- build
-- test
-- report
-- deploy
-- cleanup
+## Configuration
 
-> http://docs.gitlab.com/ce/ci/yaml/README.html
-
-### GitLab CI
-
-Add variable `REGISTRY_HOST`
-
+During local development the images build for the application stack are named by `docker-compose`, if not specified otherwise. For testing they are by default named `registry/namespace/phd5` via setting the `STACK_PHP_IMAGE` variable used in `docker-compose.test.yml`.
+In the CI we override this variable by setting it in the configuration to the actual image name we want to push later, eg. `registry.example.com/mycomany/the-project` for private registries or `vendor/image` for usage with *DockerHub*. 
 
 ---
 
-Example trigger for [`stacks-staging`](https://git.hrzg.de/dangerzone/stacks-staging)
 
-    deploy:latest:
-      stage: deploy
-      script:
-        - curl -X POST -F token=${PROJECT_TOKEN} -F ref=${PROJECT_REF} -F "variables[REDEPLOY_STACK_DIR]=${STACK_DIR}"  https://git.hrzg.de/api/v3/projects/256/trigger/builds
-      only:
-        - latest
+## Usage
+
+### Using *Git* branches to build releases and trigger deployments
+
+Build, test and push a `:latest` image
+
+```
+make latest
+```
+
+Build, test and push a `:1.2.3-4-gfedcba98` image
+
+```
+make release
+```
+
+---
+
+Setup ENv variables in roj PROJECT_TOKEN
+
+
+
+----
+
+
+## Deployment
 
 Variables:
 
-- `PROJECT_TOKEN` - token from `stacks-staging` project
-- `PROJECT_REF` - branch, usually `master`
-- `PROJECT_DIR` - location of `docker-compose.yml`, eg. `auto/cusomter/www.example.com`
+-	`PROJECT_TOKEN` - token from `stacks-staging` project
+-	`PROJECT_REF` - branch, usually `master`
+-	`PROJECT_DIR` - location of `docker-compose.yml`, eg. `auto/cusomter/www.example.com`
 
-### Setup
-
-Set **Variables**
-
-- `PHP_IMAGE_NAME`	registry.example.com/namespace/project_php
-- `GITHUB_API_TOKEN`	abcd1234
-
-
-### Workflow
-
-1. Clone application from local repository
-2. Start application `make all`
-3. Make changes in local development stack
-4. (optional) Run tests in isolated local testing stack `make TEST up setup run-tests`
-5. Commit (triggers CI)
-6. CI builds images
-7. CI starts isolated stacks (by setting custom `COMPOSE_PROJECT_NAME`s) from built images and performs setup operations
-8. CI runs tests (also acceptance tests with Selenium containers)
-9. CI creates reports
-10. CI performs cleanup of isolated stacks
-11. CI tags images and pushes them to a registry (if tests were successful)
-
-
-Run the test suites from build scripts
-
-    $ sh build/scripts/build.sh
-    $ sh build/scripts/test.sh
-
-
-#### Building the `:production` image
-
-Adjust your `Dockerfile` and build `FROM phundament/app:production`.
-
-    make build
-
------
-
-Setup ENv variables in roj
-PROJECT_TOKEN
-
-
-
-### Travis
-
-Push example
-
-```
-after_success: |
-  docker login -u="$REGISTRY_USER" -p="$REGISTRY_PASS" $REGISTRY_HOST
-  if [ "${TRAVIS_BRANCH}" = "release" ]; then
-    docker tag ${STACK_PHP_IMAGE} ${STACK_PHP_IMAGE_LATEST}
-    docker-compose push || exit 1
-    docker push ${STACK_PHP_IMAGE_LATEST} || exit 1
-  fi
-  docker logout
-```
-
-Production
-----------
-
-- All images MUST BE tagged
-
-
-Push to branch `foo` results in Docker image `appsrc:foo`.
-
----
 
 <div class="mermaid">
+
 graph LR;
-    Local-->Repository;
-    Repository-->Image;
-    Image-->Registry;
+ deploy(Deployment)
+ image((Image))
+
+ image---server
+ deploy-->server
+
+subgraph CI
+ deploy
+end
+subgraph Registry
+ image
+end
+
 </div>
+

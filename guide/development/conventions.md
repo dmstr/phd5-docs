@@ -1,85 +1,25 @@
-## Code conventions
+# Code conventions
 
-Branches
---------
+## Source-Code
+
+### Git branches
 
 The phd repository contains the following main branches:
 
 - master (development, unstable)
-- 4.0 (alpha, beta, RC, stable releases)
-- 3.0 (alpha, beta, RC, stable releases)
+- x.y (alpha, beta, RC, stable releases)
 
-
-- DO not add secrets....
-
-### Source-Code
-
-- all code, variables, tables, databases, constants - everything in the source code **MUST BE** written and named in English
-
-#### PHP
+### PHP
 
 - PSR-2
-
-##### Console
-
-end of command:
-
-    $this->stdout("Done.\n");    
-
-
-#### LESS
-
-- CSS framework core classes, eg. `container`, `row`, `col-*` **MUST NOT** be modified
-
-#### docker-compose
-
-##### Production
-
-- nginx web services in production **SHOULD** define a `VIRTUAL_HOST` environment variable, which is used by the reverse-proxy
-
-
-### Documentation
-
-- `README.md` in project root (max. 300 lines)
-- `docs/` detailed project documentation
-  - `docs/README.md` index
-  - `docs/troubleshooting.md` "Esoteric features"
-- Source-code docblocks
-
------
-
-# Coding conventions
-
-> **Heads up!** This section is under development.
-
-- DO NOT repeat yourself
-- USE PSR-2
-
-## Confiuration
-
-- MUST NOT contain secrects
-
-## Docker
-
-- host-volumes MUST NOT overlap
-- all containers SHOULD keep running, eg. data-containers with `tail -f /dev/null`
-
-## Database (MySQL)
-
-- camelCase_id
-- MUST USE non-project specific default values
-- SHOULD have an idempotent setup (see `BaseAppCommand`)
-
-## PHP
-
-### Classes
-
-- MUST USE English names
-
-### Variables
-
-- camelCase
-- $this->table_field;
+- all code, variables, tables, databases, constants - everything in the source code **MUST BE** written and named in English
+- resources **SHOULD NOT** be loaded from a server or CDN during development & testing 
+- migrations **MUST NOT** be changed after they are comitted and pushed
+- migrations **MUST NOT** use model classes
+- committed code **MUST NOT** contain secrets
+- classes **MUST** use English names
+- variables in code **SHOULD** use `camelCase`
+- database properties **SHOULD** use `$this->table_field`
 
 ### Yii 
 
@@ -87,18 +27,57 @@ end of command:
 - SHOULD use `Yii::info()` or `Yii::trace()`, NOT `Yii::getLogger->(..., ..., ...)`
 - SHOULD NOT use `application.language = null` with `codemix/yii2-localeurls`
 - SHOULD NOT use static `::className()` calls in application configuration  
+- Console commands **SHOULD** print a newline at the end of their output `$this->stdout("Done".PHP_EOL)`    
 
-### Giiant (Backend CRUD)
+### Widgets
 
-- providers MUST NOT be copied into the project, may can extend a new class
-- SHOULD contain `Id` columns
+- references **SHOULD NOT** use absolute URLs
 
+### Twig
 
-## CSS
+- If attributes in *Twig* templates need to be translated and scanned by the **Translatemanager** module you need to use the following syntax 
+
+      data-content={{ t('catalogue', '__TOOLTIP_TEXT__'  | escape('html_attr')) }}
+
+### LESS/CSS
+
+- CSS framework core classes, eg. `container`, `row`, `col-*` **MUST NOT** be modified
 - SHOULD use hyphens for CSS classes and ID's i.e. `.my-class` and `#my-id`
 - https://github.com/CSSLint/csslint/wiki/disallow-ids-in-selectors
 
-## JavaScript
+### Giiant (Backend CRUD)
 
-## bash
+- providers **MUST NOT** be copied into the project, may can extend a new class
+- SHOULD contain `Id` columns
+
+
+## Docker
+
+### Volumes
+
+- host-volumes **MUST NOT** overlap
+- host-volumes **SHOULD NOT** contain single files
+
+### Images
+
+- All production images **MUST BE** tagged
+
+
+## Documentation
+
+- `README.md` in project root (max. 300 lines)
+- `docs/` detailed project documentation
+  - `docs/README.md` index
+  - `docs/troubleshooting.md` "Esoteric features"
+- Source-code docblocks
+
+
+## Database (MySQL)
+
+- camelCase_id
+- **MUST USE** non-project specific default values
+- **SHOULD** have an idempotent setup (see `AppCommand`)
+
+
+
 

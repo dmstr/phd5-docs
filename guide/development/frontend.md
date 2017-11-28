@@ -31,7 +31,7 @@ View files can be found in `src/views/layouts`.
 
 ## Debugging application
 
-- /debug
+- `/debug`
 
 
 Events
@@ -39,26 +39,5 @@ Events
 
 ### Context menu items
 
-
-
-Module: Prototype
---------
-
-This module has very limited features and has been mainly developed to create tiny static sites. It basically allows
-you to add HTML and LESS files to your site. 
-
-### Create asset bundle for LESS from the database
-
-See [Online help](https://github.com/dmstr/docs-phd5/blob/master/help/frontend-less.md)
-
-- go to `/prototype/less`
-- create key `main`
- - add example LESS content
-- save
-
-
-### Create widget for view contents
-
-See [Online help](https://github.com/dmstr/docs-phd5/blob/master/help/frontend-twig.md)
-
+TBD
 

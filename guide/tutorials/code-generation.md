@@ -35,7 +35,11 @@ To add it to your application adjust configuration in `src/config/common.php`.
         ]
     ];
     
-You should now be able to access to module default page via `/frontend` in your browser.    
+You should now be able to access to module default page via `/frontend` in your browser.
+    
+> :information_source: Please note that standard Yii modules do not have access control enabled by default.
+
+The generated source-files, like controllers and views can be found in `src/modules/frontend`.
 
 Backend CRUD module
 -------------------

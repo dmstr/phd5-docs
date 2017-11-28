@@ -16,7 +16,7 @@ Enter your docker-host IP and the mapped host-port of the database container int
 Or you can add an web-based management interface like `clue/adminer` or `phpmyadmin/phpmyadmin`. Usually these
 containers can be linked to the database server.
 
-> Note! Links  will become deprecated in a future version of Docker. 
+> Note! Links will become deprecated in a future version of Docker. 
 
 
 Using a PostgreSQL database
@@ -68,3 +68,7 @@ Run migrations and create an admin
     
     $ yii migrate
     $ yii app/setup-admin-user
+
+----
+
+TBD: Table prefix info

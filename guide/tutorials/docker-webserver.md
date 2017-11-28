@@ -7,15 +7,11 @@ Custom configuration `build/container-files/etc/nginx/conf.d/app.conf`.
 
 ### Customizing startup and webserver configuration
 
-You can build your custom container image on top of the [phd Docker container](https://registry.hub.docker.com/u/phundament/app/) ([repository](https://github.com/phundament/docker)). 
-Just use the `FROM` instruction in your `Dockerfile`
+You can add your custom configuration to he container image on top of `dmstr/php-yii2` or `phd5-app`  
+Grab the file from a running container by copying it into the `image-files` directory.
 
-    FROM phundament/app
-
-Start or use a running container to copy the startup files into your `build/` directory.
-
-    docker cp app_web_1:/root/run.sh build/
-    docker cp app_web_1:/etc/nginx/sites-available/default build/
+    mkdir -p image-files/etc/nginx/nginx.conf
+    docker cp app_php_1:/etc/nginx/nginx.conf image-files/etc/nginx/nginx.conf
     
 #### BASIC_AUTH example
 

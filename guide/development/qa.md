@@ -27,6 +27,12 @@ Sitemap
 HTML-Validator
 --------------
 
+    docker run --rm magnetikonline/html5validator \
+        java -jar /root/build/validator.nu/vnu.jar \
+        URL 
+
+Run via `docker-compose.yml`
+
     validator:
       image: magnetikonline/html5validator
       entrypoint: ["java", "-jar", "/root/build/validator.nu/vnu.jar"]

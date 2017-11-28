@@ -141,3 +141,27 @@ Console vs. Web config
 ----
 
 TBD: VersionCept: Check application versioning
+
+----
+
+### Speedup MySQL
+
+    db:
+      tmpfs:
+        - /var/lib/mysql
+
+
+---
+
+- [Codeception Page load helper](https://gist.github.com/schmunk42/d0a388bc3562bf9bb8eafe153b9b7870)
+
+---
+
+### Testing with different images using triggers
+
+    curl -X POST \
+         -F token=${TOKEN} \
+         -F "ref=tests/mysql" \
+         -F "variables[STACK_MYSQL_IMAGE]=mysql:5.5" \
+         https://gitlab.com/api/v3/projects/2370540/trigger/builds
+ 

@@ -19,8 +19,11 @@
 - docker
 - docker-compose
 - docker-swarm
-
 - docker-roj
+
+---
+
+- https://github.com/pwaller/docker-show-context
 
 ### Docker images
 
@@ -102,6 +105,8 @@
  - https://github.com/neam/docker-stack/tree/master/stacks/schmunk42/elk-v2
 - phpservermon
 
+- https://github.com/nicolaka/netshoot (Troubleshooting)
+
 ### QA
 
 - https://packagist.org
@@ -129,6 +134,7 @@
 
 - http://fontcdn.org/
 - http://bootstrap-live-customizer.com/
+- https://startbootstrap.com/
 
 
 ### Applications

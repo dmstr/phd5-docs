@@ -1,4 +1,4 @@
-Troubleshooting
+FAQ/Troubleshooting
 ===============
 
 For more frequently asked questions (FAQ) see [GitHub](https://github.com/dmstr/docker-phd5-app/issues) and [Stackoverflow](http://stackoverflow.com/questions/tagged/phundament)
@@ -39,10 +39,8 @@ You need to use https://getcomposer.org/doc/articles/aliases.md, see also https:
     "asset-pattern-skip-version": "(-build|-patch)"
 
 
-
 Docker
 ------
-
 
 #### Port is already allocated
 
@@ -65,7 +63,6 @@ echo "nameserver 8.8.8.8" > /etc/resolv.conf && sudo /etc/init.d/docker restart
 See https://github.com/chadoe/docker-cleanup-volumes
 
     docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker --rm martin/docker-cleanup-volumes
-
 
 #### Service 'php' failed to build
 
@@ -108,6 +105,24 @@ Login docker CLI
 > Note! Check if Docker saves the credentials locally in `~/.docker`
 
 
+#### Slow running tests
+
+- check DNS settings
+- check shared memory settings for *Selenium* container (`/dev/shm`)
+- removed unnecessary host-volumes 
+
+#### `chown` commands in Dockefile
+
+For every file, which is "chownd" a copy is created...
+
+> The filesystem has to copy up the the file into the new layer so that it can be chowned.
+
+- https://github.com/moby/moby/issues/22810
+
+## Alpine
+
+- https://wiki.alpinelinux.org/wiki/Upgrading_Alpine#Upgrading_to_Edge
+
 
 ### Gitlab CI Server
 
@@ -125,6 +140,8 @@ In case of weird errors you have the following workaround options, which you sho
 - Create a new runner
 - Reboot the runner-host (runners should have `restart=always` policy)
 - Recreate the runner-host (**last resort**)
+
+
 
 #### Pushing
 

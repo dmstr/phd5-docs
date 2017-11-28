@@ -5,6 +5,10 @@ Installation
 > You can run phd also  with [composer](../6-tutorials/installation-composer.md) 
 > for example within a Vagrant VM. 
 
+## Choosing the right boilerplate
+
+TBD
+
 ## phd5-app
 
 When starting a new project it is recommended to **download the [latest release](https://github.com/dmstr/phd5-app/releases)**
@@ -39,6 +43,9 @@ very easy.
     
     composer install --ignore-platform-reqs -o
 
+---
+
+TBD: Note about dev-packages 
 
 ---
 

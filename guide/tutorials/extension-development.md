@@ -117,3 +117,8 @@ Set constraint to `@dev` before starting code modifications and run
 > into the package folder. `git status` should now your changes now.
 
 
+### Forking asset repositories
+
+TBD
+
+See also https://github.com/dmstr-forks

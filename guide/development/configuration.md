@@ -5,17 +5,22 @@ Configuration
 
 phd uses an environment variables based configuration, see also [Dev/prod parity](http://12factor.net/dev-prod-parity) for more information about this topic.
 
-There are two level of environment configurations.
- 
+
+There are two levels of environment configurations.
+
+Variables for controlling the application stacks *(outside on your host)* with `docker-compose`, are defined in 
+- `.env` files.
 
 
-**Variables for controlling the application stacks *(outside on your host)* with `docker-compose`, are defined in `.env` files.**
+Environment settings used within the application services *(inside a container)* are defined in 
+- `docker-compose.yml`, `docker-compose.<ENV>.yml` files (environment specific) 
+- `Dockerfile` and/or `src/app.env` (application defaults).
 
-**Environment settings used within the application services *(inside a container)* are defined in `*.yml` files and `src/app.env`.**
+See also hierarchy & scopes below for more information about variables.
 
-## Basic configuration
+## Host environment
 
-:exclamation: Before starting the application the first time, update your `.env-dist`, `tests/.env-dist` and `src/app.env` files with sane defaults for the new project.
+:exclamation: Before starting the application the first time, run `make init` to create your `.env` and `tests/.env` from `.dist`-files.
 
 ### Development stack
 
@@ -25,25 +30,24 @@ There are two level of environment configurations.
 
 ### Testing stack
 
-	COMPOSE_PROJECT_NAME=test-myapp
+	COMPOSE_PROJECT_NAME=testmyapp
 	STACK_PHP_IMAGE=local/namespace/myapp_php
 
 > Windows users, use a semicolon as path separator `COMPOSE_FILE=./docker-compose.yml;./docker-compose.dev.yml`
 
-### Application environment
-
-Initial configuration adjustments should be made for the following values
-
-	APP_NAME=myapp
-	APP_TITLE="MyApp"
-	APP_LANGUAGES=en,fr,zh
+## Application environment
 
 > `app.env-dist` should be adjusted and committed to reflect basic application settings, but we strongly recommend **not to add secrets** like passwords or tokens to the repository. 
 > Note: The `app.env-dist` file is intentionally copied as `app.env` onto the image. If you want to make changes during runtime, you also need to create a local file and mount this into the container.
 
-> To be able to use translatemanager every defined/used language must be present in the app_language table. 
-> You can insert new languages in backend:
-> http://<YOUR_DOMAIN>/translatemanager/language/create
+Initial configuration adjustments should be made for the following values:
+
+	APP_NAME=myapp
+	APP_TITLE="MyApp"
+	APP_LANGUAGES=en,fr,zh
+	
+> :build: Within a `phd5-app` we recommend to update `app.env-dist` settings, while in a `phd5-template` we usually update the `Dockerfile`.	
+
 
 ## Advanced configuration
 
@@ -57,6 +61,10 @@ Further important settings
  - `APP_MIGRATION_LOOKUP` - alias for additional migration paths eg. `@app/migrations/demo-data`
 
 For all available environment settings, see `src/app.env`.
+
+> To be able to use translatemanager every defined/used language must be present in the app_language table. 
+> You can insert new languages in backend:
+> http://<YOUR_DOMAIN>/translatemanager/language/create
 
 ### Development & debugging
 
@@ -72,10 +80,11 @@ You find the config files for an application in `src/config`, those can also be 
 
  - `config/main.php` - main application configuration entrypoint
  - `config/common.php` - configuration for web and console applcations
- - 
+
 
 > :exclamation: An important difference between application and environment configuration is that
-> ENV variables are immutable by default, but values in PHP arrays can be overwritten.
+> ENV variables are usually immutable by convention.
+
 
 
 ## Hierarchy & scopes
@@ -102,4 +111,3 @@ ENV variable are immutable by convention, so if a value is set in a `Dockerfile`
 
 Only values in `app.env` can be changed while the containers are running. If you change environment variables in 
 `docker-compose.yml` you need to restart your containers.  
-

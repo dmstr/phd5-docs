@@ -37,3 +37,8 @@ ___
 <code>Public:</code>
 
 Is an unauthenticated user
+
+
+Authorizations should combined in roles and those should be assigned to users.
+Depending on the module, you need to use *permissions* and/or *route Access*.
+

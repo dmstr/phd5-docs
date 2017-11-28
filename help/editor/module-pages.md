@@ -78,6 +78,15 @@ The `pages` module is a manager for sitemap trees.
 
 - Create "hidden node" in pages
 
+
+
+## Dashboard & Backend pages
+
+To create a page for the backend and dashboard, add the desired route, eg. `/crud` to pages' settings.
+Go to **Settings** and add `/crud` to the list in `pages.availableGlobalRoutes`.
+Next add a page to the *Backend* node and select `/crud` as its route.
+Authorizations are automatically checked via *route permissions*.
+
 ---
 
 :blue_book: [Extension README](https://github.com/dmstr/yii2-pages-module/blob/master/README.md)

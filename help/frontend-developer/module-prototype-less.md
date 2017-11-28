@@ -7,6 +7,27 @@ If you start with your new Website, you will find these two less files:
 
 `doro-widgets`
 
+---
+
+<div class="mermaid">
+graph TD
+  AppAsset
+  SettingsAsset
+  
+  SettingsAsset-->DbAsset
+  SettingsAsset-->FontAwesomeAsset
+  
+  DbAsset-.-registerPrototypeAssetKey
+  registerPrototypeAssetKey-.-default_main.less
+  
+  default_main.less-->widgets.less
+  default_main.less-->variables.less
+  
+  AppAsset---Source_Code 
+  
+</div>
+
+---
 
 ## Doro Main
 
@@ -66,3 +87,23 @@ Define your widget CSS, e.g.
 
     @import (inline) "/app/vendor/thomaspark/bootswatch/cyborg/bootstrap.css";
     @import (reference) "/app/vendor/bower/bootstrap/less/bootstrap.less";
+
+
+-----
+
+
+
+Module: Prototype
+--------
+
+This module has very limited features and has been mainly developed to create tiny static sites. It basically allows
+you to add HTML and LESS files to your site. 
+
+### Create asset bundle for LESS from the database
+
+See [Online help](https://github.com/dmstr/phd5-docs/blob/master/help/frontend-less.md)
+
+- go to `/prototype/less`
+- create key `main`
+ - add example LESS content
+- save

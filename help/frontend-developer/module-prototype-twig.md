@@ -26,6 +26,16 @@ Top, Main and Bottom Cell
     {{ cell_widget({id: 'top'}) }}
     {{ cell_widget({id: 'main'}) }}
     {{ cell_widget({id: 'bottom'}) }}
+    
+Replace Widget Edit Button e.g.
+
+    {{ cell_widget(
+        {
+            id: 'top',
+            positionWidgetControls: 'bottom',
+            positionContainerControls: 'bottom' 
+        }
+    ) }}
 
 Cells with custom request params 
 
@@ -37,6 +47,10 @@ Cells with custom request params
         }
     ) }}
 
+Custom layout
+
+    {{ set(this.context, 'layout', '@backend/views/layouts/box') }}   
+   
 
 ## Meta-Tags
 
@@ -49,6 +63,31 @@ You can register meta tags or link tags in global Twig widgets
         }
     ) }}
 
+## Twig Example Favicon
+
+    {# Header Link Tags #}
+
+    {{ this.registerLinkTag({'rel':'icon','href':'/filefly/api?action=stream&path=%2Fbrand%2Ffavicon%2Ffavicon.ico'}) }}
+    {{ this.registerLinkTag({'rel':'apple-touch-icon','size':'180x180','href':'/filefly/api?action=stream&path=%2Fbrand%2Ffavicon%2Fapple-touch-icon.png'}) }}
+    {{ this.registerLinkTag({'rel':'icon','type':'image/png','href':'/filefly/api?action=stream&path=%2Fbrand%2Ffavicon%2Ffavicon-32x32.png'}) }}
+    {{ this.registerLinkTag({'rel':'icon','type':'image/png','href':'/filefly/api?action=stream&path=%2Fbrand%2Ffavicon%2Ffavicon-16x16.png'}) }}
+    {{ this.registerLinkTag({'rel':'manifest','href':'/filefly/api?action=stream&path=%2Fbrand%2Ffavicon%2Fmanifest.json'}) }}
+    {{ this.registerLinkTag({'rel':'mask-icon','href':'/filefly/api?action=stream&path=%2Fbrand%2Ffavicon%2Fsafari-pinned-tab.svg','content':'#7a0727'}) }}
+    {{ this.registerMetaTag({'name':'theme-color','content':'#FFFFFF'}) }}
+
+
+## Twig Example Open Graph
+
+    {# Open Graph Tags #}
+
+    {{ this.registerMetaTag({'property':'og:title','content':'Neue Spinnerei - Restaurant & Bar'}) }}
+    {{ this.registerMetaTag({'property':'og:description','content':'Neues Leben ist erwacht in den Räumen der ehemaligen Baumwollspinnerei Aathal. Im Restaurant mit 150 Sitzplätzen servieren wir Ihnen ein kreatives Angebot an frisch gekochten Speisen.'}) }}
+    {{ this.registerMetaTag({'property':'og:url','content':'http://www.neue-spinnerei.ch.staging-2.oneba.se/de'}) }}
+    {{ this.registerMetaTag({'property':'og:image','content':'//www.neue-spinnerei.ch.staging-2.oneba.se/de/filefly/api?action=stream&path=%2Fbrand%2Fopengraph%2Ffacebook-img.jpg'}) }}
+    {{ this.registerMetaTag({'property':'og:image:width','content':'600'}) }}
+    {{ this.registerMetaTag({'property':'og:image:height','content':'337'}) }}
+    {{ this.registerMetaTag({'property':'og:image:type','content':'image/jpeg'}) }}
+
 
 ## JavaScript snippet
 
@@ -57,6 +96,54 @@ You can register meta tags or link tags in global Twig widgets
       ... paste your JavaScript here ...
     {% endset %}
     {{ this.registerJs(js) }}
+
+---
+
+___
+
+## Twig Example Favicon
+
+    {# Header Link Tags #}
+
+    {{ this.registerLinkTag({'rel':'icon','href':'/filefly/api?action=stream&path=%2Fbrand%2Ffavicon%2Ffavicon.ico'}) }}
+    {{ this.registerLinkTag({'rel':'apple-touch-icon','size':'180x180','href':'/filefly/api?action=stream&path=%2Fbrand%2Ffavicon%2Fapple-touch-icon.png'}) }}
+    {{ this.registerLinkTag({'rel':'icon','type':'image/png','href':'/filefly/api?action=stream&path=%2Fbrand%2Ffavicon%2Ffavicon-32x32.png'}) }}
+    {{ this.registerLinkTag({'rel':'icon','type':'image/png','href':'/filefly/api?action=stream&path=%2Fbrand%2Ffavicon%2Ffavicon-16x16.png'}) }}
+    {{ this.registerLinkTag({'rel':'manifest','href':'/filefly/api?action=stream&path=%2Fbrand%2Ffavicon%2Fmanifest.json'}) }}
+    {{ this.registerLinkTag({'rel':'mask-icon','href':'/filefly/api?action=stream&path=%2Fbrand%2Ffavicon%2Fsafari-pinned-tab.svg','content':'#7a0727'}) }}
+    {{ this.registerMetaTag({'name':'theme-color','content':'#FFFFFF'}) }}
+
+
+## Twig Example Open Graph
+
+    {# Open Graph Tags #}
+
+    {{ this.registerMetaTag({'property':'og:title','content':'Neue Spinnerei - Restaurant & Bar'}) }}
+    {{ this.registerMetaTag({'property':'og:description','content':'Neues Leben ist erwacht in den Räumen der ehemaligen Baumwollspinnerei Aathal. Im Restaurant mit 150 Sitzplätzen servieren wir Ihnen ein kreatives Angebot an frisch gekochten Speisen.'}) }}
+    {{ this.registerMetaTag({'property':'og:url','content':'http://www.neue-spinnerei.ch.staging-2.oneba.se/de'}) }}
+    {{ this.registerMetaTag({'property':'og:image','content':'//www.neue-spinnerei.ch.staging-2.oneba.se/de/filefly/api?action=stream&path=%2Fbrand%2Fopengraph%2Ffacebook-img.jpg'}) }}
+    {{ this.registerMetaTag({'property':'og:image:width','content':'600'}) }}
+    {{ this.registerMetaTag({'property':'og:image:height','content':'337'}) }}
+    {{ this.registerMetaTag({'property':'og:image:type','content':'image/jpeg'}) }}
+
+
+## Twig Example Google Analytics
+
+    {# Google Analytics Code #}
+    
+    {% set trackingCode %}
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-50480922-1', 'auto');
+      ga('send', 'pageview');
+    {% endset %}
+    
+    {{ this.registerJs(trackingCode) }}
+
+
 
 ___
 
@@ -171,7 +258,7 @@ Enable **setting** `app.layout.enableTwigNavbar` and create a **prototype/twig**
     
     {{ nav_bar_end() }}
 
-#### Lanuage Menu
+#### Language Menu
 
     {% set languageItems = [
         {
@@ -191,6 +278,12 @@ Enable **setting** `app.layout.enableTwigNavbar` and create a **prototype/twig**
             'items': languageItems
         }
     ) }}
+
+
+### Cookie Consent
+
+    {{ use('cinghie/cookieconsent/widgets') }}
+    {{ cookie_widget_widget() }}
 
 #### Items from application params
 
@@ -228,6 +321,19 @@ Enable **setting** `app.layout.enableTwigNavbar` and create a **prototype/twig**
         }
     ) }}
 
+### Filemanager
+
+
+    {{ use ('hrzg/filemanager/widgets') }}
+    {{ file_manager_widget_widget(
+        {
+            "handlerUrl": "/#{app.language}/filefly/api"
+        }
+    ) }}
+
+### Set a layout
+
+    {{ set(app.controller, 'layout', '@backend/views/layouts/main') }}
     
 ### Links
 

@@ -11,7 +11,7 @@ Login with `admin` / `admin1` and change the admin password.
 
 ### :construction_worker: Create users and assign roles
 
-![user-admin](./images/user-admin.png)
+![user-admin](../images/user-admin.png)
 
 - admin
 - dev (Developer)
@@ -24,7 +24,16 @@ Login with `admin` / `admin1` and change the admin password.
 
 - `/settings`
 
-![settings](./images/settings.png)
+![settings](../images/settings.png)
 
 
 Logout as admin.
+
+## General information
+
+You will find the current application identifier (`APP_NAME`) and version in the footer of the backend.
+
+
+----
+
+

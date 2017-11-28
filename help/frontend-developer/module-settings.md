@@ -17,3 +17,8 @@ The `settings` module provides an easy to use key/value-storage.
 - `<markdocs>.defaultIndexFile`
 - `<markdocs>.cachingTime`
 - `<markdocs>.htmlUrl`
+
+
+----
+
+TBD: Asset bundles via Settings

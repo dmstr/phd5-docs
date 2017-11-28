@@ -67,7 +67,7 @@ open http://$DOCKER_HOST_IP:21080
 
 Persistent defaults should be set in `Dockerfile` 
 
-For runtime changes you caan create a file under `src/local.env`. 
+For runtime changes you can create a file under `src/local.env`. 
 
     edit src/local.env
 

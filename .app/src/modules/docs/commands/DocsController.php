@@ -9,62 +9,55 @@
 
 namespace schmunk42\markdocs\commands;
 
+use schmunk42\markdocs\helpers\DocsHelper;
 use yii\console\Controller;
 use yii\helpers\FileHelper;
-use yii\helpers\Markdown;
 
 
 class DocsController extends Controller
 {
+    public $verbose = false;
+
     private $_basePath;
     private $_toc;
 
-    public function actionIndex($path)
+    public function options($actionID)
+    {
+        return ['verbose'];
+    }
+
+    public function actionCheckToc($path)
     {
         $this->_basePath = \Yii::getAlias($path);
         $this->stdout('Docs'.PHP_EOL);
-        $tocLinks = $this->parseToc();
+        $tocLinks = DocsHelper::parseToc($path, 'README.md');
         $files = FileHelper::findFiles($path, ['only' => ['*.md']]);
         foreach ($files AS $file) {
-            #\Yii::trace("Processing {$file}...");
-            $this->stdout("Processing {$file}...".PHP_EOL);
+            \Yii::trace("Processing {$file}...");
             $links[] = str_replace($path, '', $file);
         }
-        #var_dump($links, $tocLinks);
         $notInToc = array_diff($links, $tocLinks);
         $brokenLinks = array_diff($tocLinks, $links);
+
         var_dump($notInToc, $brokenLinks);
     }
 
-    private function markdownFileAsDomDocument($file)
+    public function actionEnvList($path)
     {
-        $html = Markdown::process(file_get_contents($file));
-        if (!$html) {
-            $this->stdout("EMPTY!");
-            return false;
+        $files = FileHelper::findFiles($path, ['only' => ['*.php'], 'except' => ['tests/']]);
+        $list = DocsHelper::findEnvVariables($files);
+
+        foreach ($list as $var => $occurences) {
+            $this->stdout("- `{$var}` ");
+            if ($this->verbose) {
+                $this->stdout("[".count($occurences)."] ");
+                foreach ($occurences as $occurence) {
+                    $this->stdout($occurence['file'].":".$occurence['line'].";");
+                }
+            }
+            $this->stdout(PHP_EOL);
         }
-        $doc = new \DOMDocument();
-        libxml_use_internal_errors(true);
-        $doc->strictErrorChecking = false;
-        $doc->loadHtml($html);
-        echo $html;
-        return $doc;
-
     }
 
-    private function getMarkdownFiles()
-    {
 
-    }
-
-    private function parseToc($tocFile = 'README.md')
-    {
-        echo $this->_basePath.'/'.$tocFile;
-        $xpath = new \DOMXPath($this->markdownFileAsDomDocument($this->_basePath.'/'.$tocFile));
-        $list = $xpath->query('//a');
-        foreach ($list AS $element) {
-            $links[] = $element->getAttribute('href');
-        }
-        return $links;
-    }
 }

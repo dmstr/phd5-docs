@@ -9,12 +9,8 @@ Optional but recommended
 
 - `git`
 - `make`
-- `composer`
 
-> :bangbang: Due to disk performance issues like ... it's currently a recommended workaround to run composer from your host system for
-> updates.
->
-> `composer global require fxp/composer-asset-plugin wikimedia/composer-merge-plugin`
+> :bangbang: If you have disk performance issues when running composer inside a Docker container, please refer to [Performance tuning for volume mounts](https://docs.docker.com/docker-for-mac/osxfs-caching/) for optimizations.
 
 
 ### Docker

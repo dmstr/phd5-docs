@@ -25,6 +25,25 @@ Full width header and container
 
 ----
 
+#### Scrolling
+
+    {# Scrolling #}
+    {% set scrolling %}
+        $(document).on('click', 'a[href^="#"]', function(event){
+            event.preventDefault();
+            $('html, body').animate({
+                scrollTop: $( $.attr(this, 'href').replace('/de/','') ).offset().top
+            }, 500);
+        });
+    {% endset %}
+    {{ this.registerJs(scrolling) }}
+
+----
+
+
+----
+
+
 Templates
 ----
 

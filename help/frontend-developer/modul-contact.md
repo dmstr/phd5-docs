@@ -81,8 +81,8 @@ Example `contact:name` Twig
                     }
                 ) }}   
             
-                {{ html.submitButton('Senden', {
-                    'class': 'btn btn-primary btn-white',
+                {{ Html.submitButton('Senden', {
+                    'class': 'btn btn-primary btn-default',
                 }) | raw }}
                        
         

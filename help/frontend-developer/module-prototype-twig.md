@@ -201,21 +201,24 @@ Enable **setting** `app.layout.enableTwigNavbar` and create a **prototype/twig**
    
 > :warning: Be careful, when changing the navbar, see the **audit** module for your latest changes   
     
+    {# Importing widgets namespaces and classes #}
     {{ use('dmstr/modules/pages/models') }}
     {{ use('rmrevin/yii/fontawesome') }}
     {{ use('yii/helpers') }}
     {{ use('yii/bootstrap') }}
     
-    {% set frontendItems = Tree.getMenuItems('root', true) %}
+    {# Prepare menu variables #}
+    {% set frontendItems = Tree.{# Importing widgets namespaces and classes #}getMenuItems('root', true) %}
     {% set backendItems = Tree.getMenuItems('backend', true) %}
     
-    
+    {# Navigation #}
     {{ nav_bar_begin(
         {
             'brandLabel': FA.i('cog'),
         }
     ) }}
     
+        {# Backend items #}
         {{ nav_widget(
             {
                 'options': {
@@ -231,6 +234,7 @@ Enable **setting** `app.layout.enableTwigNavbar` and create a **prototype/twig**
             }
         ) }}
     
+        {# Frontend items #}
         {{ nav_widget(
             {
                 'options': {
@@ -240,6 +244,7 @@ Enable **setting** `app.layout.enableTwigNavbar` and create a **prototype/twig**
             }
         ) }}
         
+        {# Logout #}
         {{ nav_widget(
             {
                 'options': {

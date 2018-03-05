@@ -28,3 +28,41 @@ Setup
 Configuration
 -------------
 
+*TBD*
+
+```
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "file:///repo/schmunk42/yii2-giiant"
+        }
+    ],
+    "require": {
+        "wikimedia/composer-merge-plugin": "~1.4",
+        "schmunk42/yii2-giiant": "dev-develop"
+    },
+    "extra": {
+        "merge-plugin": {
+            "require": [
+                "/app/composer.json",
+                "/repo/schmunk42/yii2-giiant/composer.json"
+            ]
+        }
+    },
+    "config": {
+        "fxp-asset": {
+            "installer-paths": {
+                "npm-asset-library": "vendor/npm",
+                "bower-asset-library": "vendor/bower"
+            },
+            "vcs-driver-options": {
+                "github-no-api": true
+            },
+            "git-skip-update": "2 days",
+            "pattern-skip-version": "(-build|-patch)",
+            "optimize-with-installed-packages": false
+        }
+    }
+}
+```

@@ -22,6 +22,7 @@
 - [Application Console](development/console.md)
 - [Web-backend](development/backend.md)
 - [Web-frontend](development/frontend.md)
+- [Logging](tutorials/logging.md)
 - [Extensions](development/extensions.md)
 - [Conventions](development/conventions.md)
 - [Troubleshooting](development/troubleshooting.md)
@@ -48,7 +49,6 @@
 - [Develop vendor extensions with git repositories](tutorials/extension-development.md)
 - [Update application packages](tutorials/composer-update-packages.md)
 - [Upgrading applications](tutorials/upgrading.md)
-- [Logging](tutorials/logging.md)
 
 ##### Assets
 

@@ -1,39 +1,11 @@
+# Database migrations
 
-### Database migrations
-
-> :bulb: It is recommended to keep structural and data migrations separated.
-
-Lookup paths for migrations can be defined in application configuration, for details see [dmstr/yii2-migrate-command](https://github.com/dmstr/yii2-migrate-command/blob/master/README.md).
-
-    'params'      => [
-        'yii.migrations' => [
-            '@yii/rbac/migrations',
-            '@dektrium/user/migrations',
-            '@vendor/lajax/yii2-translate-manager/migrations',
-            '@bedezign/yii2/audit/migrations'
-        ]
-    ]
-	
-
-### Create a database migration from a SQL file
-
-	yii migrate/create \
-      --templateFile='@dmstr/db/mysql/templates/file-migration.php' \
-      --migrationPath='@app/migrations/demo-data' \
-      data_migration
-
-Do not forget to add the migration path to the configuration
-
-    'params'      => [
-        'yii.migrations' => [
-            '@app/migrations/demo-data',
-        ]
-    ]
-
-:green_book: https://github.com/dmstr/yii2-db/blob/master/README.md
+> :bulb: It is recommended to keep structural (schema) and data-only migrations separated.
 
 
-### Commands
+## Development data
+
+### Configuration
 
 Configure migrate command with predefined values *use only for creating file migrations*
 
@@ -41,6 +13,51 @@ Configure migrate command with predefined values *use only for creating file mig
         'file:migrate' => [
             'class' => 'yii\console\controllers\MigrateController',
             'templateFile' => '@vendor/dmstr/yii2-db/db/mysql/templates/file-migration.php',
-            'migrationPath' => '@app/modules/_migrations/demo-data',
+            'migrationPath' => '@project/migrations/dev-data',
         ]
     ],
+
+### Usage
+
+- Create the database export, which is basically an adjusted dump
+
+  >     yii db/export --outputPath=@project/migrations/dev-data
+      
+  > :exclamation: The dump truncates all exported tables by default 
+
+- Create a migration
+
+  >     yii file:migrate/create dev_data
+
+- Adjust `public $file = '<NAME_OF_YOUR_EXPORTED_FILE>.sql';` in the newly created migration.
+
+- For development add the development-data migrations via ENV variable in `docker-compose.dev.yml`
+
+      APP_MIGRATION_LOOKUP=@project/migrations/dev-data
+
+
+## Additional information
+
+If you create initial data for the application, which is required and should always be inserted in inital setup, do not forget to add the migration path to the configuration
+
+    'params' => [
+        'yii.migrations' => [
+            '@app/migrations/data',
+        ]
+    ]
+
+
+Lookup paths for migrations can be defined in application configuration, for details see [dmstr/yii2-migrate-command](https://github.com/dmstr/yii2-migrate-command/blob/master/README.md).
+
+    'params' => [
+        'yii.migrations' => [
+            '@yii/rbac/migrations',
+            '@dektrium/user/migrations',
+            '@vendor/lajax/yii2-translate-manager/migrations',
+            '@bedezign/yii2/audit/migrations'
+        ]
+    ]
+
+## Resources
+
+:green_book: https://github.com/dmstr/yii2-db/blob/master/README.md

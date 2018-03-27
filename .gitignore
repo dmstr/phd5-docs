@@ -1,4 +1,5 @@
-.app/node_modules
-.app/vendor
+.project/node_modules
+.project/vendor
 npm-debug.log
 .env
+_host-volumes

@@ -3,39 +3,52 @@ Configuration
 
 ## Introduction
 
-phd uses an environment variables based configuration, see also [Dev/prod parity](http://12factor.net/dev-prod-parity) for more information about this topic.
+phd uses an environment variables based configuration, see also [Dev/prod parity](http://12factor.net/dev-prod-parity) for more information about this topic. There are basically two levels of configurations handled by environment variables.
 
+Variables for controlling the application stacks *(outside, on your host)* with `docker-compose`, are defined in `.env` files residing in the current working directory. 
 
-There are two levels of environment configurations.
+> If you are in the project root-folder you work with your *dev*  environment, while you are in the `tests/` folder you are working against your test stack, which has ie. an own database.
 
-Variables for controlling the application stacks *(outside on your host)* with `docker-compose`, are defined in 
-- `.env` files.
+The structure of the services within a stack are defined in `docker-compose.yml` files, you can add or change additional databases or caching services here.
 
-
-Environment settings used within the application services *(inside a container)* are defined in 
-- `docker-compose.yml`, `docker-compose.<ENV>.yml` files (environment specific) 
-- `Dockerfile` and/or `src/app.env` (application defaults).
+- ​
 
 See also hierarchy & scopes below for more information about variables.
 
 ## Host environment
 
-:exclamation: Before starting the application the first time, run `make init` to create your `.env` and `tests/.env` from `.dist`-files.
+:exclamation: Before starting the application the first time, run `make init` to create your `.env` and `tests/.env` from to corresponding `-dist`-files.
 
 ### Development stack
 
-	COMPOSE_PROJECT_NAME=myapp
-	STACK_PHP_IMAGE=local/namespace/myapp_php
+In the `.env` file in your project root, there is by default just one setting:
+
+    COMPOSE_FILE=./docker-compose.yml:./docker-compose.dev.yml
+
+This merges the configuration to given YAML files.
+
+You can also set other variables here, like tokens required for running updates in a container. Please note that these variables will not be available when building the Docker image
+
 	GITHUB_API_TOKEN={GITHUB_API_TOKEN}
+
+Please also make sure to **not commit the `.env` file** and not have secrets in any `-dist` file.	
 
 ### Testing stack
 
+For testing is it strongly recommended to set a `COMPOSE_PROJECT_NAME`, since `docker-compose` uses the directory name by default and all your containers would be prefixed with `tests` otherwise.
+
 	COMPOSE_PROJECT_NAME=testmyapp
-	STACK_PHP_IMAGE=local/namespace/myapp_php
 
 > Windows users, use a semicolon as path separator `COMPOSE_FILE=./docker-compose.yml;./docker-compose.dev.yml`
 
 ## Application environment
+
+Environment settings used within the application services *(inside a container, such as PHP)* are defined in 
+
+- `environment` or `env_file` in `docker-compose.yml`, `docker-compose.<CURRENT_ENVIRONMENT>.yml` files (environment specific) 
+- `Dockerfile` and/or `src/app.env` (application defaults).
+
+Available environment variables for the application are defined in `/app/src/config/env-defaults`
 
 > `app.env-dist` should be adjusted and committed to reflect basic application settings, but we strongly recommend **not to add secrets** like passwords or tokens to the repository. 
 > Note: The `app.env-dist` file is intentionally copied as `app.env` onto the image. If you want to make changes during runtime, you also need to create a local file and mount this into the container.
@@ -45,8 +58,8 @@ Initial configuration adjustments should be made for the following values:
 	APP_NAME=myapp
 	APP_TITLE="MyApp"
 	APP_LANGUAGES=en,fr,zh
-	
-> :build: Within a `phd5-app` we recommend to update `app.env-dist` settings, while in a `phd5-template` we usually update the `Dockerfile`.	
+
+> :build: Within a `phd5-app` we recommend to update `app.env-dist` settings, while in a `phd5-template` we usually update the `Dockerfile`.
 
 
 ## Advanced configuration
@@ -70,7 +83,7 @@ For all available environment settings, see `src/app.env`.
 
 During **local development** it is recommended to enable debug settings in `src/app.env`.
 
-    
+​    
 
 > :bangbang: Make sure you **do not** have these settings enabled in production deployments.
 
@@ -98,11 +111,11 @@ The following list displays configuration locations from highest to lowest prior
 | Defined in | .yml | bash | app | runtime | restart | rebuild | variable replacement |
 |------------|------|------|-----|---|---|---|---|
 | `.env`     | :ok: | :x: | :x: | :x: | :ok: | :x: | :x: |
-| `docker-compose.override.yml` | :ok: | :ok: | :ok: | :x: | :ok: | :x: | :ok:
-| `docker-compose.yml` | :ok: | :ok: | :ok: | :x:| :ok: | :x: | :ok:
-| `Dockerfile` | :x: | :ok: | :ok: | :x:| :ok: | :ok: | :x: 
-| `src/app.env`  | :x: | :x: | :ok: | :ok: | :x: | :x: | :ok:
-| `src/config/*`  | :x: | :x: | :ok: | :ok: | :x: | :x: | :ok:
+| `docker-compose.override.yml` | :ok: | :ok: | :ok: | :x: | :ok: | :x: | :ok: |
+| `docker-compose.yml` | :ok: | :ok: | :ok: | :x:| :ok: | :x: | :ok: |
+| `Dockerfile` | :x: | :ok: | :ok: | :x:| :ok: | :ok: | :x: |
+| `src/app.env`  | :x: | :x: | :ok: | :ok: | :x: | :x: | :ok:|
+| `src/config/*`  | :x: | :x: | :ok: | :ok: | :x: | :x: | :ok:|
 
 > :exclamation: Values in `.env` must be explicitly passed to a service configuration in a `.yml`` file.
 

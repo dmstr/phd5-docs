@@ -1,54 +1,54 @@
 # Building an application `FROM dmstr/phd5`
 
-Docker images from *phd* apps can also be used as base images, just by adding modules to the source code.
+Docker images from `phd5-app` can also be used as base images, just by adding modules to the source code.
 
-Visit [`dmstr/planck`](https://github.com/dmstr/planck) for an example.
+Visit [`dmstr/phd5-template`](https://github.com/dmstr/phd5-template) for an example.
 
 
 ## Getting started
 
 ### Installation
 
-- [Download](https://github.com/dmstr/planck/releases) the *planck* repository.
-- :bulb: Edit the base image if your want to build from another pre-build application template.
+- [Download](https://github.com/dmstr/planck/releases) the `phd5-template` repository.
+- Create a git-repository and commit its initial source-code
 
-*See also [guide](../development/installation.md)*
+*See also [installation](../development/installation.md)*
 
 
 ### Configuration
 
-Copy `.env-dist` to `.env` and adjust project defaults.
- 
-Update `Dockerfile` with application default, like `APP_NAME` and `APP_LANGUAGES`.
 
- *See also [guide](../development/configuration.md)*
+- Copy `.env-dist` to `.env` and adjust project defaults.
+- Copy `project/config/local.env-dist` to `project/config/local.env`
+- Adjust sane project default in `project/tests/.env-dist` files.
+- :bulb: Edit the base image if your want to build from another pre-build application template.
+ - Update `Dockerfile` with application defaults, like `APP_NAME` and `APP_LANGUAGES`.
+
+ *See also [configuration](../development/configuration.md)*
+
+---
+
+Run 
+
+    make init
+
+to create the inital development setup
 
 
 ### Initialize application
 
 Run inital setup with demo data migrations
 
-```
-docker-compose run --rm \
-    -e APP_MIGRATION_LOOKUP=@app/migrations/demo-data \
-    php yii app/setup
-```
+    make setup
+    
 
-Set admin password
-
-```
-docker-compose run --rm php yii user/password admin admin1
-```
-
-Create initial users
-
-    $ yii user/create dev@example.com dev Passw0rd
-    $ yii rbac/assign FrontendDeveloper dev
-    $ yii user/create editor@example.com editor Passw0rd
-    $ yii rbac/assign Editor editor
 
 
 Start stack
+
+    make up
+    
+or
 
 ```
 docker-compose up -d
@@ -117,6 +117,8 @@ See also [Composer update](composer-update-packages.md)
 
 ## Test
 
+**Make sure you have set a unique `COMPOSE_PROJECT_NAME` in `project/tests/.env-dist`** 
+
     cd tests
     docker-compose up -d
 
@@ -135,6 +137,14 @@ Copy `Makefile` and `Makefile.base` from phd5.
 ## Build
 
 ### Setup build
+
+
+#### GitLab setup
+
+- `REGISTRY_HOST`
+
+See also [CI](../deployment/continuous-integration.md)
+
 
 #### Travis
 
@@ -155,12 +165,6 @@ Set ENV settings
 - `REGISTRY_PASS`
 - `REGISTRY_USER`
 - `DEPLOY_TOKEN`
-
-#### GitLab setup
-
-- `REGISTRY_HOST`
-
-See also [CI](../deployment/continuous-integration.md)
 
 ## Deploy
 

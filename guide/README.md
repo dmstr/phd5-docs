@@ -47,6 +47,7 @@
 - [File migrations](tutorials/database-migrations-from-file.md)
 - [Generate docs](tutorials/documentation-generation.md)
 - [Develop vendor extensions with git repositories](tutorials/extension-development.md)
+- [Xdebug](tutorials/xdebug.md)
 - [Update application packages](tutorials/composer-update-packages.md)
 - [Upgrading applications](tutorials/upgrading.md)
 

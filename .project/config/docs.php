@@ -16,6 +16,7 @@ Event::on(
     });
 
 return [
+    'defaultRoute' => 'guide',
     'aliases' => [
         'schmunk42/markdocs/commands' => __DIR__.'/../src/modules/docs/commands',
         'schmunk42/markdocs/components' => __DIR__.'/../src/modules/docs/components',

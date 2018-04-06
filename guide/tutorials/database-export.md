@@ -6,7 +6,10 @@ Example for storing database dumps on S3.
     yii fs/rmdir runtime://mysql --recursive --interactive=0
 
 
------
+Download via Filefly
+
+---
+
 
 Transfer data from staging to migrations
 

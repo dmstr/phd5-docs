@@ -1,7 +1,6 @@
-## Development
+# Application packages
 
-Edit `.env-dist`, `app.env-dist`, `tests/.env-dist`, sane defaults
-
+## Usage
 
 ### Update a single package
 
@@ -48,7 +47,7 @@ You can now update the package with
 
 - see `composer.json` section `config`, edit `preferred-install`.
 
-#### Switching from `dist` to `source`
+### Switching from `dist` to `source`
 
 :warning: Beware of data loss for the following actions
 
@@ -68,3 +67,5 @@ In some cases you need to update globally installed tools like `composer`, `code
 
     $ composer self-update
     $ composer global update
+
+> These update can also be run in the `Dockerfile` of your project.

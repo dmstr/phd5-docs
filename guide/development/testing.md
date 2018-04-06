@@ -3,12 +3,10 @@ Testing
 
 ## TL;dr
 
-    make init
     cd tests
-    make all
-    make run-tests
+    make all run-tests
 
-## About
+## Introduction
 
 *phd* uses a separate stack for running tests, since testing an application requires some changes in the stack setup and should be run isolated from your development or production stack.
 
@@ -20,20 +18,21 @@ Creating and running a test environment can be a cumbersome task, like executing
 
 Therefore the phd Docker images contain pre-installed Codeception binaries for running Yii 2.0 Framework unit-, functional- and acceptance-test-suites.
 
-### Configuration
+## Configuration
 
 - codeception.yml
 - docker-compose.test.yml (Test-Stack)
 - .env (Test-Stack ENV variables)
 - Data-migrations for tests should be placed into `tests/codection/_migrations`.
 
-    
+
+## Usage
+ 
 ### Switching to the test environment
 
 Or one-by-one via `Makefile` targets, make sure to build your images first, if you have made changes to `src`.
 
     cd tests
-    make -C .. build
 
 > :information_source: It is possible to use host-volumes during local testing/debugging, but running containers without host-volumes is usually much closer to the final production setup.
 
@@ -49,19 +48,15 @@ Enter the `tester` container
     
     make run-tests
 
-Run codeception directly *(container bash)*
+Run codeception directly in the container
 
-    make bash
     $ codecept run
 
 > :bulb: Basically tests should be independent from each other. But depending on your setup `cli` tests can be used to initialize the test environment for the application. 
 
-## Writing tests
+### Writing tests
 
-    make bash
-    
-    $ codecept generate:cept e2e folder/StartCept
- 
+    $ codecept generate:cest e2e Feature
 
 ### Advanced usage
     
@@ -77,12 +72,20 @@ To run specific tests
 
     $ codecept run acceptance extensions --steps
 
+To stop at breakpoints added with `$I->pauseExecution()`
+
+    $ codecept run -d
+
 Watch acceptance tests via VNC viewer
 
     make open-vnc
 
 
 ### Code-coverage
+
+    make run-coverage
+
+To run code-coverage while testing Xdebug must be enabled in the PHP container. This is done automatically, when setting `PHP_ENABLE_XDEBUG=1`, make sure to 
 
 ```
 $ docker-php-ext-enable xdebug
@@ -93,27 +96,21 @@ $ codecept run functional --coverage --coverage-html
 
 #### Grouping tests
 
-tests/codeception
-
-As a basic convention we use two test groups `mandatory` and `optional`. While the former have to pass in the CI the latter ones are allowed to fail.
-
 See http://codeception.com/docs/07-AdvancedUsage#Groups
 
 Required tests for production
 
     // @group mandatory
 
+Tests, which run in CI, but do not trigger a failure
+
+    // @group essential
+
 Features or tests currently in development
     
     // @group optional
 
-Further groups
-
-- @group essential
-- @group init
-- @group run-once
-
-
+You can add arbitrary groups to your tests.
 
 
 ### FAQ
@@ -136,14 +133,6 @@ Console vs. Web config
 
 	codecept run -g failed
 
-
-
-----
-
-TBD: VersionCept: Check application versioning
-
-----
-
 ### Speedup MySQL
 
     db:
@@ -151,17 +140,6 @@ TBD: VersionCept: Check application versioning
         - /var/lib/mysql
 
 
----
+## Resources
 
 - [Codeception Page load helper](https://gist.github.com/schmunk42/d0a388bc3562bf9bb8eafe153b9b7870)
-
----
-
-### Testing with different images using triggers
-
-    curl -X POST \
-         -F token=${TOKEN} \
-         -F "ref=tests/mysql" \
-         -F "variables[STACK_MYSQL_IMAGE]=mysql:5.5" \
-         https://gitlab.com/api/v3/projects/2370540/trigger/builds
- 

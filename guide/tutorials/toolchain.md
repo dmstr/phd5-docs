@@ -1,16 +1,13 @@
 # Toolchain
 
+This page is an overview of the tools, which *can* be used with **phd5**. It provides an overview of availble tools from the open-source ecosystem.
+
+## Development
+
 ### Developer host-system
 
 - docker
 - docker-compose
-
-
-### Toolchain
-
-#### Docker
-
-- Run anywhere!
 
 ##### Docker-Toolbox
 
@@ -18,22 +15,21 @@
 - docker-machine
 - docker
 - docker-compose
-- docker-swarm
-- docker-roj
 
----
+### Testing
 
-- https://github.com/pwaller/docker-show-context
+- codecept
 
-### Docker images
+### Building
 
 - PHP
 - Yii 2.0 extensions from dmstr https://github.com/dmstr?utf8=✓&query=yii2-
+- https://github.com/pwaller/docker-show-context
 
-## Build
 
+## CI
 
-#### GitLab (CI)
+### GitLab
 
 - Dockerized build with `docker-compose` support
 - GitLab CI
@@ -41,28 +37,26 @@
  - http://docs.gitlab.com/ce/ci/yaml/README.html
  - dmstr/docker-gitlab-runner
 - https://github.com/sameersbn
-- toran
-- registry
-- registry-mirror
-- https://github.com/Yelp/docker-custodian (cleanup)
-- https://github.com/ZZROTDesign/docker-clean
-- :orange_book: https://git.hrzg.de/herzog/gitlab-ci-cleanup
 
+### QA
 
-
-### CLI
-
-    git docker-compose make
-
-- lessc
 - linkchecker
-- yii
-- codecept
+
+### Optional
+
+- toran
+- registry-mirror
+
+## Distribution
+
+- registry
 
 ## Deploy
 
+### Developer host-system
+
 - dmstr/docker-roj
- - dmstr/docker-toolbox
+- dmstr/docker-toolbox
 
 ### Infrastructure
 
@@ -70,20 +64,7 @@
 - machine
 - vagrant
 
-#### oneba.se
-
-- Cloud Computing Platform
-- Domain Routing (1ba.se)
-- Reverse Proxy Wildcard DNS (oneba.se)
-- Load Balancer
-- ELK logging
-- SSL Termination
-- Application domain
- - app-transporter.com
-- Open Source Demo domain
- - osciv.com
-
-#### Service discovery
+### Service discovery
 
 - consul
 - https://github.com/jwilder/nginx-proxy
@@ -91,12 +72,9 @@
 - https://github.com/neam/docker-stack
 - https://github.com/schmunk42/docker-nginx-redirect
 
-#### Storage
+### Storage
 
-- AWS
- - ELB
- - EC2
- - S3
+- AWS S3
 - FTP/STP
 
 #### Monitoring

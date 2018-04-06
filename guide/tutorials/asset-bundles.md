@@ -25,5 +25,4 @@ For bundling assets for production usage, see tutorial about [asset compression]
 
 #### Cleanup
 
-    rm -rf /app/web/assets/*
-    yii app/clear-assets --interactive=0
+    yii app/clear-assets

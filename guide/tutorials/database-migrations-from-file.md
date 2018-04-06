@@ -19,15 +19,22 @@ Configure migrate command with predefined values *use only for creating file mig
 
 ### Usage
 
+- Create a file-migration
+  
+      $ yii migrate/create \
+          --templateFile=@dmstr/db/mysql/templates/file-migration.php \
+          --migrationPath=@project/migrations/dev-data \
+          export
+
 - Create the database export, which is basically an adjusted dump
 
-  >     yii db/export --outputPath=@project/migrations/dev-data
-      
+       $ yii db/export --outputPath=@project/migrations/dev-data
+
   > :exclamation: The dump truncates all exported tables by default 
 
 - Create a migration
 
-  >     yii file:migrate/create dev_data
+       $ yii file:migrate/create dev_data
 
 - Adjust `public $file = '<NAME_OF_YOUR_EXPORTED_FILE>.sql';` in the newly created migration.
 

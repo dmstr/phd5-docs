@@ -16,6 +16,18 @@ Set **Variables**
 -	`PHP_IMAGE_NAME` registry.example.com/namespace/project_php
 -	`GITHUB_API_TOKEN` abcd1234
 
+
+-----
+
+### Testing with different images using triggers
+
+    curl -X POST \
+         -F token=${TOKEN} \
+         -F "ref=tests/mysql" \
+         -F "variables[STACK_MYSQL_IMAGE]=mysql:5.5" \
+         https://gitlab.com/api/v3/projects/2370540/trigger/builds
+ 
+
 -----
 
 

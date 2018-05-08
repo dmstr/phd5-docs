@@ -23,25 +23,7 @@ Full width header and container
         "default": "/_phd/test.png"
     }
 
-----
 
-#### Scrolling
-
-    {# Scrolling #}
-    {% set scrolling %}
-        $(document).on('click', 'a[href^="#"]', function(event){
-            event.preventDefault();
-            $('html, body').animate({
-                scrollTop: $( $.attr(this, 'href').replace('/de/','') ).offset().top
-            }, 500);
-        });
-    {% endset %}
-    {{ this.registerJs(scrolling) }}
-
-----
-
-
-----
 
 
 Templates
@@ -61,20 +43,21 @@ Further you're able to edit the existing templates or to create new templates by
 
 ### Example
 
+#### Basic Widget 
+
+##### Schema
+
 ```
 {
     "title": "Content Widget",
     "type": "object",
-    "required": [
-        "skin"
-    ],
     "properties": {
         "headline": {
             "type": "string",
             "title": "Headline",
             "default": "Lorem ipsum"
         },
-         "content": {
+        "content": {
             "type": "string",
             "title": "Subline",
             "default": "<p>Pellentesque habitant morbi tristique ultricies mi vitae est. Mauris placerat eleifend leo.<\/p>",
@@ -87,9 +70,11 @@ Further you're able to edit the existing templates or to create new templates by
 }
 ```
 
+##### Template
+
 ```
 <h1>{{ headline }}</h1>
-<div>{{ content }}</div>
+<div>{{ content | raw }}</div>
 ```
 
 -----

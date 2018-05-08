@@ -59,6 +59,39 @@ Further you're able to edit the existing templates or to create new templates by
 - Type in code for **Twig Template**
 - click **create**
 
+### Example
+
+```
+{
+    "title": "Content Widget",
+    "type": "object",
+    "required": [
+        "skin"
+    ],
+    "properties": {
+        "headline": {
+            "type": "string",
+            "title": "Headline",
+            "default": "Lorem ipsum"
+        },
+         "content": {
+            "type": "string",
+            "title": "Subline",
+            "default": "<p>Pellentesque habitant morbi tristique ultricies mi vitae est. Mauris placerat eleifend leo.<\/p>",
+            "format": "html",
+            "options": {
+                "wysiwyg": true
+            }
+        }
+    }
+}
+```
+
+```
+<h1>{{ headline }}</h1>
+<div>{{ content }}</div>
+```
+
 -----
 
 ## References

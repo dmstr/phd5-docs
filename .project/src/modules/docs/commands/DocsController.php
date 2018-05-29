@@ -10,6 +10,7 @@
 namespace schmunk42\markdocs\commands;
 
 use schmunk42\markdocs\helpers\DocsHelper;
+use SebastianBergmann\CodeCoverage\Report\PHP;
 use yii\console\Controller;
 use yii\helpers\FileHelper;
 
@@ -39,7 +40,15 @@ class DocsController extends Controller
         $notInToc = array_diff($links, $tocLinks);
         $brokenLinks = array_diff($tocLinks, $links);
 
-        var_dump($notInToc, $brokenLinks);
+        #var_dump($notInToc, $brokenLinks);exit;
+
+        $this->stdout('Not in TOC'.PHP_EOL);
+        $this->stdout(implode(PHP_EOL,$notInToc));
+
+        $this->stdout(PHP_EOL);
+        $this->stdout('Broken links'.PHP_EOL);
+        $this->stdout(implode(PHP_EOL,$brokenLinks));
+        $this->stdout(PHP_EOL);
     }
 
     public function actionEnvList($path)

@@ -54,7 +54,7 @@ class DocsHelper
         $xpath = new \DOMXPath(self::markdownFileAsDomDocument($basePath.'/'.$tocFile));
         $list = $xpath->query('//a');
         foreach ($list AS $element) {
-            $links[] = $element->getAttribute('href');
+            $links[] = ltrim($element->getAttribute('href'),'/ ');
         }
         return $links;
     }

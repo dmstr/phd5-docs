@@ -15,8 +15,7 @@ Event::on(
         $event->output = str_replace('.png"', '.png,p"', $event->output);
     });
 
-return [
-    'defaultRoute' => 'guide',
+$common = [
     'aliases' => [
         'schmunk42/markdocs/commands' => __DIR__.'/../src/modules/docs/commands',
         'schmunk42/markdocs/components' => __DIR__.'/../src/modules/docs/components',
@@ -58,3 +57,5 @@ return [
         ],
     ],
 ];
+
+return \yii\helpers\ArrayHelper::merge($common, require (APP_TYPE.'.php'));

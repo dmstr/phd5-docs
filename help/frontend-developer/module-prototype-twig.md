@@ -208,7 +208,7 @@ Enable **setting** `app.layout.enableTwigNavbar` and create a **prototype/twig**
     {{ use('yii/bootstrap') }}
     
     {# Prepare menu variables #}
-    {% set frontendItems = Tree.{# Importing widgets namespaces and classes #}getMenuItems('root', true) %}
+    {% set frontendItems = Tree.getMenuItems('root', true) %}
     {% set backendItems = Tree.getMenuItems('backend', true) %}
     
     {# Navigation #}

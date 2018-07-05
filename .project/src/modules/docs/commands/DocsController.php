@@ -30,7 +30,9 @@ class DocsController extends Controller
     public function actionCheckToc($path)
     {
         $this->_basePath = \Yii::getAlias($path);
-        $this->stdout('Docs'.PHP_EOL);
+        $this->stdout(PHP_EOL);
+        $this->stdout('### Docs'.PHP_EOL);
+        $this->stdout(PHP_EOL);
         $tocLinks = DocsHelper::parseToc($path, 'README.md');
         $files = FileHelper::findFiles($path, ['only' => ['*.md']]);
         foreach ($files AS $file) {
@@ -42,11 +44,11 @@ class DocsController extends Controller
 
         #var_dump($notInToc, $brokenLinks);exit;
 
-        $this->stdout('Not in TOC'.PHP_EOL);
+        $this->stdout(PHP_EOL.'### Not in TOC'.PHP_EOL.PHP_EOL);
         $this->stdout(implode(PHP_EOL,$notInToc));
 
         $this->stdout(PHP_EOL);
-        $this->stdout('Broken links'.PHP_EOL);
+        $this->stdout(PHP_EOL.'### Broken links'.PHP_EOL.PHP_EOL);
         $this->stdout(implode(PHP_EOL,$brokenLinks));
         $this->stdout(PHP_EOL);
     }

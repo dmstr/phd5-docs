@@ -11,14 +11,29 @@ Login with `admin` / `admin1` and change the admin password.
 
 ### :construction_worker: Create users and assign roles
 
+- `/user`
+
 ![user-admin](../images/user-admin.png)
 
-- admin
+User (Role)
+
+- admin (Admin)
 - dev (Developer)
 - editor (Editor)
 - preview (Frontend)
 
 > :bulb: The user `admin` is very similar to a root-user, by default it has every permission, or speaking in Yii terms `can()` always returns `true`.
+
+### Create media files
+
+- Application URL: `/filefly`
+- Permission: `FileflyApi` (Role)
+
+Folders
+
+- `/public`
+  - set read permissions to `Public`
+- `/dumps`
 
 ### :construction_worker: Activate prototyping asset bundle
 
@@ -26,6 +41,7 @@ Login with `admin` / `admin1` and change the admin password.
 
 ![settings](../images/settings.png)
 
+- `@hrzg/widget/views/test/triple.twig`
 
 Logout as admin.
 
@@ -33,6 +49,8 @@ Logout as admin.
 
 You will find the current application identifier (`APP_NAME`) and version in the footer of the backend.
 
+
+##
 
 ----
 

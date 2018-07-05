@@ -3,21 +3,7 @@
 > :bulb: It is recommended to keep structural (schema) and data-only migrations separated.
 
 
-## Development data
-
-### Configuration
-
-Configure migrate command with predefined values *use only for creating file migrations*
-
-    'controllerMap' => [
-        'file:migrate' => [
-            'class' => 'yii\console\controllers\MigrateController',
-            'templateFile' => '@vendor/dmstr/yii2-db/db/mysql/templates/file-migration.php',
-            'migrationPath' => '@project/migrations/dev-data',
-        ]
-    ],
-
-### Usage
+## Usage
 
 - Create a file-migration
   
@@ -64,6 +50,20 @@ Lookup paths for migrations can be defined in application configuration, for det
             '@bedezign/yii2/audit/migrations'
         ]
     ]
+
+## Advanced topics
+
+### Pre-configured command alias
+
+Configure migrate command with predefined values *use only for creating file migrations*
+
+    'controllerMap' => [
+        'file:migrate' => [
+            'class' => 'yii\console\controllers\MigrateController',
+            'templateFile' => '@vendor/dmstr/yii2-db/db/mysql/templates/file-migration.php',
+            'migrationPath' => '@project/migrations/dev-data',
+        ]
+    ],
 
 ## Resources
 

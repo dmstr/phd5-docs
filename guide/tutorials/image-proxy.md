@@ -10,6 +10,9 @@ TBD
 
 https://github.com/willnorris/imageproxy#examples
 
+----
+
+`IMAGEPROXY_SIGNATURE_KEY`
 
 ----
 

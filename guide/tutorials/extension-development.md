@@ -116,6 +116,14 @@ Set constraint to `@dev` before starting code modifications and run
 > `mv package _package`, run the above command and then copy only the contents from the modified folder
 > into the package folder. `git status` should now your changes now.
 
+Update configuration to get sources for the forked package
+
+    "config": {
+        "preferred-install": {
+            "the-vendor/*": "source",
+            "*": "auto"
+        },
+    },
 
 ### Forking asset repositories
 

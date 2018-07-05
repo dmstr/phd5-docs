@@ -8,7 +8,9 @@ To update application packages can be updated with
 
     make upgrade
 
-which is a shorthand for running `composer update` in the PHP container. 
+which is a shorthand for running `composer update` in the PHP container.
+
+> Note: If you have made changes to `composer.phd5.json` you need to run `dist-upgrade` to rebuild the image before upgrading.
 
 ## Upgrading application base-images
 

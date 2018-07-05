@@ -107,3 +107,20 @@ base:
   open-db..................open application database service in browser
   setup....................run application setup
 ```
+
+### Dry-run
+
+    cp -n .env-dist .env &2>/dev/null
+    cp -n project/tests/.env-dist project/tests/.env &2>/dev/null
+    cp -n project/config/local.env-dist project/config/local.env &2>/dev/null
+    docker-compose run --rm php composer install
+    mkdir -p web/assets runtime
+### Building images from docker-compose definitions
+    docker-compose build --pull 
+### Starting application stack
+    docker-compose up -d
+# Running application setup command (database, user)
+    docker-compose run --rm php yii app/setup
+# Opening application on mapped web-service port
+    xdg-open http://localhost:21548 &>/dev/null
+

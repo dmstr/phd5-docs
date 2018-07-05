@@ -22,7 +22,7 @@
 - [Application Console](development/console.md)
 - [Web-backend](development/backend.md)
 - [Web-frontend](development/frontend.md)
-- [Logging](tutorials/logging.md)
+- [Logging](development/logging.md)
 - [Extensions](development/extensions.md)
 - [Conventions](development/conventions.md)
 - [Troubleshooting](development/troubleshooting.md)
@@ -43,18 +43,30 @@
 
 ##### Development
 
+- [Users and RBAC](tutorials/users-and-rbac.md)
 - [Data migrations](tutorials/database-migrations-from-file.md)
+- [Data export](tutorials/database-export.md)
 - [Code generation](tutorials/code-generation.md)
 - [Documentation generation](tutorials/documentation-generation.md)
-- [Develop vendor extensions with git repositories](tutorials/extension-development.md)
+- [Working with local or remote filesystems](tutorials/filesystems.md)
+- [Creating PDFs](tutorials/phpwkhtmltopdf.md)
+- [Cronjobs](tutorials/cronjobs.md)
+- [Working with extensions in `vendor`](tutorials/extension-development.md)
 - [Update application packages](tutorials/composer-update-packages.md)
 - [Upgrading applications](tutorials/upgrading.md)
 - [Xdebug](tutorials/xdebug.md)
+- [Testing browsers](tutorials/testing-browsers.md)
+- [Travis CI](tutorials/ci-travis.md)
+- [Gitlab CI](tutorials/ci-gitlab.md)
 
-##### Assets
+##### Frontend
 
 - [Asset bundles](tutorials/asset-bundles.md)
 - [Asset compression](tutorials/asset-compression.md)
+- [Preloader](tutorials/preloader.md)
+- [SEO](tutorials/seo.md)
+- [Image proxy](tutorials/image-proxy.md)
+- [JSON Editor](tutorials/json-editor-customizations.md)
 
 ##### Database
 
@@ -63,14 +75,17 @@
 
 ##### Docker
 
-- docker-host-cleanup.md
-- docker-machine.md
-- docker-webserver.md
+- [Demo: Play with Docker](tutorials/demo-play-with-docker.md)
+- [Docker host cleanup](tutorials/docker-host-cleanup.md)
+- [Docker Machine](tutorials/docker-machine.md)
+- [Docker webserver](tutorials/docker-webserver.md)
+- [OpenSearchServer](tutorials/opensearchserver.md)
+- [Testing Yii 2.0 extensions](tutorials/testing-yii2-extensions.md)
 
 ##### Other
 
-- [Testing Yii 2.0 extensions with phd Docker images](tutorials/testing-yii2-extensions.md)
+- [Glossary](tutorials/glossary.md)
+- [Toolchain](tutorials/toolchain.md)
 - [Classic PHP installation](tutorials/installation-composer.md)
 - [Vagrant](tutorials/vagrant.md)
-- [Toolchain](tutorials/toolchain.md)
 - [History](tutorials/history.md)

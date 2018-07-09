@@ -1,12 +1,5 @@
 # Overview
 
-#Welcome
-
-##Welcome to your new Website
-
-This is Doro, your brand new website. 
-Doro comes with some basic installations and justs needs to be filled by you.
-
 What is included?
 
 - Page Tree: Create your own Page Tree with as many pages as you like
@@ -100,13 +93,13 @@ That's where we are
 
 ## Tutorials
 
-- [Initial setup as admin](tutorial-admin.md)
-- [CMS prototyping functions for editors](tutorial-editor.md)
-- [Web-developer tools](tutorial-dev.md)
+- [Initial setup as admin](admin/tutorial-admin.md)
+- [CMS prototyping functions for editors](editor/tutorial-editor.md)
+- [Web-developer tools](frontend-developer/tutorial-dev.md)
 
 ## Editor
 
-### [Pages](module-pages.md)
+### Pages
 
 Manage nodes trees and controller routes, eg. for navbar or footer links.
 
@@ -118,11 +111,11 @@ Twig layout snippets, for adding dynamic contents.
 
 LESS AssetBundle from database for prototyping & development.
 
-### [Widgets](module-widgets.md) 
+### Widgets
 
 Flexible content management system.
 
-### [Files](module-filefly.md)
+### Files
 
 Media files like images, PDFs or ZIPs.
 
@@ -139,7 +132,7 @@ Media files like images, PDFs or ZIPs.
 
 Key-value store for application settings.
 
-### [Users & permissions](module-users-rbac.md)
+### Users & permissions
 
 Manage user accounts, profiles and authorizations.
 

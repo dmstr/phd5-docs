@@ -275,12 +275,13 @@ Enable **setting** `app.layout.enableTwigNavbar` and create a **prototype/twig**
         },
     ] %}
 
----
-
     {{ nav_widget(
         {
             'encodeLabels': false,
-            'items': languageItems
+            'items': languageItems,
+            'options': {
+                'class': 'navbar-nav navbar-right',
+            },
         }
     ) }}
 
@@ -307,7 +308,9 @@ Enable **setting** `app.layout.enableTwigNavbar` and create a **prototype/twig**
         }
     ) }}
 
-#### Cookie Buuton
+#### Cookie Button
+
+The following cookie button widget can be added to the Twig layout `frontend.extra.menuItems` to switch between admin and view mode.
     
     {{ use ('dmstr/cookiebutton') }}
     {{ cookie_button_widget(
@@ -325,6 +328,8 @@ Enable **setting** `app.layout.enableTwigNavbar` and create a **prototype/twig**
             }
         }
     ) }}
+    
+> Note: Since `dmstr/yii2-backend-module:>=1.0.0-beta3` the cookie button is included in the `Toolbar` widget
 
 ### Filemanager
 

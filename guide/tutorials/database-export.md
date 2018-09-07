@@ -1,12 +1,16 @@
 
 Example for storing database dumps on S3. 
 
-    yii db/export && \
-    yii fs/sync runtime://mysql s3:// --interactive=0 && \
-    yii fs/rmdir runtime://mysql --recursive --interactive=0
+    yii db/export --outputPath=/app/runtime/_debug && \
+    yii migrate/history > /app/runtime/_debug/migrate-history.log && \
+    yii fs/sync runtime://_debug s3:// --interactive=0 && \
+    yii fs/rmdir runtime://_debug --recursive --interactive=0
 
 
 Download via Filefly
+
+> Note! It is strongly recommended to remove the debug dumps after downloading them.
+
 
 ---
 

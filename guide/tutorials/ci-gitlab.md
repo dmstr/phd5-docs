@@ -16,6 +16,17 @@ Set **Variables**
 -	`PHP_IMAGE_NAME` registry.example.com/namespace/project_php
 -	`GITHUB_API_TOKEN` abcd1234
 
+### Deployment trigger
+
+```
+deploy:staging:
+  environment: staging-2
+  stage: deploy
+  script:
+    - curl -X POST -F token=${TOKEN_STACKS_STAGING_2} -F "ref=master" -F "variables[TRIGGER_STACK_DIR]=projects/${CI_PROJECT_PATH}" https://git.hrzg.de/api/v3/projects/384/trigger/builds
+  only:
+    - latest
+```
 
 -----
 

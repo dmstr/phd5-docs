@@ -36,7 +36,7 @@ release-->image
 - Clone application from local repository
 - Start application `make all`
 - Make changes in local development stack
-- Run tests in isolated local testing stack `make TEST up setup run-tests`
+- Run tests in isolated local testing stack `cd tests; make all run-tests`
 - Commit (triggers CI)
 - CI builds images
 - CI starts isolated stacks (by setting custom `COMPOSE_PROJECT_NAME`s) from built images and performs setup operations
@@ -75,18 +75,22 @@ make release
 
 Setup ENv variables in roj PROJECT_TOKEN
 
+---
 
+Startup script with auto-migration.
 
-----
+```
+command: "sh -c 'yii migrate --interactive=0 && forego start -r -f /root/Procfile'"
+```
 
 
 ## Deployment
 
 Variables:
 
--	`PROJECT_TOKEN` - token from `stacks-staging` project
--	`PROJECT_REF` - branch, usually `master`
--	`PROJECT_DIR` - location of `docker-compose.yml`, eg. `auto/cusomter/www.example.com`
+- `PROJECT_TOKEN` - token from `stacks-staging` project
+- `PROJECT_REF` - branch, usually `master`
+- `PROJECT_DIR` - location of `docker-compose.yml`, eg. `auto/cusomter/www.example.com`
 
 
 <div class="mermaid">

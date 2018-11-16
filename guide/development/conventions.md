@@ -50,6 +50,10 @@ The phd repository contains the following main branches:
 - providers **MUST NOT** be copied into the project, may can extend a new class
 - SHOULD contain `Id` columns
 
+## Testing
+
+- *Functional* and *E2e* tests **SHOULD** use *Cest* files
+- *Functional* and *E2e* tests **SHOULD NOT** have more than 20 steps
 
 ## Docker
 

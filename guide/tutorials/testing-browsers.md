@@ -70,6 +70,14 @@ Run in elevated (as Administrator) command prompt to start to selenium server
 
 > :bulb: Example uses forwarded ports on the host machine to Selenium on the Windows VM and the web server used for testing in Docker.
 
+## Examples
+
+Use locator to find elements in e2e tests
+
+        $node = Locator::contains('span', $this->uniqid);
+        $I->click($node, '.kv-tree-container');
+
+
 ## Resources
 
 - https://github.com/SeleniumHQ/selenium/wiki/InternetExplorerDriver

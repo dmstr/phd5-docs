@@ -9,10 +9,11 @@ What is included?
 
 ## Dashboard
 
-After **loggin in** into your website you'll find yourself on the **dashboard**.
+After loggin in into your website you'll find yourself on the **dashboard**.
 
-The Dashboards provides a **overview** of relevant functions of your website and gives an **insight** about process and work in the application.
+The Dashboards provides am overview of relevant functions of your website and gives an insight about process and work in the application.
 
+> Note: Modules are only auto-detected when they have a corresponding *route permissions*.
 ___
 
 <code>/en/backend/default/index</code>
@@ -21,13 +22,12 @@ ___
 ![dashboard](./images/my-dashboard.png)
 
 
-Sidenavi
-----
+### Sidenavi
 
 On the left side you can see your **Side Navigation** for the backend. This Navigation helps you to jump easily between the submenus while each icon symbolizes its function.
 
 
-###The Submenus
+### The Submenus
 
 **Dashboard:**
 

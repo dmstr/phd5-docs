@@ -22,9 +22,9 @@ Therefore the phd Docker images contain pre-installed Codeception binaries for r
 
 - codeception.yml
 - docker-compose.test.yml (Test-Stack)
+ - host-volume for logs
 - .env (Test-Stack ENV variables)
 - Data-migrations for tests should be placed into `tests/codection/_migrations`.
-
 
 ## Usage
  

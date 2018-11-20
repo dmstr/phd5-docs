@@ -52,6 +52,7 @@ The phd repository contains the following main branches:
 
 ## Testing
 
+- Tests **MUST NOT** use any programming logic
 - *Functional* and *E2e* tests **SHOULD** use *Cest* files
 - *Functional* and *E2e* tests **SHOULD NOT** have more than 20 steps
 

@@ -16,20 +16,20 @@ You can create a standard Yii module with
 
     $ yii gii/module \
         --moduleID=frontend \
-        --moduleClass=app\\modules\\frontend\\Module
+        --moduleClass=project\\modules\\frontend\\Module
                 
 Create additional controller
 
     $ yii gii/controller \
-        --controllerClass=app\\modules\\frontend\\controllers\\ExamplesController \
-        --viewPath=@app/modules/frontend/views/examples
+        --controllerClass=project\\modules\\frontend\\controllers\\ExamplesController \
+        --viewPath=@project/modules/frontend/views/examples
 
-To add it to your application adjust configuration in `src/config/common.php`.
+To add it to your application adjust configuration in `project/config/common.php`.
 
     return [
         'modules' => [
             'frontend' => [
-                'class' => 'app\modules\frontend\Module',
+                'class' => 'project\modules\frontend\Module',
                 'layout' => '//container',
             ]
         ]
@@ -39,7 +39,7 @@ You should now be able to access to module default page via `/frontend` in your 
     
 > :information_source: Please note that standard Yii modules do not have access control enabled by default.
 
-The generated source-files, like controllers and views can be found in `src/modules/frontend`.
+The generated source-files, like controllers and views can be found in `project/src/modules/frontend`.
 
 Backend CRUD module
 -------------------
@@ -56,14 +56,14 @@ To add a new module to your application, we create a `crud` module with phd and 
 
     $ yii gii/giiant-module \
         --moduleID=crud \
-        --moduleClass=app\\modules\\crud\\Module
+        --moduleClass=project\\modules\\crud\\Module
 
-To add it to your application adjust your configuration in `src/config/common.php`.
+To add it to your application adjust your configuration in `project/config/common.php`.
 
     return [
         'modules' => [
             'crud' => [
-                'class' => 'app\modules\crud\Module',
+                'class' => 'project\modules\crud\Module',
                 'layout' => '@backend/views/layouts/main',
             ]
         ]
@@ -73,20 +73,20 @@ To add it to your application adjust your configuration in `src/config/common.ph
 > :bulb: When using a non-autoloaded namespace you need to register an alias before running the `gii` command
 > 
 >         'aliases' => [
->            '@name/package' => '@app/modules/crud'
+>            '@name/package' => '@project/modules/crud'
 >        ],
 
 
 
 ### Create migrations
 
-	$ yii migrate/create init --migrationPath=@app/modules/crud/migrations
+	$ yii migrate/create init --migrationPath=@project/modules/crud/migrations
 
 Add migration to application params in `src/config/common.php`
 
     'params' => [
         'yii.migrations' => [
-            '@app/modules/crud/migrations'
+            '@project/modules/crud/migrations'
         ],
     ],
 
@@ -106,12 +106,12 @@ Create the backend CRUDs with gii and Giiant
       --interactive=0 \
       --overwrite=1 \
       --modelDb=db \
-      --modelNamespace=app\\modules\\crud\\models \
-      --modelQueryNamespace=app\\modules\\crud\\models\\query \
+      --modelNamespace=project\\modules\\crud\\models \
+      --modelQueryNamespace=project\\modules\\crud\\models\\query \
       --crudAccessFilter=1 \
-      --crudControllerNamespace=app\\modules\\crud\\controllers \
-      --crudSearchModelNamespace=app\\modules\\crud\\models\\search \
-      --crudViewPath=@app/modules/crud/views \
+      --crudControllerNamespace=project\\modules\\crud\\controllers \
+      --crudSearchModelNamespace=project\\modules\\crud\\models\\search \
+      --crudViewPath=@project/modules/crud/views \
       --crudPathPrefix= \
       --tablePrefix=<PREFIX_> \
       --tables=<COMMA_SEPARATED_LIST_OF_TABLES>
@@ -132,7 +132,7 @@ Create a form model.
 Enter application console
 
     $ yii gii/form \
-      --modelClass=app\\modules\\frontend\\models\\TranslateForm \
+      --modelClass=project\\modules\\frontend\\models\\TranslateForm \
       --viewName=translate \
-      --viewPath=@app/modules/frontend/views/default
+      --viewPath=@project/modules/frontend/views/default
 

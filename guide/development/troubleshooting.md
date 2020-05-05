@@ -111,6 +111,13 @@ Login docker CLI
 - check shared memory settings for *Selenium* container (`/dev/shm`)
 - removed unnecessary host-volumes 
 
+#### Failing Mailcatcher tests
+
+Use a tagged image matching the codeception module version
+
+    image: tophfr/mailcatcher:0.6.5_2
+
+
 #### `chown` commands in Dockefile
 
 For every file, which is "chownd" a copy is created...

@@ -5,9 +5,9 @@ Code-generation
 
 For debugging and multiple one-off commands, you can enter the CLI container with
 
-    docker-compose run --rm -e YII_ENV=dev php bash
+    make cli
 
-> :bulb: Code generation only work in Yii's development environment.
+> :bulb: Code generation only work in Yii's development environment. To write files you also might need to have root permissions while running the CLI application in the container.
 
 Frontend module
 ---------------
@@ -17,7 +17,7 @@ You can create a standard Yii module with
     $ yii gii/module \
         --moduleID=frontend \
         --moduleClass=app\\modules\\frontend\\Module
-                
+
 Create additional controller
 
     $ yii gii/controller \
@@ -34,7 +34,7 @@ To add it to your application adjust configuration in `src/config/common.php`.
             ]
         ]
     ];
-    
+
 You should now be able to access to module default page via `/frontend` in your browser.
     
 > :information_source: Please note that standard Yii modules do not have access control enabled by default.
@@ -76,7 +76,19 @@ To add it to your application adjust your configuration in `src/config/common.ph
 >            '@name/package' => '@app/modules/crud'
 >        ],
 
+###  Generate breadcrumb entry for module
 
+```php
+public function beforeAction($action)
+{
+    $moduleUrl = '/'.$this->id;
+    \Yii::$app->controller->view->params['breadcrumbs'][] = [
+        'label' => ucfirst($this->id), 
+        'url' => [$moduleUrl]
+    ];
+    return parent::beforeAction($action);
+}
+```
 
 ### Create migrations
 

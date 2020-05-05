@@ -11,7 +11,7 @@ Variables for controlling the application stacks *(outside, on your host)* with 
 
 The structure of the services within a stack are defined in `docker-compose.yml` files, you can add or change additional databases or caching services here.
 
-- ​
+- 
 
 See also hierarchy & scopes below for more information about variables.
 
@@ -124,3 +124,39 @@ ENV variable are immutable by convention, so if a value is set in a `Dockerfile`
 
 Only values in `app.env` can be changed while the containers are running. If you change environment variables in 
 `docker-compose.yml` you need to restart your containers.  
+
+```mermaid
+graph TD
+	subgraph "host"
+		.env
+		docker-compose
+		subgraph "container (bash)"
+			docker-compose.yml
+			docker-compose.local.yml
+			Dockerfile
+			bash
+			subgraph "app"
+				config/app.env
+				config/env-defaults
+				yii
+			end
+    	end
+	end
+	
+	bash[/bash/]
+	yii[/yii/]
+	docker-compose[/docker-compose/]
+	config/app.env>config/app.env]
+	
+	.env-.->docker-compose.yml
+	.env-.->docker-compose.local.yml
+	docker-compose.local.yml---docker-compose.yml
+	docker-compose.yml---config/app.env
+	config/app.env---config/env-defaults
+	config/env-defaults---Dockerfile
+	
+	style host fill:#eee
+	style app fill:#fdf
+
+```
+

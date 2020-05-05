@@ -23,6 +23,21 @@ To get the base image, update packages and rebuild the application.
 
 This action can apply updated configuration settings, vendor package constraints and new PHP version from the base-image, i.e. **phd5-app**.
 
+### Upgrading database
+
+Create a SQL-dump of the running system you want to upgrade.
+
+To import the dump into a locally running application run
+
+    yii db/destroy
+    yii db/create
+    yii db/import /dumps/project.sql
+    yii migrate
+
+You may also update the admin password locally
+
+    yii user/password admin admin1
+
 ## Troubleshooting
 
 - https://github.com/dmstr/phd5-app/blob/master/UPGRADING.md

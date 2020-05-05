@@ -11,6 +11,17 @@ Download via Filefly
 
 > Note! It is strongly recommended to remove the debug dumps after downloading them.
 
+### Database import
+
+```
+ yii db/destroy --interactive=0 && \
+ yii db/create && \
+ yii db/import $X_DB_DUMP_SQL && \
+ yii migrate --interactive=0 && \
+ yii cache/flush-all
+```
+
+
 
 ---
 

@@ -6,6 +6,12 @@ Since the application runs in Docker containers and the debugging tools on the h
 
 ### Setup
 
+----
+
+sudo ufw allow from 172.16.0.0/12 proto tcp to any
+
+----
+
 First, create a network which is reserved for debug data.
 
     docker network create --subnet 192.168.222.0/24 xdebug
@@ -15,7 +21,7 @@ To output of the command will be the full ID of the newly created network.
 To obtain the ID used for the corresponding bridge device run
 
     docker network ls | grep xdebug
-    
+
 Accept connections for this interface on your host
     
     sudo iptables -A INPUT -i br-<NETWORK_ID_SHORT> -j ACCEPT
@@ -28,7 +34,7 @@ To attach the `php` container to this network, define it in the `docker-composer
       xdebug:
         external:
           name: xdebug
-
+    
     services:
       php:
         networks:
@@ -51,13 +57,13 @@ Restart your application and check if you are able to connect from your containe
 
     make bash
     $ curl -v 192.168.222.1:9000
-    
+
 If everything is set up correctly you should see a line like `Connected to 192.168.222.1 (192.168.222.1) port 9000 (#0)` in the output.    
 
 For PHPstorm you need to setup path mappings.
 
 > If you have issues with Xdebug on the CLI during setup, stop listening for debug connections in PHPStorm and restart when the web-server is fully up and running.
- 
+
 ### Links
 
 - https://www.jetbrains.com/phpstorm/marklets/

@@ -18,3 +18,96 @@ User authentication and authorization is provides by the extension `dektrium/yii
 ### Language Selection
 
 You can switch the application language by choosing another language under the flag icon on the top right menu bar.
+
+### Routes
+
+*Usually available in `pages.availableGlobalRoutes`*
+
+`/audit`
+
+Overwiew
+
+`/audit/mail`
+
+E-Mails sent from the application
+
+`/audit/trail`
+
+Database changes
+
+`/audit/error`
+
+Error log
+
+`/backend`
+
+Application management Dashboard
+
+`/backend/default/view-config`
+
+Application configuration
+
+`/backend/default/show-auth`
+
+Auth items for the current user
+
+`/debug` (only available in `YII_ENV_DEBUG`) :warning:	
+
+Debugging tool
+
+`/docs`
+
+Online application help
+
+`/filefly`
+
+Filemanager
+
+`/filefly/api`
+
+Filemanager REST Endpoint
+
+`/pages`
+
+Menu manager
+
+`/prototype`
+
+CMS base
+
+`/publication`
+
+Blog
+
+`/redirects`
+
+URL redirects
+
+`/resque`
+
+Jobs
+
+`/setings`
+
+Settings (key-value store)
+
+`/translatemanager`
+
+Manage application translations for different languages
+
+`/user`
+
+User and Permission management
+
+`/user/login`
+
+Authentication form
+
+`/widgets`
+
+CMS building blocks
+
+
+
+
+

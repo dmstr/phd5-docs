@@ -36,7 +36,7 @@ Stacks and their service definitions can have different flavours. You may need s
 and production environment. 
 
 **phd** supports [extending configurations](https://docs.docker.com/compose/extends/) from `docker-compose`.
-  
+
 - [View project stacks](https://github.com/phundament/app/tree/master/build/compose)
 
 ### Containers
@@ -116,3 +116,24 @@ web/                document root with entry-script
 ```
 
 See also [Yii 2.0 Guide](http://www.yiiframework.com/doc-2.0/guide-index.html)
+
+### Development stack
+
+```mermaid
+graph TD
+  php
+  test-php
+  db
+  mailcatcher
+  local-browser
+  selenium-browser
+  
+  php-->db
+  test-php-->db
+  
+  local-browser-->php
+  local-browser-.->test-php
+  local-browser-->mailcatcher
+  selenium-browser-->test-php
+```
+

@@ -65,6 +65,16 @@ Configure migrate command with predefined values *use only for creating file mig
         ]
     ],
 
+### MySQL ALTER TABLE statements
+
+Should be combined into one statement, since it's faster and more error resilient.
+
+```mysql
+ALTER TABLE `my_table` ADD `COL_X` DECIMAL(10,2) NULL DEFAULT NULL AFTER `COL_A`,
+    ADD `COL_Y` VARCHAR(50) NULL DEFAULT NULL AFTER `COL_B`,
+    ADD `COL_Z` VARCHAR(5) NULL DEFAULT NULL AFTER `COL_C`,
+```
+
 ## Resources
 
 :green_book: https://github.com/dmstr/yii2-db/blob/master/README.md

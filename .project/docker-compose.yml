@@ -1,8 +1,8 @@
 version: '2'
 services:
     php:
-      image: dmstr/phd5-app:5.1.0-rc8
-      working_dir: /phd5-docs/.project
+      image: dmstr/phd5-app:5.2.0-rc3-debian
+      #working_dir: /phd5-docs/.project
       ports:
         - 17200:80
       depends_on:
@@ -18,12 +18,16 @@ services:
         - APP_ADMIN_EMAIL=docs@phd5.local
         - APP_ADMIN_PASSWORD=admin1
         - APP_MAILER_USE_FILE_TRANSPORT=1
-        - COMPOSER_VENDOR_DIR=/phd5-docs/.project/vendor
+        #- COMPOSER_VENDOR_DIR=/phd5-docs/.project/vendor
         - VIRTUAL_HOST=phd5-docs.localhost
+
+        - YII_ENV=dev
+        - YII_DEBUG=1
       volumes:
         # Re-use local composer cache via host-volume
         - ~/.composer-docker/cache:/root/.composer/cache:delegated
         - ../:/phd5-docs
+        - ./vendor:/app/vendor
     redis:
         image: redis:3
     db:

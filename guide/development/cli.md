@@ -28,11 +28,12 @@ Or run `docker-compose` commands against your current stack
 	docker-compose logs
 
    
+
 Or use `Makefile`s for a different folder i.e. for managing an isolated test-stack
-   
+
 	cd tests
-    make all
-    make run-tests
+	make all
+	make run-tests
 
 You can find information in the [testing](../4-testing/testing.md) section.
 
@@ -45,9 +46,9 @@ You can find information in the [testing](../4-testing/testing.md) section.
 ### `Make` vs. Docker commands
 
 
-You can create a new container bash with
+You can create a new CLI-container bash with
 
-    make bash
+    make cli
 
 or    
     
@@ -56,7 +57,7 @@ or
 Alternatively you can also execute a bash within a running container
     
     docker-compose exec php bash
-    
+
 or
 
     docker exec -it myapp_php_1 bash
@@ -67,7 +68,7 @@ or
 Setup application with demo data and default user password
 
     docker-compose run --rm \
-        -e APP_ADMIN_PASSWORD=mod.Uless11 \
+        -e APP_ADMIN_PASSWORD=admin1 \
         -e APP_MIGRATION_LOOKUP=@app/migrations/demo-data \
         php yii app/setup
 
@@ -78,43 +79,9 @@ Setup application with demo data and default user password
 
 Run `make help`
 
-```
-#
-# General targets
-#
-
-usage: make [target ...]
-
-system:
-  help.....................show this help
-
-development:
-  all......................shorthand for 'build init up setup open'
-  dev......................install composer package (enable host-volume in docker-compose config)
-  init.....................initialize development environment
-  bash.....................open application development bash
-  upgrade..................update application package, pull, rebuild
-  assets...................open application development bash
-  latest...................push to latest/release branch
-  lint.....................run source-code linting
-  lint-composer............run composer linting
-
-base:
-  build....................build images in test-stack
-  up.......................start stack
-  clean....................remove all containers in stack
-  open.....................open application web service in browser
-  open-db..................open application database service in browser
-  setup....................run application setup
-```
-
 ### Dry-run
 
-    cp -n .env-dist .env &2>/dev/null
-    cp -n project/tests/.env-dist project/tests/.env &2>/dev/null
-    cp -n project/config/local.env-dist project/config/local.env &2>/dev/null
-    docker-compose run --rm php composer install
-    mkdir -p web/assets runtime
+    make -n all
 ### Building images from docker-compose definitions
     docker-compose build --pull 
 ### Starting application stack

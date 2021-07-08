@@ -10,6 +10,11 @@ Features
 - continuous integration support
 - application versioning
 
+## Configuration
+
+- separate database connection for system components (**audit**, **session**)
+  - `dbSystem` runs with `ArrayCache`
+
 ### Frontend
 
 - full responsive Bootstrap 3 theme
@@ -52,14 +57,7 @@ Features
 
 
 
-### Comparision
 
-| Template | src LOC | Services | Extensions |
-|----------|---------|----------|------------|
-| dmstr/yii2-app | ~100 | 0 | 0 
-| dmstr/phd5-app | ~350 | 1 | 8
-| dmstr/ee-app | ~450 | 4 | 20 
-| codemix/ | ~1000 | 0 | 0 
 
 
 Source

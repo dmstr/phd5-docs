@@ -14,7 +14,7 @@ There are three files included by default:
  - `app.less` main LESS file for application
  - `bootstrap.less` includes for bootstrap LESS files
  - `variables.less` bootstrap settings
- 
+
 Initial adjustment to the style settings of the application should be made in `variables.less`
 
 > When developing assets you can set `APP_ASSET_FORCE_PUBLISH=1` in your local `.env` file, this improves detection of
@@ -26,3 +26,18 @@ For bundling assets for production usage, see tutorial about [asset compression]
 #### Cleanup
 
     yii app/clear-assets
+
+#### Export from database
+
+>  see also *Exporting database-dumps*
+
+Export files with `yii prototype`.
+
+Load/include files in `AppAsset`. Commit.
+
+Refactor files. Commit.
+
+Changes should be available via `AppAsset` make sure it is included in **Settings**.
+
+Remove imported code from DB-Less records.
+

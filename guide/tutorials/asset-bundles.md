@@ -31,13 +31,15 @@ For bundling assets for production usage, see tutorial about [asset compression]
 
 >  see also *Exporting database-dumps*
 
+Register command if needed.
+
 Export files with `yii prototype`.
 
-Load/include files in `AppAsset`. Commit.
+Move files to `project/resources`. Commit.
 
 Refactor files. Commit.
 
-Changes should be available via `AppAsset` make sure it is included in **Settings**.
+Use the files by `@import (/app/project/resources/default.less)` them from DB-Less.
 
 Remove imported code from DB-Less records.
 

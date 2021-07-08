@@ -6,13 +6,11 @@ Since the application runs in Docker containers and the debugging tools on the h
 
 ### Setup
 
-----
+Allow traffic from Docker private IPs in firewall, eg.
 
-sudo ufw allow from 172.16.0.0/12 proto tcp to any
+    sudo ufw allow from 172.16.0.0/12 proto tcp to any
 
-----
-
-First, create a network which is reserved for debug data.
+Create a network which is reserved for debug data.
 
     docker network create --subnet 192.168.222.0/24 xdebug
 

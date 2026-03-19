@@ -1,6 +1,0 @@
-{
-    "plugins": [
-        "remark-preset-lint-recommended",
-        "remark-lint-blank-lines-1-0-2"
-    ]
-}

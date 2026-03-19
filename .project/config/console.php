@@ -1,7 +1,0 @@
-<?php
-
-$console = [
-
-];
-
-return $console;
